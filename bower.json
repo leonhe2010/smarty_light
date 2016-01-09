@@ -1,0 +1,27 @@
+{
+  "name": "test-react-gulp",
+  "homepage": "https://github.com/jinguangguo/test-react-gulp",
+  "authors": [
+    "jinguangguo <jinguangguo@baijiahulian.com>"
+  ],
+  "description": "test react and gulp of jinguangguo",
+  "main": "index.js",
+  "moduleType": [],
+  "keywords": [
+    "react",
+    "gulp"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.16",
+    "echarts": "~2.2.7",
+    "jquery": "~2.2.0",
+    "requirejs": "~2.1.22"
+  }
+}
