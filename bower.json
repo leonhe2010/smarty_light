@@ -1,15 +1,14 @@
 {
-  "name": "test-react-gulp",
-  "homepage": "https://github.com/jinguangguo/test-react-gulp",
+  "name": "smarty_light",
+  "homepage": "https://github.com/leonhe2010/smarty_light",
   "authors": [
-    "jinguangguo <jinguangguo@baijiahulian.com>"
+    "leonhe <leonhe2010@163.com>"
   ],
-  "description": "test react and gulp of jinguangguo",
+  "description": "smarty light",
   "main": "index.js",
   "moduleType": [],
   "keywords": [
-    "react",
-    "gulp"
+    "smarty_light"
   ],
   "license": "MIT",
   "ignore": [
