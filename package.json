@@ -1,0 +1,12 @@
+{
+  "name": "smarty_light",
+  "version": "1.0.0",
+  "description": "An wonderful project",
+  "dependencies": {
+    "through2": "^2.0.0",
+    "gulp": "^3.9.0",
+    "hapi": "^8.8.0",
+    "gulp-browserify2": "0.0.2",
+    "6to5ify": "^4.1.1"
+  }
+}

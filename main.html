@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" ng-controller="mainController">
+<head>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0" />
+    <meta charset="utf-8">
+    <title>智能灯监控系统</title>
+    <!-- <link rel="shortcut icon" href="http://cdn.gsxservice.com/asset/img/logo.ico" /> -->
+    <!-- <link href="../js-library/dep/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="src/resource/css/index.css?v=@@version">
+    <link rel="stylesheet" type="text/css" href="src/resource/css/layout.css?v=@@version">
+    <link rel="stylesheet" type="text/css" href="src/resource/css/login.css?v=@@version">
+    <link rel="stylesheet" type="text/css" href="src/resource/css/fliptimer.css?v=@@version">
+</head>
+<body>
+    <div class="app-container">
+        <div ng-view></div>
+    </div>
+</body>
+<script type="text/javascript" src="src/dep/base.js"></script>
+<script>
+    require.config({
+        baseUrl: 'src',
+        urlArgs: 'v=@@version',
+        paths: {
+            validation: '../bower_components/jquery-validation/dist/jquery.validate.min',
+            // jModal: '../../js-library/src/widget/modal/modal-3.3.1',
+            underscore: '../bower_components/underscore/underscore-min',
+            ngRoute: '../bower_components/angular-route/angular-route.min',
+            jquery: '../bower_components/jquery/dist/jquery.min',
+            bootstrap: '../../js-library/dep/bootstrap/dist/js/bootstrap.min',
+            // text: '../../js-library/dep/requirejs-text/text',
+            // cookie: '../../js-library/dep/jquery.cookie/jquery.cookie',
+            uiRoute: '../bower_components/angular-ui-router/release/angular-ui-router.min'
+        },
+        shim: {
+            // bootstrap: {
+            //     deps: ['jquery'],
+            //     exports: 'bootstrap'
+            // },
+            validation: {
+                deps: ['jquery'],
+                exports: '$.validator'
+            },
+            ngRoute: {
+                exports: 'ngRoute'
+            }
+            // jModal: {
+            //     deps: ['jquery'],
+            //     exports: '$.fn.modal'
+            // }
+        }
+    });
+</script>
+<script type="text/javascript">
+    require(['module/main'], function (main) {
+        angular.bootstrap(document, ['app']);
+    });
+</script>
+</body>
+</html>

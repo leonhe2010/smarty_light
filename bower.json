@@ -2,7 +2,7 @@
   "name": "smarty_light",
   "homepage": "https://github.com/leonhe2010/smarty_light",
   "authors": [
-    "leonhe <leonhe2010@163.com>"
+    "leonhe <153736316@qq.com>"
   ],
   "description": "smarty light",
   "main": "index.js",
@@ -19,8 +19,13 @@
   ],
   "dependencies": {
     "angular": "~1.3.16",
+    "angular-bootstrap": "~1.1.1",
+    "angular-route": "~1.4.9",
+    "angular-ui-router": "ui-route#~0.2.17",
     "echarts": "~2.2.7",
     "jquery": "~2.2.0",
-    "requirejs": "~2.1.22"
+    "jquery-validation": "~1.14.0",
+    "requirejs": "~2.1.22",
+    "underscore": "~1.8.3"
   }
 }
