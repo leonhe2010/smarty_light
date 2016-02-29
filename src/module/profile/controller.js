@@ -55,7 +55,7 @@ define(function (require) {
         function showLeftTree(item) {
             var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
 
-            switch (pidArr) {
+            switch (pidArr.length) {
                 case 1:
                     if (!$scope.demo.tree[pidArr[0]]['children']) {
                         getChildNode(item.id, 2, item.pid);
