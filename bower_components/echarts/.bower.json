@@ -46,7 +46,6 @@
     "commit": "8eeb7e5abe207d0536c62ce1f4ddecc6adfdf85e"
   },
   "_source": "git://github.com/ecomfe/echarts.git",
-  "_target": "~2.2.7",
-  "_originalSource": "echarts",
-  "_direct": true
+  "_target": "~2.2.1",
+  "_originalSource": "echarts"
 }

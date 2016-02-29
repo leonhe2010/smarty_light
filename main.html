@@ -28,11 +28,24 @@
             underscore: '../bower_components/underscore/underscore-min',
             ngRoute: '../bower_components/angular-route/angular-route.min',
             jquery: '../bower_components/jquery/dist/jquery.min',
-            bootstrap: '../../js-library/dep/bootstrap/dist/js/bootstrap.min',
+            // echarts: '../bower_components/echarts/build/dist/echarts',
+            // bootstrap: '../../js-library/dep/bootstrap/dist/js/bootstrap.min',
             // text: '../../js-library/dep/requirejs-text/text',
             // cookie: '../../js-library/dep/jquery.cookie/jquery.cookie',
             uiRoute: '../bower_components/angular-ui-router/release/angular-ui-router.min'
         },
+        packages: [
+            {
+                name: 'echarts',
+                location: '../bower_components/echarts/src',
+                main: 'echarts'
+            },
+            {
+                name: 'zrender',
+                location: '../bower_components/zrender/src',
+                main: 'zrender'
+            }
+        ],
         shim: {
             // bootstrap: {
             //     deps: ['jquery'],

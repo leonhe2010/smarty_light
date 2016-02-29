@@ -6,7 +6,8 @@ define(function (require) {
         // 依赖模块
         [
             'ngRoute',
-            'ui.router'
+            'ui.router',
+            'app.directives'
         ]);
 
     return app;
