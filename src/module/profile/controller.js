@@ -134,7 +134,7 @@ define(function (require) {
 
         function getLightInfo(type, id) {
             var params = {
-                type: type,
+                level: type,
                 id: id
             };
 
