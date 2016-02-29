@@ -90,24 +90,24 @@ define(function (require) {
             }
             if (parentLevel === 1) {
                 $.each(nodes, function (index, value) {
-                    nodes[index].pid = value.id + 'l';
+                    nodes[index].pid = index + 'l';
                 });
                 $scope.demo.tree = nodes;
             } 
             else {
                 $.each(nodes, function (index, value) {
-                    nodes[index].pid = parentPid + value.id + 'l';
+                    nodes[index].pid = parentPid + index + 'l';
                 });
 
                 var pidArr = parentPid.substr(0, parentPid.length - 1).split('l');
                 if (pidArr.length === 1) {
-                    $scope.demo.tree[arr[0]]['children'] = nodes;
+                    $scope.demo.tree[pidArr[0]]['children'] = nodes;
                 }
                 else if (pidArr.length === 2) {
-                    $scope.demo.tree[arr[0]][arr[1]]['children'] = nodes;
+                    $scope.demo.tree[pidArr[0]][pidArr[1]]['children'] = nodes;
                 }
                 else if (pidArr.length === 3) {
-                    $scope.demo.tree[arr[0]][arr[1]][arr[2]]['children'] = nodes;
+                    $scope.demo.tree[pidArr[0]][pidArr[1]][pidArr[2]]['children'] = nodes;
                 }
             }
             console.log($scope.demo.tree);
@@ -117,8 +117,8 @@ define(function (require) {
             var url = '/smartcity/api/get_child_node';
 
             var params = {
-                id: id,
-                level: level
+                id: +id,
+                level: +level
             };
 
             $http.post(url, params).success(function (res) {
@@ -134,8 +134,8 @@ define(function (require) {
 
         function getLightInfo(type, id) {
             var params = {
-                level: type,
-                id: id
+                level: +type,
+                id: +id
             };
 
             var url = '/smartcity/api/get_basic_info';
