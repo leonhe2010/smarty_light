@@ -62,12 +62,12 @@ define(function (require) {
                     }
                     break;
                 case 2:
-                    if (!$scope.demo.tree[pidArr[0]][pidArr[1]]['children']) {
+                    if (!$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children']) {
                         getChildNode(item.id, 3, item.pid);
                     }
                     break;
                 case 3:
-                    if (!$scope.demo.tree[pidArr[0]][pidArr[1]][pidArr[2]]['children']) {
+                    if (!$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children']) {
                         getChildNode(item.id, 4, item.pid);
                     }
                     break;
@@ -104,10 +104,10 @@ define(function (require) {
                     $scope.demo.tree[pidArr[0]]['children'] = nodes;
                 }
                 else if (pidArr.length === 2) {
-                    $scope.demo.tree[pidArr[0]][pidArr[1]]['children'] = nodes;
+                    $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'] = nodes;
                 }
                 else if (pidArr.length === 3) {
-                    $scope.demo.tree[pidArr[0]][pidArr[1]][pidArr[2]]['children'] = nodes;
+                    $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children'] = nodes;
                 }
             }
             console.log($scope.demo.tree);
