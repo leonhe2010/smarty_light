@@ -2,12 +2,12 @@ nav-->
 <div class="w1200 bgh nav">
   <div class="fl nav_link">
     <!--当前选中状态 加 class="active"-->
-    <a href="/profile" class="active">概要</a>
-    <a href="/geography">地理</a>
-    <a href="/manipulation">灯控页面</a>
-    <a href="/statistic">统计</a>
-    <a href="/fault">故障列表</a>
-    <a href="/set">设置</a> 
+    <a href="/main.html?#/profile" class="active">概要</a>
+    <a href="/main.html?#/geography">地理</a>
+    <a href="/main.html?#/manipulation">灯控页面</a>
+    <a href="/main.html?#/statistic">统计</a>
+    <a href="/main.html?#/fault">故障列表</a>
+    <a href="/main.html?#/set">设置</a> 
   </div>
   <div class="fr nav_time"> <i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
     <div class="daojishi">
@@ -32,34 +32,7 @@ nav-->
     <!--树型菜单-->
                   <ul id="tree" class="lightTreeview">
                     <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view> 
-                <!-- <li>
-                  <div><p>浙江</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></div>
-                  <ol style="display:none">
-                    <li>
-                      <div><p>杭州</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></div>
-                      <ul>
-                        <li><p>上城区</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></li>
-                        <li><p>下城区</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></li>
-                        <li><p>江干区</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></li>
-                        <li><p>西湖区</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></li>
-                      </ul>
-                    </li>
-                  </ol>
-                </li>
-               <li>
-                  <div><p>广东</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></div>
-                  <ol style="display:none">
-                    <li>
-                      <div><p>杭州</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></div>
-                      <ul>
-                        <li><p>上城区</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></li>
-                        <li><p>下城区</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></li>
-                        <li><p>江干区</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></li>
-                        <li><p>西湖区</p><em class="i_edit"><i class="i_add"></i><i class="i_minus"></i></em></li>
-                      </ul>
-                    </li>
-                  </ol>
-                </li>
+                
               </ul>
                   <!--树型菜单/--> 
   </div>

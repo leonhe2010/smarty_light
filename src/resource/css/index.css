@@ -827,7 +827,7 @@ body {
 }
 /*点击设置类型显示灯杆列表弹窗*/
 .dk_add_layer_con {
-	display:none;
+	/*display:none;*/
 	width:600px;
 	padding-bottom:20px;
 	box-shadow: -2px 0 5px #222830, 0 -2px 5px #222830, 0 2px 5px #222830, 2px 0 5px #222830;

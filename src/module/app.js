@@ -7,6 +7,7 @@ define(function (require) {
         [
             'ngRoute',
             'ui.router',
+            'ui.bootstrap',
             'app.directives'
         ]);
 

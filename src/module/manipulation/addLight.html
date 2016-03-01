@@ -1,0 +1,19 @@
+<div class="dk_add_layer_con">
+    <div class="close">
+        <em class="close_bt" ng-click="cancel()">关闭</em>
+    </div>
+        <p class="tit pl_20" ng-bind="locationSetted"></p>
+        <div class="fz_table">
+          <p class="clearfix"> 
+            <span ng-repeat="item in lightOptions">
+                <input type="checkbox" class="radiocheck" name="{{item.lightId}}" id="{{item.lightId}}" lid="{{item.lightId}}" ng-click="setLightIds($event)">
+                <label class="nofull default left" for="{{item.lightId}}" ng-bind="item.lightName"></label>
+            </span>
+        </p>
+          
+          
+        </div>
+        <div class="dg_sumbit">
+          <input type="submit" value="确认" ng-click="ok()">
+        </div>
+      </div>

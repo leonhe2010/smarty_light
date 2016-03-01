@@ -61,63 +61,157 @@ exports.mocks = [
         path: '/smartcity/api/get_child_node',
         method: 'POST',
         handler: function (request, reply) {
-            // if (request.params.level == 1) {
-                console.log('sdsdssdsdssd: '); 
-                console.log('sdsdssdsdssd: ', JSON.stringify(request.params)); 
-                reply({
-                    "status": 200,
-                    "data": {
-                        "msg": "success",
-                        "nodes": [
-                            {"id": "2", "name": "上海"}, 
-                            {"id": "1", "name": "北京"}
-                        ],
-                        "result": true
-                    },
-                    "error": null
-                });  
-            // } 
-            // else if (request.level == 2) {
-            //     reply({
-            //         "status": 200,
-            //         "data": {
-            //             "msg": "success",
-            //             "nodes": [
-            //                 {"id": "2", "name": "上海"}
-            //             ],
-            //             "result": true
-            //         },
-            //         "error": null
-            //     });  
-            // }
-            // else if (request.level == 3) {
-            //     reply({
-            //         "status": 200,
-            //         "data": {
-            //             "msg": "success",
-            //             "nodes": [
-            //                 {"id": "2", "name": "康桥智慧园区"}
-            //             ],
-            //             "result": true
-            //         },
-            //         "error": null
-            //     });  
-            // }
-            // else {
-            //     reply({
-            //         "status": 200,
-            //         "data": {
-            //             "msg": "success",
-            //             "nodes": [
-            //                 {"id": "2", "name": "康桥智慧园区"}
-            //             ],
-            //             "result": true
-            //         },
-            //         "error": null
-            //     });  
-            // }
+            console.log('sdsdssdsdssd: '); 
+            console.log('sdsdssdsdssd: ', JSON.stringify(request.params)); 
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "nodes": [
+                        {"id": "2", "name": "上海"}, 
+                        {"id": "1", "name": "北京"}
+                    ],
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/set_light_auto',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/set_light_manual',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/set_light_plan',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/get_light_plan',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "set": [
+                        {
+                            planId: 1,
+                            startHour: 11, //开灯时间
+                            startMinute: 30, //开灯时间
+                            endHour: 21, //关灯时间
+                            endMinute: 20, //关灯时间
+                            brightness: 10, //亮度
+                        },
+                        {
+                            planId: 2,
+                            startHour: 13, //开灯时间
+                            startMinute: 30, //开灯时间
+                            endHour: 23, //关灯时间
+                            endMinute: 40, //关灯时间
+                            brightness: 70, //亮度
+                        }
+                    ],
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/delete_light_plan',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/add_light_ungrouped',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/get_ungrouped_light',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "light": [
+                        {
+                            lightId: 1,
+                            lightName: "编号1灯"
+                        },
+                        {
+                            lightId: 2,
+                            lightName: "编号2灯"
+                        },
+                        {
+                            lightId: 3,
+                            lightName: "编号3灯"
+                        },
+                    ],
+                    "result": true
+                },
+                "error": null
+            });  
         }
     }
-
-
 ];
