@@ -1,0 +1,253 @@
+<!--nav-->
+<div class="w1200 bgh nav">
+  <div class="fl nav_link"> 
+    <!--当前选中状态 加 class="active"--> 
+    <a href="/main.html?#/profile" class="active">概要</a>
+    <a href="/main.html?#/geography">地理</a>
+    <a href="/main.html?#/manipulation">灯控页面</a>
+    <a href="/main.html?#/statistic">统计</a>
+    <a href="/main.html?#/fault">故障列表</a>
+    <a href="/main.html?#/set" class="active">设置</a> 
+  </div>
+  <div class="fr nav_time"> <i><img src="images/lm_logo.jpg" width="46" height="53"></i>
+    <div class="daojishi"> 
+      <!--time-->
+      <div class="dowebok">
+        <div class="hours"></div>
+        <div class="minutes"></div>
+        <div class="seconds" style="display:none"></div>
+      </div>
+      <!--time/--> 
+    </div>
+  </div>
+</div>
+<!--nav/--> 
+<!--content-->
+<div class="w1200 content cut-all"> 
+  <!--left-->
+  <div id="left-panel" class="panel bgh cut-left"> 
+    <!--左右切换按钮--> 
+    <a id="left-panel-link" href="javascript:void(0)"></a> 
+    <!--左右切换按钮/--> 
+    <!--树型菜单-->
+    <ul id="tree" class="lightTreeview">
+      <edit-tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)" add-Item="demo.addItem($item, $event)" can-checked="true"></edit-tree-view>
+    </ul>
+    <!--树型菜单/--> 
+    <!--编辑-->
+    <!-- <div class="i_bj">编辑</div> -->
+    <!--编辑/--> 
+  </div>
+  <!--left/-->
+  <div id="page" class="bgh page cut-page"> 
+    <!--设备采样率-->
+    <div class="sbcyl">
+      <p class="tit">设备采样率</p>
+      <div class="sbcyl_con">
+        <div class="splx">
+          <label>设备类型</label>
+          <input type="text">
+        </div>
+        <div class="cysj">
+          <label>采样时间</label>
+          <input type="text">
+        </div>
+        <div class="submit_cyl">
+          <input type="submit" value="确定">
+        </div>
+      </div>
+    </div>
+    <!--设备采样率/-->
+
+    <!--点击设置类型显示灯杆列表弹窗  设置1.jpg-->
+    <div class="layer_con">
+      <div class="close"><span>灯杆列表</span><em class="close_bt">关闭</em></div>
+      <div class="dg_table">
+        <table border="1" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>灯杆编号</th>
+            <th>经度</th>
+            <th>纬度</th>
+            <th>操作</th>
+          </tr>
+          <tr>
+            <td>123</td>
+            <td>23.6</td>
+            <td>23.8</td>
+            <td><a href="javascript:void(0);" class="table_pj">编辑</a><a href="">删除</a></td>
+          </tr>
+          <tr>
+            <td>123</td>
+            <td>23.6</td>
+            <td>23.8</td>
+            <td><a href="javascript:void(0);" class="table_tjsp">添加设备</a><a href="">删除</a></td>
+          </tr>
+          <tr>
+            <td>123</td>
+            <td>23.6</td>
+            <td>23.8</td>
+            <td><a href="javascript:void(0);" class="table_pj">编辑</a><a href="">删除</a></td>
+          </tr>
+          <tr>
+            <td>123</td>
+            <td>23.6</td>
+            <td>23.8</td>
+            <td><a href="javascript:void(0);" class="table_pj">编辑</a><a href="">删除</a></td>
+          </tr>
+          <tr>
+            <td>123</td>
+            <td>23.6</td>
+            <td>23.8</td>
+            <td><a href="javascript:void(0);" class="table_pj">编辑</a><a href="">删除</a></td>
+          </tr>
+        </table>
+      </div>
+      <p class="add_dg"><i>添加灯杆</i></p>
+      <div class="dg_sumbit">
+        <input type="submit" value="确认">
+      </div>
+    </div>
+    <!--点击设置类型显示灯杆列表弹窗 设置1.jpg//--> 
+    <!--点击添加灯杆弹窗 设置2.jpg-->
+    <div class="dg_layer_con">
+      <div class="close"><span>添加灯杆</span><em class="close_bt">关闭</em></div>
+      <div class="dg_con">
+        <label>灯杆编号：</label>
+        <input type="text">
+        <label>经度：</label>
+        <input type="text">
+        <label>纬度：</label>
+        <input type="text">
+      </div>
+      <div class="dg_sumbit">
+        <input type="submit" value="确认">
+      </div>
+    </div>
+    <!--点击添加灯杆弹窗 设置2.jpg//--> 
+    <!--点击编辑灯杆弹窗 设置3.jpg-->
+    <div class="bj_layer_con">
+      <div class="close"><span>编辑灯杆</span><em class="close_bt">关闭</em></div>
+      <div class="dg_con">
+        <label>灯杆编号：</label>
+        <input type="text">
+        <label>经度：</label>
+        <input type="text">
+        <label>纬度：</label>
+        <input type="text">
+      </div>
+      <p class="close"><span>灯杆设备</span></p>
+      <div class="dg_table bjdg_table">
+        <table border="1" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>设备类型</th>
+            <th>设备编号</th>
+            <th>操作</th>
+          </tr>
+          <tr>
+            <td><div class="spbx_table"><em class="sel_spbx">环境检测</em>
+                <ul>
+                  <li>温度</li>
+                  <li>温度</li>
+                  <li>温度</li>
+                  <li>温度</li>
+                </ul>
+              </div></td>
+            <td>39</td>
+            <td><a href="">删除</a></td>
+          </tr>
+          <tr>
+            <td><div class="spbx_table"><em class="sel_spbx">环境检测</em>
+                <ul>
+                  <li>温度1</li>
+                  <li>温度</li>
+                  <li>温度</li>
+                  <li>温度</li>
+                </ul>
+              </div></td>
+            <td>39</td>
+            <td><a href="">删除</a></td>
+          </tr>
+          <tr>
+            <td><div class="spbx_table"><em class="sel_spbx">环境检测</em>
+                <ul>
+                  <li>温度2</li>
+                  <li>温度</li>
+                  <li>温度</li>
+                  <li>温度</li>
+                </ul>
+              </div></td>
+            <td>39</td>
+            <td><a href="">删除</a></td>
+          </tr>
+          <tr>
+            <td><div class="spbx_table"><em class="sel_spbx">环境检测</em>
+                <ul>
+                  <li>温度3</li>
+                  <li>温度</li>
+                  <li>温度</li>
+                  <li>温度</li>
+                </ul>
+              </div></td>
+            <td>39</td>
+            <td><a href="">删除</a></td>
+          </tr>
+        </table>
+      </div>
+      <div class="dg_sumbit">
+        <input type="submit" value="确认">
+      </div>
+    </div>
+    <!--点击编辑灯杆弹窗 设置3.jpg//--> 
+    <!--点击添加设备弹窗 设置4.jpg-->
+    <div class="tjsp_layer_con">
+      <div class="close"><span>添加设备</span><em class="close_bt">关闭</em></div>
+      <div class="tjsp_con">
+        <label>设备类型：</label>
+        <div class="spbx_table" id="sblx"><em class="sel_spbx">设备类型</em>
+          <ul>
+            <li>温度2</li>
+            <li>温度</li>
+            <li>温度</li>
+            <li>温度</li>
+          </ul>
+        </div>
+        <label>设备编号：</label>
+        <div class="spbx_table" id="sbbh"><em class="sel_spbx">设备编号</em>
+          <ul>
+            <li>温度2</li>
+            <li>温度</li>
+            <li>温度</li>
+            <li>温度</li>
+          </ul>
+        </div>
+      </div>
+      <div class="dg_sumbit">
+        <input type="submit" value="确认">
+      </div>
+    </div>
+    <!--点击添加设备弹窗 设置4.jpg//-->
+    <!--点击添加竖型菜单弹窗-->
+    <div class="i_add_layer_con">
+      <div class="close"><span>请输入省份</span><em class="close_bt">关闭</em></div>
+      <div class="i_add_input clearfix">
+       <input type="text">
+      </div>
+      <div class="dg_sumbit clearfix">
+        <input type="submit" value="确认">
+      </div>
+    </div>
+    <!--点击添加竖型菜单弹窗//-->
+     <!--点击减号竖型菜单弹窗-->
+    <div class="i_minus_layer_con">
+      <div class="close"><em class="close_bt">关闭</em></div>
+      <div class="i_minus_input clearfix">
+       确认删除省份吗？
+      </div>
+      <div class="dg_sumbit clearfix">
+        <input type="submit" value="确认">
+      </div>
+    </div>
+    <!--点击减号竖型菜单弹窗//--> 
+  </div>
+</div>
+<!--content/--> 

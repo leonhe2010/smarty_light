@@ -8,7 +8,8 @@ define(function (require) {
             'ngRoute',
             'ui.router',
             'ui.bootstrap',
-            'app.directives'
+            'app.directives',
+            'app.filters'
         ]);
 
     return app;

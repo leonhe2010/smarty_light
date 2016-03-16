@@ -8,7 +8,7 @@ define(function(require) {
     require('validation');
     require('underscore');
     require('uiRoute');
-    // require('common/service');
+    require('common/filter/filter');
     // require('cookie');
     // require('./main.tpl');
 

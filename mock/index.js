@@ -131,21 +131,21 @@ exports.mocks = [
                 "status": 200,
                 "data": {
                     "msg": "success",
-                    "set": [
+                    "level": 2,
+                    "plans": [
                         {
-                            planId: 1,
-                            startHour: 11, //开灯时间
-                            startMinute: 30, //开灯时间
-                            endHour: 21, //关灯时间
-                            endMinute: 20, //关灯时间
+                            start: 0, //开灯时间
+                            end: 210, //关灯时间
                             brightness: 10, //亮度
                         },
                         {
-                            planId: 2,
-                            startHour: 13, //开灯时间
-                            startMinute: 30, //开灯时间
-                            endHour: 23, //关灯时间
-                            endMinute: 40, //关灯时间
+                            start: 210, //开灯时间
+                            end: 540, //关灯时间
+                            brightness: 70, //亮度
+                        },
+                        {
+                            start: 540, //开灯时间
+                            end: 830, //关灯时间
                             brightness: 70, //亮度
                         }
                     ],

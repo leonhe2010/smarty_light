@@ -39,6 +39,15 @@ define(function (require) {
             getChildNode(0, 1);
         }
 
+        // function initPlanPtnInput() {
+        //     $scope.startHour = null;
+        //     $scope.startMinute = null;
+        //     $scope.endHour = null;
+        //     $scope.endMinute = null;
+        //     $scope.isLastPlan = false;
+        //     $scope.isFullPlan = false;
+        // }
+
         function setLightIds(event) {
             var ele = $(event.target);
             if (ele.is(':checked')) {
@@ -106,10 +115,14 @@ define(function (require) {
         }
 
         function deletePlan(planId) {
-            var url = '/smartcity/api/delete_light_plan';
+            var url = '/smartcity/api/set_light_plan';
             var params = {
-                planId: planId
+                id: $scope.currentId,
+                level: $scope.currentLevel,
+                plans: []
             };
+            $.extend(true, params.plans, $scope.settedPlan);
+            params.plans.pop();
 
             $http.post(url, params).success(function (res) {
                 if (res.data.result) {
@@ -167,13 +180,57 @@ define(function (require) {
 
             $http.post(url, params).success(function (res) {
                 if (res.data.result) {
-                    $scope.settedPlan = res.data.set;
+                    $scope.settedPlan = res.data.plans;
+                    $scope.planData = [];
+                    $.extend(true, $scope.planData, $scope.settedPlan);
+                    $scope.tableLevel = res.data.level;
+                    if ($scope.planData.length > 0) {
+                        $scope.planData[$scope.planData.length - 1].isLastItem = true;
+                    }
+                    initInputValue();
                 } else {
                     alert('获取已设置计划模式失败！');
                 }
             }).error(function (res) {
                 alert('系统异常！');
             });
+        }
+        
+        function initInputValue() {
+            if ($scope.settedPlan.length === 0) {
+                $scope.startHour = 0;
+                $scope.startMinute = 0;
+                $scope.endHour = null;
+                $scope.endMinute = null;
+                $scope.isLastPlan = false;
+                $scope.isFullPlan = false;
+            }
+            else if ($scope.settedPlan.length === 4) {
+                var timeVal = $scope.settedPlan[$scope.settedPlan.length - 1].end;
+                $scope.startHour = Math.floor(timeVal / 60);
+                $scope.startMinute = Math.floor(timeVal % 60);
+                $scope.endHour = 24;
+                $scope.endMinute = 0;
+                $scope.isLastPlan = true;
+                $scope.isFullPlan = false;
+            }
+            else if ($scope.settedPlan.length === 5) {
+                $scope.startHour = null;
+                $scope.startMinute = null;
+                $scope.endHour = null;
+                $scope.endMinute = null;
+                $scope.isLastPlan = false;
+                $scope.isFullPlan = true;
+            }
+            else {
+                var timeVal = $scope.settedPlan[$scope.settedPlan.length - 1].end;
+                $scope.startHour = Math.floor(timeVal / 60);
+                $scope.startMinute = Math.floor(timeVal % 60);
+                $scope.endHour = null;
+                $scope.endMinute = null;
+                $scope.isLastPlan = false;
+                $scope.isFullPlan = false;
+            }
         }
 
         function postPtn() {
@@ -192,12 +249,14 @@ define(function (require) {
                 params = {
                     id: $scope.currentId,
                     level: $scope.currentLevel,
-                    brightness: $scope.brightness,
-                    startHour: +$scope.startHour,
-                    startMinute: +$scope.startMinute,
-                    endHour: +$scope.endHour,
-                    endMinute: +$scope.endMinute
+                    plans: []
                 };
+                $.extend(true, params.plans, $scope.settedPlan);
+                params.plans.push({
+                    start: ((+$scope.startHour) * 60 + (+$scope.startMinute)),
+                    end: ((+$scope.endHour) * 60 + (+$scope.endMinute)),
+                    brightness: $scope.brightness
+                });
             }
 
             $http.post(url, params).success(function (res) {
@@ -206,7 +265,7 @@ define(function (require) {
                     initBrightness();
 
                     if ($scope.setPtn === 2) {
-                        //刷新列表
+                        getSettedPlan();
                     }
                 } else {
                     alert('设置失败！');

@@ -52,33 +52,35 @@
             <tr>
                 <th>时间段</th>
                 <th>亮度</th>
+                <th>设置层级</th>
                 <th>操作</th>
             </tr>
-            <tr ng-repeat="item in settedPlan">
-                <td>{{item.startHour}}:{{item.startMinute}}-{{item.endHour}}:{{item.endMinute}}</td>
+            <tr ng-repeat="item in planData">
+                <td>{{item.start | minuteTimeShow}}-{{item.end | minuteTimeShow}}</td>
                 <td>{{item.brightness}}%</td>
+                <td>{{tableLevel | levelShow}}</td>
                 <td>
-                    <button class="btn btn-primary" ng-click="deletePlan(item.planId)">删除</button>
+                    <button class="btn btn-primary" ng-click="deletePlan(item.planId)" ng-disabled="!item.isLastItem">删除</button>
                 </td>
             </tr>
         </table>
-        <div class="clearfix">
-          <div class="dk_time_div">
-            <span>关灯时间:</span>
-            <input type="text" class="dk_time_txt" ng-model="startHour">
-            时
-            <input type="text" class="dk_time_txt" ng-model="startMinute">
-            分</div>
+        <div class="clearfix" ng-show="!isFullPlan">
           <div class="dk_time_div">
             <span>开灯时间:</span>
-            <input type="text" class="dk_time_txt" ng-model="endHour">
+            <input type="text" class="dk_time_txt" ng-model="startHour" readonly>
             时
-            <input type="text" class="dk_time_txt" ng-model="endMinute">
+            <input type="text" class="dk_time_txt" ng-model="startMinute" readonly>
+            分</div>
+          <div class="dk_time_div">
+            <span>关灯时间:</span>
+            <input type="text" class="dk_time_txt" ng-model="endHour" ng-readonly="isLastPlan">
+            时
+            <input type="text" class="dk_time_txt" ng-model="endMinute" ng-readonly="isLastPlan">
             分</div>
         </div>
       </div>
       <!--亮度调整-->
-      <div class="ldtz">
+      <div class="ldtz" ng-show="!isFullPlan">
         <div class="ld_lt">亮度</div>
         <div id="box" ng-mousemove="calculateWidth($event)">
           <div id="bg">
@@ -93,7 +95,7 @@
       <!--亮度调整/-->
       <!--确认添加分组-->
       <div class="clearfix two_bt">
-        <a href="" class="ld_submit" ng-click="postPtn()">确认</a>
+        <a href="" class="ld_submit" ng-click="postPtn()" ng-show="!isFullPlan">确认</a>
         <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组</a></div>
       <!--确认添加分组/-->
     </div>

@@ -81,6 +81,7 @@ body {
 }
 .cut-left {
 	width:240px;
+	min-height: 800px;
 }
 .cut-all #page.cut-page {
 	width:950px
