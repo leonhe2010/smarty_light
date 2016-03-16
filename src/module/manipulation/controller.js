@@ -19,6 +19,7 @@ define(function (require) {
             $scope.brightness = 0;
             $scope.lightOptions = null;
             $scope.lightIds = [];
+            $scope.currentParentId = 0;
         }
 
         function bindEvent() {
@@ -60,7 +61,7 @@ define(function (require) {
 
         function addGroup() {
             var url = '/smartcity/api/get_ungrouped_light';
-            var params = {id: $scope.currentId};
+            var params = {id: $scope.currentParentId};
             $http.post(url, params).success(function (res) {
                 if (res.data.result) {
                     $scope.lightOptions = res.data.light;
@@ -287,6 +288,10 @@ define(function (require) {
             var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
+
+            if ($scope.currentLevel > 1) {
+                $scope.currentParentId = +pidArr[$scope.currentLevel - 2];
+            }
 
             switch (pidArr.length) {
                 case 1:
