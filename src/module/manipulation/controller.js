@@ -289,10 +289,6 @@ define(function (require) {
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
 
-            if ($scope.currentLevel > 1) {
-                $scope.currentParentId = +pidArr[$scope.currentLevel - 2];
-            }
-
             switch (pidArr.length) {
                 case 1:
                     if (!$scope.demo.tree[pidArr[0]]['children']) {
@@ -303,16 +299,19 @@ define(function (require) {
                     if (!$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children']) {
                         getChildNode(item.id, 3, item.pid);
                     }
+                    $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['id'];
                     break;
                 case 3:
                     if (!$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children']) {
                         getChildNode(item.id, 4, item.pid);
                     }
+                    $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['id'];
                     setTimeout(function () {
                         $scope.lightOptions = $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children'];
                     });
                     break;
                 case 4:
+                    $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['id'];
                     break;
                 default:
                     ;
