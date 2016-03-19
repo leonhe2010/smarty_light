@@ -250,8 +250,8 @@ body {
 	background-color:#429b69
 }
 /*点击设置类型显示灯杆列表弹窗*/
-.layer_con {
-	display:none;
+#light_list {
+	/*display:none;*/
 	width:600px;
 	padding-bottom:20px;
 	box-shadow: -2px 0 5px #222830, 0 -2px 5px #222830, 0 2px 5px #222830, 2px 0 5px #222830;
@@ -262,7 +262,7 @@ body {
 	color:#fff;
 	font-size:14px
 }
-.close {
+#light_list .close_modal {
 	height:50px;
 	line-height:50px;
 	padding-left:20px
@@ -341,7 +341,7 @@ body {
 }
 /*点击添加灯杆弹窗*/
 .dg_layer_con {
-	display:none;
+	/*display:none;*/
 	width:600px;
 	padding-bottom:20px;
 	box-shadow: -2px 0 5px #222830, 0 -2px 5px #222830, 0 2px 5px #222830, 2px 0 5px #222830;
@@ -358,7 +358,7 @@ body {
 }
 .dg_con label {
 	float:left;
-	width:75px;
+	width:73px;
 	text-align:right;
 	line-height:28px
 }
@@ -1079,7 +1079,7 @@ input[type=checkbox].radiocheck:checked+label:after, input[type=radio].radiochec
 }
 /*点击添加竖型菜单弹窗*/
 .i_add_layer_con {
-	display:none;
+	/*display:none;*/
 	width:400px;
 	padding-bottom:20px;
 	box-shadow: -2px 0 5px #222830, 0 -2px 5px #222830, 0 2px 5px #222830, 2px 0 5px #222830;
@@ -1113,7 +1113,7 @@ input[type=checkbox].radiocheck:checked+label:after, input[type=radio].radiochec
 }
 /*点击减号竖型菜单弹窗*/
 .i_minus_layer_con{
-	display:none;
+	/*display:none;*/
 	width:400px;
 	padding-bottom:20px;
 	box-shadow: -2px 0 5px #222830, 0 -2px 5px #222830, 0 2px 5px #222830, 2px 0 5px #222830;

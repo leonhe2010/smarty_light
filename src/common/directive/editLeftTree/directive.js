@@ -19,12 +19,28 @@ define(function (require) {
               itemClicked: '&',
               itemCheckedChanged: '&',
               addItem: '&',
+              minusItem: '&',
               itemTemplateUrl: '@',
           },
          controller:['$scope', function($scope){
              $scope.itemExpended = function(item, $event){
                  item.$$isExpend = ! item.$$isExpend;
                  $event.stopPropagation();
+             };
+
+             $scope.addItemHandler = function (item, event) {
+                $scope.addItem({
+                  item: item,
+                  e: event
+                });
+                
+             };
+
+             $scope.minusItemHandler = function (item, event) {
+                $scope.minusItem({
+                  item: item,
+                  e: event
+                });
              };
  
              $scope.getItemIcon = function(item){

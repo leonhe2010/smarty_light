@@ -1,0 +1,26 @@
+<div class="layer_con" id="light_list">
+      <div class="close_modal"><span>灯杆列表</span><em class="close_bt" ng-click="cancel()">关闭</em></div>
+      <div class="dg_table">
+        <table border="1" cellspacing="0" cellpadding="0"  ng-if="lightOptions.length">
+          <tr>
+            <th>灯杆编号</th>
+            <th>经度</th>
+            <th>纬度</th>
+            <th>操作</th>
+          </tr>
+          <tr ng-repeat="item in lightOptions">
+              <td ng-bind="item.lightName"></td>
+              <td ng-bind="item.lightLng"></td>
+              <td ng-bind="item.lightLat"></td>
+              <td>
+                <a href="javascript:void(0);" class="table_pj" ng-click="editLight(item)">编辑</a>
+                <a href="javascript:void(0);" ng-click="deleteLight(item.lightId)">删除</a>
+              </td>
+          </tr>
+        </table>
+      </div>
+      <p class="add_dg" ng-click="editLight()"><i>添加灯杆</i></p>
+      <div class="dg_sumbit">
+        <input type="submit" value="确认">
+      </div>
+    </div>

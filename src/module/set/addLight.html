@@ -1,0 +1,14 @@
+<div class="dg_layer_con">
+  <div class="close-light"><span>添加灯杆</span><em class="close_bt" ng-click="closeEditLight()">关闭</em></div>
+  <div class="dg_con">
+    <label>灯杆编号：</label>
+    <input type="text" ng-model="$parent.lightNameIN">
+    <label>经度：</label>
+    <input type="text" ng-model="$parent.lightLngIN">
+    <label>纬度：</label>
+    <input type="text" ng-model="$parent.lightLatIN">
+  </div>
+  <div class="dg_sumbit">
+    <input type="submit" value="确认" ng-click="postLightInfo()">
+  </div>
+</div>

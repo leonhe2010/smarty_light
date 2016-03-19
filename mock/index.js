@@ -68,8 +68,8 @@ exports.mocks = [
                 "data": {
                     "msg": "success",
                     "nodes": [
-                        {"id": "2", "name": "上海"}, 
-                        {"id": "1", "name": "北京"}
+                        {"id": "23", "name": "上海"}, 
+                        {"id": "15", "name": "北京"}
                     ],
                     "result": true
                 },
@@ -187,6 +187,58 @@ exports.mocks = [
     },
 
     {
+        path: '/smartcity/api/add_light_group',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/delete_light_group',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/get_equipment_sampling',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true,
+                    "set": {
+                        light: {frequency:250, level:1},
+                        environment: {frequency:120, level:2},
+                        vehicle: {frequency:60, level:3},
+                        crowd: {frequency:550, level:4},
+                        voice: {frequency:350, level:1},
+                    }
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
         path: '/smartcity/api/get_ungrouped_light',
         method: 'POST',
         handler: function (request, reply) {
@@ -213,5 +265,100 @@ exports.mocks = [
                 "error": null
             });  
         }
-    }
+    },
+
+    {
+        path: '/smartcity/api/get_light_group',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "set": [
+                        {
+                            lightLng: 23.12,
+                            lightLat: 12.344,
+                            lightId: 1,
+                            lightName: "编号1灯"
+                        },
+                        {
+                            lightId: 2,
+                            lightLng: 213.12,
+                            lightLat: 132.344,
+                            lightName: "编号2灯"
+                        },
+                        {
+                            lightId: 3,
+                            lightLng: 2.12,
+                            lightLat: 9.834,
+                            lightName: "编号3灯"
+                        }
+                    ],
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/change_province',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/change_city',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/change_set',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/smartcity/api/change_group',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
 ];

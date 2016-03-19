@@ -111,6 +111,7 @@ define(function (require) {
             };
 
             $scope.cancel = function () {
+                $scope.lightIds = [];
                 dialog.close();
             };
         }
