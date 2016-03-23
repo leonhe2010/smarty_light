@@ -1,5 +1,5 @@
-define(function(require) {
-    
+define(function (require) {
+
     'use strict';
 
     // 依赖加载
@@ -17,12 +17,12 @@ define(function(require) {
     var app = require('./app');
     // require('common/services');
 
-    app.run(['$rootScope', '$location', 
-        function($rootScope, $location) {
+    app.run(['$rootScope', '$location',
+        function ($rootScope, $location) {
 
         }
     ]).config(['$routeProvider', '$stateProvider',
-        function($routeProvider, $stateProvider) {
+        function ($routeProvider, $stateProvider) {
             // var tag = $.cookie('CAS_AC_CURRENT_ROLE');
             var tag = '';
             var isAdmin = tag == 'yunying_kefu_admin';
@@ -46,12 +46,12 @@ define(function(require) {
                 redirectTo: defaultRoute
             });
 
-            $(window).bind('beforeunload', function() {
+            $(window).bind('beforeunload', function () {
                 // return '确定离开此页面吗？';
             });
         }
     ]).config(['$httpProvider', '$sceDelegateProvider',
-        function($httpProvider, $sceDelegateProvider) {
+        function ($httpProvider, $sceDelegateProvider) {
 
             $httpProvider.defaults.headers.post = {
                 'Content-Type': 'application/json'

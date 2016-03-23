@@ -81,15 +81,15 @@ define(function (require) {
                             params.city_id = unitId;
                             break;
                         case 3:
-                            url = '/smartcity/api/change_set';
-                            params.set_id = unitId;
+                            url = '/smartcity/api/change_district';
+                            params.district_id = unitId;
                             break;
                         case 4:
                             url = '/smartcity/api/change_group';
                             params.group_id = unitId;
                             break;
                         case 1:
-                            url = '/smartcity/api/change_group';
+                            url = '/smartcity/api/change_province';
                             params.province_id = unitId;
                             break;
                         default:
@@ -178,14 +178,14 @@ define(function (require) {
                             params.province_id = unitId;
                             break;
                         case 2:
-                            url = '/smartcity/api/change_set';
-                            params.set_name = $scope.unitName;
+                            url = '/smartcity/api/change_district';
+                            params.district_name = $scope.unitName;
                             params.city_id = unitId;
                             break;
                         case 3:
                             url = '/smartcity/api/change_group';
                             params.group_name = $scope.unitName;
-                            params.set_id = unitId;
+                            params.district_id = unitId;
                             break;
                         default:
                             return;
@@ -258,9 +258,9 @@ define(function (require) {
             });
 
             $scope.deleteLight = function (lightId) {
-                var url = '/smartcity/api/delete_light_group';
+                var url = '/smartcity/api/delete_light';
                 var params = {
-                    lightId: lightId
+                    id: +lightId
                 };
                 $http.post(url, params).success(function (res) {
                     if (res.data.result) {
@@ -295,15 +295,35 @@ define(function (require) {
                         alert('请填写完整的路灯信息！');
                         return;
                     }
-
-                    var url = '/smartcity/api/add_light_group';
-                    var params = {
-                        id: $scope.currentId,
-                        level: $scope.currentLevel,
-                        lightName: $scope.lightNameIN,
-                        lightLng: $scope.lightLngIN,
-                        lightLat: $scope.lightLatIN
-                    };
+                    var url = '';
+                    var params = {};
+                    if (lightInfo) {
+                        url = '/smartcity/api/edit_light';
+                        params = {
+                            id: +lightInfo.lightId,
+                            lightName: +$scope.lightNameIN,
+                            lightLng: +$scope.lightLngIN,
+                            lightLat: +$scope.lightLatIN
+                        };
+                    }
+                    else {
+                        url = '/smartcity/api/add_light';
+                        params = {
+                            id: $scope.currentId,
+                            level: $scope.currentLevel,
+                            lightName: +$scope.lightNameIN,
+                            lightLng: +$scope.lightLngIN,
+                            lightLat: +$scope.lightLatIN
+                        };
+                    }
+                    // var url = '/smartcity/api/add_light';
+                    //var params = {
+                    //  id: $scope.currentId,
+                    //level: $scope.currentLevel,
+                    // lightName: +$scope.lightNameIN,
+                    // lightLng: +$scope.lightLngIN,
+                    // lightLat: +$scope.lightLatIN
+                    //};
                     $http.post(url, params).success(function (res) {
                         if (res.data.result) {
                             alert('添加成功！');
@@ -316,7 +336,7 @@ define(function (require) {
                         alert('系统异常！');
                     });
                 };
-                
+
             };
 
             $scope.cancel = function () {
@@ -325,7 +345,7 @@ define(function (require) {
         }
 
         function getEquipmentList() {
-            var url = '/smartcity/api/get_equipment_sampling';
+            var url = '/smartcity/api/get_sampling_frequency';
             var params = {
                 id: $scope.currentId,
                 level: $scope.currentLevel
@@ -341,7 +361,7 @@ define(function (require) {
                 alert('系统异常！');
             });
         }
-        
+
         function initEquipment() {
             $scope.equipmentFrequency = null;
             $scope.equipmentType = null;
@@ -358,14 +378,14 @@ define(function (require) {
                 return;
             }
 
-            var url = '/smartcity/api/set_equipment_sampling';
+            var url = '/smartcity/api/set_sampling_frequency';
             var params = {
                 id: $scope.currentId,
                 level: $scope.currentLevel,
                 frequency: +$scope.equipmentFrequency,
                 type: +$scope.equipmentType
             };
-        
+
 
             $http.post(url, params).success(function (res) {
                 if (res.data.result) {
@@ -401,7 +421,7 @@ define(function (require) {
                     nodes[index].pid = nodes[index].id + 'l';
                 });
                 $scope.demo.tree = nodes;
-            } 
+            }
             else {
                 $.each(nodes, function (index, value) {
                     nodes[index].pid = parentPid + nodes[index].id + 'l';
@@ -414,7 +434,7 @@ define(function (require) {
                     us.findWhere(us.findWhere($scope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'] = nodes;
                 }
                 else if (pidArr.length === 3) {
-                    $.each(nodes, function(index, value) {
+                    $.each(nodes, function (index, value) {
                         nodes[index]['addShow'] = true;
                     });
                     us.findWhere(us.findWhere(us.findWhere($scope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'] = nodes;

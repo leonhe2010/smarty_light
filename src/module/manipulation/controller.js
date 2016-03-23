@@ -107,7 +107,7 @@ define(function (require) {
                 }).error(function (res) {
                     alert('系统异常！');
                 });
-                
+
             };
 
             $scope.cancel = function () {
@@ -154,7 +154,7 @@ define(function (require) {
                 if ($scope.left < 0) {
                     $scope.left = 0;
                 }
-                if ($scope.left > 700){
+                if ($scope.left > 700) {
                     $scope.left = 700;
                 }
                 $('#bt').css('left', $scope.left);
@@ -197,7 +197,7 @@ define(function (require) {
                 alert('系统异常！');
             });
         }
-        
+
         function initInputValue() {
             if ($scope.settedPlan.length === 0) {
                 $scope.startHour = 0;
@@ -329,7 +329,7 @@ define(function (require) {
                     nodes[index].pid = index + 'l';
                 });
                 $scope.demo.tree = nodes;
-            } 
+            }
             else {
                 $.each(nodes, function (index, value) {
                     nodes[index].pid = parentPid + index + 'l';

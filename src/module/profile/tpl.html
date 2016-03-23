@@ -1,105 +1,109 @@
 nav-->
 <div class="w1200 bgh nav">
-  <div class="fl nav_link">
-    <!--当前选中状态 加 class="active"-->
-    <a href="/main.html?#/profile" class="active">概要</a>
-    <a href="/main.html?#/geography">地理</a>
-    <a href="/main.html?#/manipulation">灯控页面</a>
-    <a href="/main.html?#/statistic">统计</a>
-    <a href="/main.html?#/fault">故障列表</a>
-    <a href="/main.html?#/set">设置</a>
-  </div>
-  <div class="fr nav_time"> <i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
-    <div class="daojishi">
-      <!--time-->
-      <div class="dowebok">
-        <div class="hours"></div>
-        <div class="minutes"></div>
-        <div class="seconds" style="display:none"></div>
-      </div>
-      <!--time/-->
+    <div class="fl nav_link">
+        <!--当前选中状态 加 class="active"-->
+        <a href="/main.html?#/profile" class="active">概要</a>
+        <a href="/main.html?#/geography">地理</a>
+        <a href="/main.html?#/manipulation">灯控页面</a>
+        <a href="/main.html?#/statistic">统计</a>
+        <a href="/main.html?#/fault">故障列表</a>
+        <a href="/main.html?#/set">设置</a>
     </div>
-  </div>
+    <div class="fr nav_time"><i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
+
+        <div class="daojishi">
+            <!--time-->
+            <div class="dowebok">
+                <div class="hours"></div>
+                <div class="minutes"></div>
+                <div class="seconds" style="display:none"></div>
+            </div>
+            <!--time/-->
+        </div>
+    </div>
 </div>
 <!--nav/-->
 <!--content-->
 <div class="w1200 content cut-all">
-  <!--left-->
-  <div id="left-panel" class="panel bgh cut-left">
-    <!--左右切换按钮-->
-    <a id="left-panel-link" href="javascript:void(0)"></a>
-    <!--左右切换按钮/-->
-    <!--树型菜单-->
-                  <ul id="tree" class="lightTreeview">
-                    <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view> 
-                
-              </ul>
-                  <!--树型菜单/--> 
-  </div>
-  <!--left/-->
-  <div id="page" class="bgh page cut-page">
-    <!--实时数据-->
-    <div class="sssj">
-      <p class="tit">实时数据</p>
-      <div class="sssj_con">
-        <dl>
-          <dt>{{info.power}}<i>kw</i></dt>
-          <dd>总功耗</dd>
-        </dl>
-        <dl>
-          <dt>{{info.voltage}}<i>V</i></dt>
-          <dd>平均电压</dd>
-        </dl>
-        <dl>
-          <dt>{{info.current}}<i>A</i></dt>
-          <dd>平均电流</dd>
-        </dl>
-        <dl>
-          <dt>{{info.temperature}}<i>C</i></dt>
-          <dd>温度</dd>
-        </dl>
-        <dl>
-          <dt>{{info.humidity}}<i>%</i></dt>
-          <dd>湿度</dd>
-        </dl>
-        <dl>
-          <dt>{{info.pm2p5}}<i>克</i></dt>
-          <dd>PM2.5</dd>
-        </dl>
-        <dl>
-          <dt>23<i>%</i></dt>
-          <dd>可吸入颗粒物</dd>
-        </dl>
-      </div>
+    <!--left-->
+    <div id="left-panel" class="panel bgh cut-left">
+        <!--左右切换按钮-->
+        <a id="left-panel-link" href="javascript:void(0)"></a>
+        <!--左右切换按钮/-->
+        <!--树型菜单-->
+        <ul id="tree" class="lightTreeview">
+            <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)"
+                       item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view>
+
+        </ul>
+        <!--树型菜单/-->
     </div>
-    <!--实时数据/-->
-    <!--设备信息-->
-    <div class="sbxx">
-      <p class="tit">设备信息</p>
-      <div class="sbxx_con">
-        <div class="sbxx_div">
-          <div e-chart style="width: 312px;height: 145px;" options="lightOptions"></div>
-          <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
+    <!--left/-->
+    <div id="page" class="bgh page cut-page">
+        <!--实时数据-->
+        <div class="sssj">
+            <p class="tit">实时数据</p>
+
+            <div class="sssj_con">
+                <dl>
+                    <dt>{{info.power}}<i>kw</i></dt>
+                    <dd>总功耗</dd>
+                </dl>
+                <dl>
+                    <dt>{{info.voltage}}<i>V</i></dt>
+                    <dd>平均电压</dd>
+                </dl>
+                <dl>
+                    <dt>{{info.current}}<i>A</i></dt>
+                    <dd>平均电流</dd>
+                </dl>
+                <dl>
+                    <dt>{{info.temperature}}<i>C</i></dt>
+                    <dd>温度</dd>
+                </dl>
+                <dl>
+                    <dt>{{info.humidity}}<i>%</i></dt>
+                    <dd>湿度</dd>
+                </dl>
+                <dl>
+                    <dt>{{info.pm2p5}}<i>克</i></dt>
+                    <dd>PM2.5</dd>
+                </dl>
+                <dl>
+                    <dt>23<i>%</i></dt>
+                    <dd>可吸入颗粒物</dd>
+                </dl>
+            </div>
         </div>
-        <div class="sbxx_div">
-          <div e-chart style="width: 312px;height: 145px;" options="ctrlOptions"></div>
-          <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
+        <!--实时数据/-->
+        <!--设备信息-->
+        <div class="sbxx">
+            <p class="tit">设备信息</p>
+
+            <div class="sbxx_con">
+                <div class="sbxx_div">
+                    <div e-chart style="width: 312px;height: 145px;" options="lightOptions"></div>
+                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
+                </div>
+                <div class="sbxx_div">
+                    <div e-chart style="width: 312px;height: 145px;" options="ctrlOptions"></div>
+                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
+                </div>
+                <div class="sbxx_div">
+                    <div e-chart style="width: 312px;height: 145px;" options="cameraOptions"></div>
+                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
+                </div>
+                <div class="sbxx_div">
+                    <div e-chart style="width: 312px;height: 145px;" options="sensorOptions"></div>
+                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
+                </div>
+                <div class="sbxx_div">
+                    <div e-chart style="width: 312px;height: 145px;" options="wifiOptions"></div>
+                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
+                </div>
+            </div>
         </div>
-        <div class="sbxx_div">
-          <div e-chart style="width: 312px;height: 145px;" options="cameraOptions"></div>
-          <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
-        </div>
-        <div class="sbxx_div">
-          <div e-chart style="width: 312px;height: 145px;" options="sensorOptions"></div>
-          <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
-        </div>
-        <div class="sbxx_div">
-          <div e-chart style="width: 312px;height: 145px;" options="wifiOptions"></div>
-          <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
-        </div>
-      </div>
+        <!--设备信息/-->
     </div>
-    <!--设备信息/-->
-  </div>
 </div>
 <!-- <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view> 

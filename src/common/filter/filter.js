@@ -21,16 +21,16 @@ define(function (require) {
                     else {
                         result += hour;
                     }
-                    result += ':'; 
+                    result += ':';
                     if (minute < 10) {
                         result += '0' + minute;
-                    } 
+                    }
                     else {
                         result += minute;
                     }
 
                     return result;
-                } 
+                }
                 else {
                     return '--';
                 }
@@ -78,7 +78,7 @@ define(function (require) {
                         default:
                             val = '--';
                     }
-                } 
+                }
                 else {
                     val = '--';
                 }

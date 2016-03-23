@@ -1,104 +1,112 @@
 <!--nav-->
 <div class="w1200 bgh nav">
-  <div class="fl nav_link">
-    <!--当前选中状态 加 class="active"-->
-    <a href="/main.html?#/profile">概要</a>
-    <a href="/main.html?#/geography">地理</a>
-    <a href="/main.html?#/manipulation" class="active">灯控页面</a>
-    <a href="/main.html?#/statistic">统计</a>
-    <a href="/main.html?#/fault">故障列表</a>
-    <a href="/main.html?#/set">设置</a>  
-  </div>
-  <div class="fr nav_time"> <i><img src="images/lm_logo.jpg" width="46" height="53"></i>
-    <div class="daojishi">
-      <!--time-->
-      <div class="dowebok">
-        <div class="hours"></div>
-        <div class="minutes"></div>
-        <div class="seconds" style="display:none"></div>
-      </div>
-      <!--time/-->
+    <div class="fl nav_link">
+        <!--当前选中状态 加 class="active"-->
+        <a href="/main.html?#/profile">概要</a>
+        <a href="/main.html?#/geography">地理</a>
+        <a href="/main.html?#/manipulation" class="active">灯控页面</a>
+        <a href="/main.html?#/statistic">统计</a>
+        <a href="/main.html?#/fault">故障列表</a>
+        <a href="/main.html?#/set">设置</a>
     </div>
-  </div>
+    <div class="fr nav_time"><i><img src="images/lm_logo.jpg" width="46" height="53"></i>
+
+        <div class="daojishi">
+            <!--time-->
+            <div class="dowebok">
+                <div class="hours"></div>
+                <div class="minutes"></div>
+                <div class="seconds" style="display:none"></div>
+            </div>
+            <!--time/-->
+        </div>
+    </div>
 </div>
 <!--nav/-->
 <!--content-->
 <div class="w1200 content cut-all">
-  <!--left-->
-  <div id="left-panel" class="panel bgh cut-left">
-    <!--左右切换按钮-->
-    <a id="left-panel-link" href="javascript:void(0)"></a>
-    <!--左右切换按钮/-->
-   <!--树型菜单-->
-    <ul id="tree" class="lightTreeview">
-      <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view>
-</ul>
-    <!--树型菜单/--> 
-  </div>
-  <!--left/-->
-  <div id="page" class="bgh page cut-page">
-    <!--灯控-计划模式-->
-    <div class="dk_jhms">
-      <p class="tit" ng-bind="locationSetted"></p>
-      <div class="dk_msqh">
-        <ul>
-          <li ng-class="{'active': setPtn===1}" ptn="1" ng-click="switchPtn($event)">手动模式</li>
-          <li ng-class="{'active': setPtn===2}" ptn="2" ng-click="switchPtn($event)">计划模式</li>
-          <li style="display:none;">自动模式</li>
+    <!--left-->
+    <div id="left-panel" class="panel bgh cut-left">
+        <!--左右切换按钮-->
+        <a id="left-panel-link" href="javascript:void(0)"></a>
+        <!--左右切换按钮/-->
+        <!--树型菜单-->
+        <ul id="tree" class="lightTreeview">
+            <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)"
+                       item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view>
         </ul>
-      </div>
-      <div class="dk_time" ng-show="setPtn==2">
-        <table class="table table-striped table-bordered table-condensed" ng-if="settedPlan.length">
-            <tr>
-                <th>时间段</th>
-                <th>亮度</th>
-                <th>设置层级</th>
-                <th>操作</th>
-            </tr>
-            <tr ng-repeat="item in planData">
-                <td>{{item.start | minuteTimeShow}}-{{item.end | minuteTimeShow}}</td>
-                <td>{{item.brightness}}%</td>
-                <td>{{tableLevel | levelShow}}</td>
-                <td>
-                    <button class="btn btn-primary" ng-click="deletePlan(item.planId)" ng-disabled="!item.isLastItem">删除</button>
-                </td>
-            </tr>
-        </table>
-        <div class="clearfix" ng-show="!isFullPlan">
-          <div class="dk_time_div">
-            <span>开灯时间:</span>
-            <input type="text" class="dk_time_txt" ng-model="startHour" readonly>
-            时
-            <input type="text" class="dk_time_txt" ng-model="startMinute" readonly>
-            分</div>
-          <div class="dk_time_div">
-            <span>关灯时间:</span>
-            <input type="text" class="dk_time_txt" ng-model="endHour" ng-readonly="isLastPlan">
-            时
-            <input type="text" class="dk_time_txt" ng-model="endMinute" ng-readonly="isLastPlan">
-            分</div>
-        </div>
-      </div>
-      <!--亮度调整-->
-      <div class="ldtz" ng-show="!isFullPlan">
-        <div class="ld_lt">亮度</div>
-        <div id="box" ng-mousemove="calculateWidth($event)">
-          <div id="bg">
-            <div id="bgcolor"></div>
-          </div>
-          <div id="bt" ng-mousedown="dragBtn($event)" ng-mouseup="releaseBtn($event)"></div>
-        </div>
-        <div class="ld_rt">亮度</div>
-        <div class="ld_text"><span class="bf_01">0%</span><span class="bf_02">25%</span><span class="bf_03">50%</span><span class="bf_04">75%</span><span class="bf_05">100%</span></div>
-        <div id="text" style="display:none"></div>
-      </div>
-      <!--亮度调整/-->
-      <!--确认添加分组-->
-      <div class="clearfix two_bt">
-        <a href="" class="ld_submit" ng-click="postPtn()" ng-show="!isFullPlan">确认</a>
-        <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组</a></div>
-      <!--确认添加分组/-->
+        <!--树型菜单/-->
     </div>
-    <!--灯控-计划模式/-->
-  </div>
+    <!--left/-->
+    <div id="page" class="bgh page cut-page">
+        <!--灯控-计划模式-->
+        <div class="dk_jhms">
+            <p class="tit" ng-bind="locationSetted"></p>
+
+            <div class="dk_msqh">
+                <ul>
+                    <li ng-class="{'active': setPtn===1}" ptn="1" ng-click="switchPtn($event)">手动模式</li>
+                    <li ng-class="{'active': setPtn===2}" ptn="2" ng-click="switchPtn($event)">计划模式</li>
+                    <li style="display:none;">自动模式</li>
+                </ul>
+            </div>
+            <div class="dk_time" ng-show="setPtn==2">
+                <table class="table table-striped table-bordered table-condensed" ng-if="settedPlan.length">
+                    <tr>
+                        <th>时间段</th>
+                        <th>亮度</th>
+                        <th>设置层级</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr ng-repeat="item in planData">
+                        <td>{{item.start | minuteTimeShow}}-{{item.end | minuteTimeShow}}</td>
+                        <td>{{item.brightness}}%</td>
+                        <td>{{tableLevel | levelShow}}</td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="deletePlan(item.planId)"
+                                    ng-disabled="!item.isLastItem">删除
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="clearfix" ng-show="!isFullPlan">
+                    <div class="dk_time_div">
+                        <span>开灯时间:</span>
+                        <input type="text" class="dk_time_txt" ng-model="startHour" readonly>
+                        时
+                        <input type="text" class="dk_time_txt" ng-model="startMinute" readonly>
+                        分
+                    </div>
+                    <div class="dk_time_div">
+                        <span>关灯时间:</span>
+                        <input type="text" class="dk_time_txt" ng-model="endHour" ng-readonly="isLastPlan">
+                        时
+                        <input type="text" class="dk_time_txt" ng-model="endMinute" ng-readonly="isLastPlan">
+                        分
+                    </div>
+                </div>
+            </div>
+            <!--亮度调整-->
+            <div class="ldtz" ng-show="!isFullPlan">
+                <div class="ld_lt">亮度</div>
+                <div id="box" ng-mousemove="calculateWidth($event)">
+                    <div id="bg">
+                        <div id="bgcolor"></div>
+                    </div>
+                    <div id="bt" ng-mousedown="dragBtn($event)" ng-mouseup="releaseBtn($event)"></div>
+                </div>
+                <div class="ld_rt">亮度</div>
+                <div class="ld_text"><span class="bf_01">0%</span><span class="bf_02">25%</span><span
+                        class="bf_03">50%</span><span class="bf_04">75%</span><span class="bf_05">100%</span></div>
+                <div id="text" style="display:none"></div>
+            </div>
+            <!--亮度调整/-->
+            <!--确认添加分组-->
+            <div class="clearfix two_bt">
+                <a href="" class="ld_submit" ng-click="postPtn()" ng-show="!isFullPlan">确认</a>
+                <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组</a></div>
+            <!--确认添加分组/-->
+        </div>
+        <!--灯控-计划模式/-->
+    </div>
 </div>

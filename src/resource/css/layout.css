@@ -1,166 +1,212 @@
 @charset "utf-8";
 /*reset*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-	margin:0;
-	padding:0;
-	border:0;
-	outline:0
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0
 }
+
 ol, ul, li {
-	list-style:none
+    list-style: none
 }
+
 blockquote, q {
-	quotes:none
+    quotes: none
 }
+
 blockquote:before, blockquote:after, q:before, q:after {
-	content:'';
-	content:none
+    content: '';
+    content: none
 }
+
 :focus {
-	outline:0
+    outline: 0
 }
+
 del {
-	text-decoration:line-through
+    text-decoration: line-through
 }
+
 table {
-	border-collapse:collapse;
-	border-spacing:0
+    border-collapse: collapse;
+    border-spacing: 0
 }
+
 address, cite, code, dfn, em, var, i {
-	font-style:normal
+    font-style: normal
 }
+
 input[type=submit], input[type=reset], input[type=button], button {
-	cursor:pointer;
-	-webkit-appearance:none
+    cursor: pointer;
+    -webkit-appearance: none
 }
+
 .vm {
-	vertical-align:middle
+    vertical-align: middle
 }
+
 .clearfix:after {
-	content:"\0020";
-	display:block;
-	clear:both;
-	height:0;
-	visibility:hidden
+    content: "\0020";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden
 }
+
 * html .clearfix {
-	zoom:1
+    zoom: 1
 }
-*+html .clearfix {
-	zoom:1
+
+* + html .clearfix {
+    zoom: 1
 }
+
 .fl {
-	float:left
+    float: left
 }
+
 .fr {
-	float:right
+    float: right
 }
+
 body {
-	background:#fff
+    background: #fff
 }
+
 a {
-	text-decoration:none;
+    text-decoration: none;
 }
+
 a:hover {
-	text-decoration:none;
+    text-decoration: none;
 }
+
 html, body {
-	font-size:12px;
-	font-family:"微软雅黑", \u5fae\u8f6f\u96c5\u9ed1, arial;
+    font-size: 12px;
+    font-family: "微软雅黑", \u5fae\u8f6f\u96c5\u9ed1, arial;
 }
+
 h1, h2, h3, h4, h5, h6 {
-	font-size:100%;
-	font-weight:normal
+    font-size: 100%;
+    font-weight: normal
 }
+
 em, i {
-	font-style:normal;
-	font-weight:normal
+    font-style: normal;
+    font-weight: normal
 }
+
 .clear {
-	clear:both
+    clear: both
 }
+
 .clearfix {
-	zoom:1;
-	clear:both
+    zoom: 1;
+    clear: both
 }
+
 .clearfix:after {
-	visibility:hidden;
-	display:block;
-	font-size:0;
-	content:" ";
-	clear:both;
-	height:0
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
 }
+
 /*2015 comment*/
 .song {
-	font-family:'\5B8B\4F53';
+    font-family: '\5B8B\4F53';
 }
+
 .yh {
-	font-family:'\5FAE\8F6F\96C5\9ED1';
+    font-family: '\5FAE\8F6F\96C5\9ED1';
 }
+
 .o {
-	overflow:hidden;
+    overflow: hidden;
 }
+
 .fl {
-	float:left;
+    float: left;
 }
+
 .fr {
-	float:right;
+    float: right;
 }
+
 .tar {
-	text-align:right;
+    text-align: right;
 }
+
 .tac {
-	text-align:center;
+    text-align: center;
 }
+
 .tal {
-	text-align:left;
+    text-align: left;
 }
+
 .vat {
-	vertical-align:top;
+    vertical-align: top;
 }
+
 .vam {
-	vertical-align:middle;
+    vertical-align: middle;
 }
+
 .vab {
-	vertical-align:bottom;
+    vertical-align: bottom;
 }
+
 .hid {
-	display:none;
+    display: none;
 }
+
 .rel {
-	position:relative;
+    position: relative;
 }
+
 .abs {
-	position:absolute;
+    position: absolute;
 }
+
 .bold {
-	font-weight:bold;
+    font-weight: bold;
 }
+
 .break {
-	word-wrap:break-word;
-	word-break:break-all;
+    word-wrap: break-word;
+    word-break: break-all;
 }
+
 .elli {
-	overflow:hidden;
-	white-space:nowrap;
-	text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
+
 .pointer {
-	cursor:pointer;
+    cursor: pointer;
 }
+
 .disb {
-	display:block;
+    display: block;
 }
+
 .disi {
-	display:inline;
+    display: inline;
 }
+
 .disib {
-	display:inline-block;
+    display: inline-block;
 }
+
 .disit {
-	display:inline-table;
+    display: inline-table;
 }
+
 .w100 {
-	width:100%;
+    width: 100%;
 }

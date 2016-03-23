@@ -28,8 +28,8 @@ define(function (require) {
                         method: param.method || 'POST',
                         url: path
                     };
-                param.method == 'GET' ? (config.params = param.data) 
-                    : (config.data = param.data); 
+                    param.method == 'GET' ? (config.params = param.data)
+                        : (config.data = param.data);
                     $http(config).success(function (data) {
                         if (data.status == 200) {
                             defer.resolve(data);
@@ -71,7 +71,7 @@ define(function (require) {
                     });
                     return defer;
                 };
-                
+
                 return {
                     /**
                      * 发送请求

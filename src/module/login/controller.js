@@ -34,7 +34,7 @@ define(function (require) {
             $scope.loginTip = null;
         };
 
-        
+
     };
 
     Controller.$inject = ['$scope', '$location', '$timeout', '$http'];

@@ -93,7 +93,7 @@ define(function (require) {
                     nodes[index].pid = index + 'l';
                 });
                 $scope.demo.tree = nodes;
-            } 
+            }
             else {
                 $.each(nodes, function (index, value) {
                     nodes[index].pid = parentPid + index + 'l';
@@ -139,7 +139,7 @@ define(function (require) {
             };
 
             var url = '/smartcity/api/get_basic_info';
-            
+
             $http.post(url, params).success(function (res) {
                 if (res.data.result) {
                     $scope.info = res.data;
@@ -156,221 +156,221 @@ define(function (require) {
         function initEchart(deviceData) {
             if (deviceData) {
                 $scope.lightOptions = {
-                    tooltip : {
+                    tooltip: {
                         trigger: 'item',
                         formatter: "{a} <br/>{b} : {c} ({d}%)"
                     },
                     legend: {
-                        orient : 'vertical',
-                        x : 'right',
-                        data:['路灯个数','打开个数','故障个数']
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ['路灯个数', '打开个数', '故障个数']
                     },
-                    calculable : true,
-                    series : [
+                    calculable: true,
+                    series: [
                         {
-                            name:'路灯信息',
-                            type:'pie',
-                            radius : ['70%', '90%'],
-                            itemStyle : {
-                                normal : {
-                                    label : {
-                                        show : false
+                            name: '路灯信息',
+                            type: 'pie',
+                            radius: ['70%', '90%'],
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false
                                     },
-                                    labelLine : {
-                                        show : false
+                                    labelLine: {
+                                        show: false
                                     }
                                 },
-                                emphasis : {
-                                    label : {
-                                        show : true,
-                                        position : 'center',
-                                        textStyle : {
-                                            fontSize : '30',
-                                            fontWeight : 'bold'
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
                                         }
                                     }
                                 }
                             },
-                            data:[
-                                {value: deviceData.light.total, name:'路灯个数'},
-                                {value: deviceData.light.work, name:'打开个数'},
-                                {value: deviceData.light.fault, name:'故障个数'}
+                            data: [
+                                {value: deviceData.light.total, name: '路灯个数'},
+                                {value: deviceData.light.work, name: '打开个数'},
+                                {value: deviceData.light.fault, name: '故障个数'}
                             ]
                         }
                     ]
                 };
                 $scope.ctrlOptions = {
-                    tooltip : {
+                    tooltip: {
                         trigger: 'item',
                         formatter: "{a} <br/>{b} : {c} ({d}%)"
                     },
                     legend: {
-                        orient : 'vertical',
-                        x : 'right',
-                        data:['控制器个数','打开个数','故障个数']
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ['控制器个数', '打开个数', '故障个数']
                     },
-                    calculable : true,
-                    series : [
+                    calculable: true,
+                    series: [
                         {
-                            name:'控制器信息',
-                            type:'pie',
-                            radius : ['70%', '90%'],
-                            itemStyle : {
-                                normal : {
-                                    label : {
-                                        show : false
+                            name: '控制器信息',
+                            type: 'pie',
+                            radius: ['70%', '90%'],
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false
                                     },
-                                    labelLine : {
-                                        show : false
+                                    labelLine: {
+                                        show: false
                                     }
                                 },
-                                emphasis : {
-                                    label : {
-                                        show : true,
-                                        position : 'center',
-                                        textStyle : {
-                                            fontSize : '30',
-                                            fontWeight : 'bold'
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
                                         }
                                     }
                                 }
                             },
-                            data:[
-                                {value: deviceData.controller.total, name:'控制器个数'},
-                                {value: deviceData.controller.work, name:'打开个数'},
-                                {value: deviceData.controller.fault, name:'故障个数'}
+                            data: [
+                                {value: deviceData.controller.total, name: '控制器个数'},
+                                {value: deviceData.controller.work, name: '打开个数'},
+                                {value: deviceData.controller.fault, name: '故障个数'}
                             ]
                         }
                     ]
                 };
                 $scope.cameraOptions = {
-                    tooltip : {
+                    tooltip: {
                         trigger: 'item',
                         formatter: "{a} <br/>{b} : {c} ({d}%)"
                     },
                     legend: {
-                        orient : 'vertical',
-                        x : 'right',
-                        data:['摄像头个数','打开个数','故障个数']
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ['摄像头个数', '打开个数', '故障个数']
                     },
-                    calculable : true,
-                    series : [
+                    calculable: true,
+                    series: [
                         {
-                            name:'摄像头信息',
-                            type:'pie',
-                            radius : ['70%', '90%'],
-                            itemStyle : {
-                                normal : {
-                                    label : {
-                                        show : false
+                            name: '摄像头信息',
+                            type: 'pie',
+                            radius: ['70%', '90%'],
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false
                                     },
-                                    labelLine : {
-                                        show : false
+                                    labelLine: {
+                                        show: false
                                     }
                                 },
-                                emphasis : {
-                                    label : {
-                                        show : true,
-                                        position : 'center',
-                                        textStyle : {
-                                            fontSize : '30',
-                                            fontWeight : 'bold'
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
                                         }
                                     }
                                 }
                             },
-                            data:[
-                                {value: deviceData.camera.total, name:'摄像头个数'},
-                                {value: deviceData.camera.work, name:'打开个数'},
-                                {value: deviceData.camera.fault, name:'故障个数'}
+                            data: [
+                                {value: deviceData.camera.total, name: '摄像头个数'},
+                                {value: deviceData.camera.work, name: '打开个数'},
+                                {value: deviceData.camera.fault, name: '故障个数'}
                             ]
                         }
                     ]
                 };
                 $scope.sensorOptions = {
-                    tooltip : {
+                    tooltip: {
                         trigger: 'item',
                         formatter: "{a} <br/>{b} : {c} ({d}%)"
                     },
                     legend: {
-                        orient : 'vertical',
-                        x : 'right',
-                        data:['传感器个数','打开个数','故障个数']
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ['传感器个数', '打开个数', '故障个数']
                     },
-                    calculable : true,
-                    series : [
+                    calculable: true,
+                    series: [
                         {
-                            name:'传感器信息',
-                            type:'pie',
-                            radius : ['70%', '90%'],
-                            itemStyle : {
-                                normal : {
-                                    label : {
-                                        show : false
+                            name: '传感器信息',
+                            type: 'pie',
+                            radius: ['70%', '90%'],
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false
                                     },
-                                    labelLine : {
-                                        show : false
+                                    labelLine: {
+                                        show: false
                                     }
                                 },
-                                emphasis : {
-                                    label : {
-                                        show : true,
-                                        position : 'center',
-                                        textStyle : {
-                                            fontSize : '30',
-                                            fontWeight : 'bold'
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
                                         }
                                     }
                                 }
                             },
-                            data:[
-                                {value: deviceData.sensor.total, name:'传感器个数'},
-                                {value: deviceData.sensor.work, name:'打开个数'},
-                                {value: deviceData.sensor.fault, name:'故障个数'}
+                            data: [
+                                {value: deviceData.sensor.total, name: '传感器个数'},
+                                {value: deviceData.sensor.work, name: '打开个数'},
+                                {value: deviceData.sensor.fault, name: '故障个数'}
                             ]
                         }
                     ]
                 };
                 $scope.wifiOptions = {
-                    tooltip : {
+                    tooltip: {
                         trigger: 'item',
                         formatter: "{a} <br/>{b} : {c} ({d}%)"
                     },
                     legend: {
-                        orient : 'vertical',
-                        x : 'right',
-                        data:['wifi个数','打开个数','故障个数']
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ['wifi个数', '打开个数', '故障个数']
                     },
-                    calculable : true,
-                    series : [
+                    calculable: true,
+                    series: [
                         {
-                            name:'wifi信息',
-                            type:'pie',
-                            radius : ['70%', '90%'],
-                            itemStyle : {
-                                normal : {
-                                    label : {
-                                        show : false
+                            name: 'wifi信息',
+                            type: 'pie',
+                            radius: ['70%', '90%'],
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false
                                     },
-                                    labelLine : {
-                                        show : false
+                                    labelLine: {
+                                        show: false
                                     }
                                 },
-                                emphasis : {
-                                    label : {
-                                        show : true,
-                                        position : 'center',
-                                        textStyle : {
-                                            fontSize : '30',
-                                            fontWeight : 'bold'
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
                                         }
                                     }
                                 }
                             },
-                            data:[
-                                {value: deviceData.wifi.total, name:'wifi个数'},
-                                {value: deviceData.wifi.work, name:'打开个数'},
-                                {value: deviceData.wifi.fault, name:'故障个数'}
+                            data: [
+                                {value: deviceData.wifi.total, name: 'wifi个数'},
+                                {value: deviceData.wifi.work, name: '打开个数'},
+                                {value: deviceData.wifi.fault, name: '故障个数'}
                             ]
                         }
                     ]
