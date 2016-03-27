@@ -1,0 +1,158 @@
+.baidu-map-wrapper {
+	position: relative;
+	border: 1px solid #acacac;
+	.bg-info {
+		position: absolute;
+		top: 250px;
+		border: 1px solid #ccc;
+		margin: 0 auto;
+		left: 550px;
+		height: 40px;
+		width: 115px;
+		text-align: center;
+		line-height: 40px;
+	}
+	>div {
+		width: 202px;
+		height: 500px;
+		display: inline-block;
+		position: relative;
+		.list-page {
+			position: absolute;
+			bottom: -4px;
+			text-align: right;
+			.pagination {
+				padding: 0;
+				margin: 0;
+			}
+		}
+		.clue-visiting-map-list {
+			display: inline-block;
+			height: 500px;
+			overflow-y: auto;
+			border-right: 1px solid #acacac;
+			>section {
+				padding: 5px;
+				margin-top: 10px;
+				line-height: 15px;
+				.memo {
+					.ellipsis;
+			        max-width: 190px;
+				}
+				.address {
+					.memo;
+			        cursor: pointer;
+				}
+				.clue-name {
+					.address;
+					font-size: 10px;
+				}
+				.marker-icon {
+					background-image: url(../img/markers.png);
+					width: 20px;
+					height: 27px;
+					display: inline-block;
+				}
+				&.active {
+					// border: 1px solid #5776FF;
+					.marker-0 {
+							background-position: 0 -230px;
+					}
+					.marker-1 {
+							background-position: -24px -230px;
+					}
+					.marker-2 {
+							background-position: -48px -230px;
+					}
+					.marker-3 {
+							background-position: -72px -230px;
+					}
+					.marker-4 {
+							background-position: -95px -230px;
+					}
+					.marker-5 {
+							background-position: -119px -230px;
+					}
+					.marker-6 {
+							background-position: -144px -230px;
+					}
+					.marker-7 {
+							background-position: -166px -230px;
+					}
+					.marker-8 {
+							background-position: -191px -230px;
+					}
+					.marker-9 {
+							background-position: -215px -230px;
+					}
+				}
+				.marker-0 {
+					background-position: 0 -197px;
+					&:hover {
+						background-position: 0 -230px;
+					}
+				}
+				.marker-1 {
+					background-position: -24px -197px;
+					&:hover {
+						background-position: -24px -230px;
+					}
+				}
+				.marker-2 {
+					background-position: -48px -197px;
+					&:hover {
+						background-position: -48px -230px;
+					}
+				}
+				.marker-3 {
+					background-position: -72px -197px;
+					&:hover {
+						background-position: -72px -230px;
+					}
+				}
+				.marker-4 {
+					background-position: -95px -197px;
+					&:hover {
+						background-position: -95px -230px;
+					}
+				}
+				.marker-5 {
+					background-position: -119px -197px;
+					&:hover {
+						background-position: -119px -230px;
+					}
+				}
+				.marker-6 {
+					background-position: -144px -197px;
+					&:hover {
+						background-position: -144px -230px;
+					}
+				}
+				.marker-7 {
+					background-position: -166px -197px;
+					&:hover {
+						background-position: -166px -230px;
+					}
+				}
+				.marker-8 {
+					background-position: -191px -197px;
+					&:hover {
+						background-position: -191px -230px;
+					}
+				}
+				.marker-9 {
+					background-position: -215px -197px;
+					&:hover {
+						background-position: -215px -230px;
+					}
+				}
+			}
+		}
+	}
+    .baidu-map {
+        height: 500px;
+        overflow-y: auto;
+        display: inline-block;
+        width: 80%;
+    }
+}

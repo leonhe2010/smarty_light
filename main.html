@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="src/resource/css/layout.css?v=@@version">
     <link rel="stylesheet" type="text/css" href="src/resource/css/login.css?v=@@version">
     <link rel="stylesheet" type="text/css" href="src/resource/css/fliptimer.css?v=@@version">
+    <link rel="stylesheet" type="text/css" href="src/resource/css/baidumap.css?v=@@version">
 </head>
 <body>
 <div class="app-container">
@@ -33,6 +34,8 @@
             // bootstrap: '../../js-library/dep/bootstrap/dist/js/bootstrap.min',
             // text: '../../js-library/dep/requirejs-text/text',
             // cookie: '../../js-library/dep/jquery.cookie/jquery.cookie',
+            async: '../bower_components/requirejs-plugins/src/async',
+            baiduMap: 'http://api.map.baidu.com/api?v=2.0&ak=eeEx8F2dCVi5VNb1D1LyxEDo',
             uiRoute: '../bower_components/angular-ui-router/release/angular-ui-router.min'
         },
         packages: [
@@ -55,6 +58,9 @@
             validation: {
                 deps: ['jquery'],
                 exports: '$.validator'
+            },
+            baiduMap: {
+                exports: 'BMap'
             },
             ngRoute: {
                 exports: 'ngRoute'

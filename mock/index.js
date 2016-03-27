@@ -361,4 +361,30 @@ exports.mocks = [
             });  
         }
     },
+
+    {
+        path: '/smartcity/api/get_lat_lng',
+        method: 'POST',
+        handler: function (request, reply) {
+            var location = [];
+            var i;
+            for (i = 0; i < 20; i++) {
+                location.push({
+                    "lat": 40.04111723476737 + Math.ceil(Math.random() * 10) / 50 + '',
+                    "lng": 116.3248028932062 + Math.ceil(Math.random() * 10) / 50 + '',
+                    "isWorked": i % 3,
+                    "lightId": i + 1,
+                });
+            }
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true,
+                    "location": location
+                },
+                "error": null
+            });  
+        }
+    }
 ];

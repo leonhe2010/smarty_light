@@ -1,0 +1,179 @@
+.baidu-map-wrapper {
+  position: relative;
+  border: 1px solid #acacac;
+}
+.baidu-map-wrapper .bg-info {
+  position: absolute;
+  top: 250px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  left: 550px;
+  height: 40px;
+  width: 115px;
+  text-align: center;
+  line-height: 40px;
+}
+.baidu-map-wrapper > div {
+  width: 202px;
+  height: 500px;
+  display: inline-block;
+  position: relative;
+}
+.baidu-map-wrapper > div .list-page {
+  position: absolute;
+  bottom: -4px;
+  text-align: right;
+}
+.baidu-map-wrapper > div .list-page .pagination {
+  padding: 0;
+  margin: 0;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list {
+  display: inline-block;
+  height: 500px;
+  overflow-y: auto;
+  border-right: 1px solid #acacac;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section {
+  padding: 5px;
+  margin-top: 10px;
+  line-height: 15px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .memo {
+  word-break: break-all;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 190px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .address {
+  word-break: break-all;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 190px;
+  cursor: pointer;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .clue-name {
+  word-break: break-all;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 190px;
+  cursor: pointer;
+  font-size: 10px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-icon {
+  background-image: url(../img/markers.png);
+  width: 20px;
+  height: 27px;
+  display: inline-block;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-0 {
+  background-position: 0 -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-1 {
+  background-position: -24px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-2 {
+  background-position: -48px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-3 {
+  background-position: -72px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-4 {
+  background-position: -95px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-5 {
+  background-position: -119px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-6 {
+  background-position: -144px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-7 {
+  background-position: -166px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-8 {
+  background-position: -191px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section.active .marker-9 {
+  background-position: -215px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-0 {
+  background-position: 0 -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-0:hover {
+  background-position: 0 -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-1 {
+  background-position: -24px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-1:hover {
+  background-position: -24px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-2 {
+  background-position: -48px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-2:hover {
+  background-position: -48px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-3 {
+  background-position: -72px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-3:hover {
+  background-position: -72px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-4 {
+  background-position: -95px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-4:hover {
+  background-position: -95px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-5 {
+  background-position: -119px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-5:hover {
+  background-position: -119px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-6 {
+  background-position: -144px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-6:hover {
+  background-position: -144px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-7 {
+  background-position: -166px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-7:hover {
+  background-position: -166px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-8 {
+  background-position: -191px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-8:hover {
+  background-position: -191px -230px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-9 {
+  background-position: -215px -197px;
+}
+.baidu-map-wrapper > div .clue-visiting-map-list > section .marker-9:hover {
+  background-position: -215px -230px;
+}
+.baidu-map-wrapper .baidu-map {
+  height: 601px;
+  overflow-y: auto;
+  display: inline-block;
+  width: 900px;
+}

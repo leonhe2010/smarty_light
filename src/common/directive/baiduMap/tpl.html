@@ -1,0 +1,47 @@
+<div class="baidu-map-wrapper">
+    <!-- <div ng-show="!list.length" class="bg-info">
+        没有相关数据
+    </div>
+	<div>
+		<aside ng-click="map($event)" class="clue-visiting-map-list">
+			<section ng-repeat="record in list track by record.lightId" data-id="{{record.lightId}}" class="record-list-wrapper clearfix" ng-class="{'active':selectedId == record.lightId}" data-index="{{$index}}">
+				<p>
+					<a href="javascript:void(0);"
+						popover="{{record.address}}"
+				        popover-trigger="mouseenter"
+				        popover-placement="bottom"
+					    class="address">
+						<i class="marker-icon marker-{{$index}}"></i>
+						<span ng-bind="record.address"></span>
+				    </a>
+				</p>
+				<p ng-bind="record.memo" class="memo" popover="{{record.memo}}"
+				        popover-trigger="mouseenter"
+				        popover-placement="bottom">
+				</p>
+				<p>
+					<a href="#/leads-detail/{{record.clueId}}/{{record.clueType}}" ng-bind="record.clueName" target="_blank" class="clue-name"></a>
+				</p>
+				<p ng-bind="record.date | date:'yyyy-MM-dd HH:mm:ss'"></p>
+			</section>
+
+		</aside>
+		<div class="list-page" ng-if="isShowPager">
+	    	<pagination total-items="totalItems"
+	    			ng-model="$parent.currentPage"
+	                items-per_page="pageSize"
+	                max-size="3"
+	                direction-links="false"
+	                num-pages="smallnumPages"
+	                boundary-links="false"
+	                rotate="false"
+	                previous-text='<'
+	                next-text='>'
+	                first-text='<<'
+	                last-text='>>'
+	            >
+	    	</pagination>
+	    </div>
+	</div> -->
+	<section class="baidu-map"></section>
+</div>

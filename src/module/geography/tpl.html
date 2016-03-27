@@ -1,0 +1,52 @@
+<div class="w1200 bgh nav">
+    <div class="fl nav_link">
+        <!--当前选中状态 加 class="active"-->
+        <a href="/smartcity/smarty_light/main.html?#/profile">概要</a>
+        <a href="/smartcity/smarty_light/main.html?#/geography" class="active">地理</a>
+        <a href="/smartcity/smarty_light/main.html?#/manipulation">灯控页面</a>
+        <a href="/smartcity/smarty_light/main.html?#/statistic">统计</a>
+        <a href="/smartcity/smarty_light/main.html?#/fault">故障列表</a>
+        <a href="/smartcity/smarty_light/main.html?#/set">设置</a>
+    </div>
+    <div class="fr nav_time"><i><img src="images/lm_logo.jpg" width="46" height="53"></i>
+
+        <div class="daojishi">
+            <!--time-->
+            <div class="dowebok">
+                <div class="hours"></div>
+                <div class="minutes"></div>
+                <div class="seconds" style="display:none"></div>
+            </div>
+            <!--time/-->
+        </div>
+    </div>
+</div>
+<!--nav/-->
+<!--content-->
+<div class="w1200 content cut-all">
+    <!--left-->
+    <div id="left-panel" class="panel bgh cut-left">
+        <!--左右切换按钮-->
+        <a id="left-panel-link" href="javascript:void(0)"></a>
+        <!--左右切换按钮/-->
+        <!--树型菜单-->
+        <ul id="tree" class="lightTreeview">
+            <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)"
+                       item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view>
+
+        </ul>
+        <!--树型菜单/-->
+    </div>
+    <!--left/-->
+    <div id="page" class="bgh page cut-page">
+        <!--灯控-地理-->
+        <div class="dk_dl">
+            <div class="dk_dl_img" width="900" height="601">
+                <baidu-map></baidu-map>
+            </div>
+            <div class="dk_dl_cr"><span><i class="cor_l"></i>灯亮</span><span><i class="cor_h"></i>灯灭</span><span><i
+                    class="cor_r"></i>故障</span></div>
+        </div>
+        <!--灯控-地理/-->
+    </div>
+</div>
