@@ -18,7 +18,7 @@ define(function (require) {
             initValue();
             bindEvent();
             getChildNode(0, 1);
-            getLightLocation(0, 0);
+            // getLightLocation(0, 0);
         }
 
         function showLeftTree(item) {
@@ -110,9 +110,9 @@ define(function (require) {
             var url = '/smartcity/api/get_lat_lng';
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {debugger;
+                if (res.data.result) {
                     $scope.list = res.data.location;
-                    setTimeout(function () {debugger;
+                    setTimeout(function () {
                         $scope.initMap();
                     }, 1000);
                     // initEchart(res.data.device);

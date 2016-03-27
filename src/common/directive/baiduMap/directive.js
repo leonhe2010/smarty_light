@@ -17,9 +17,7 @@ define(function (require) {
             templateUrl: 'src/common/directive/baiduMap/tpl.html',
             replace: true,
             link: function ($scope, $element) {
-                debugger;
                 require(['baiduMap'], function (BMap) {
-                    debugger;
                     // 地图信息
                     var map;
                     // 图标
@@ -132,7 +130,6 @@ define(function (require) {
                         map.addOverlay(polyline);
                     }
                     function initMapInfo() {
-                        debugger;
                         var source = $($element).find('.baidu-map');
                         if (!source.length) {
                             $timeout(function () {
@@ -144,7 +141,7 @@ define(function (require) {
                         map.enableScrollWheelZoom(true);
                         var topLeftNavigation = new BMap.NavigationControl();
                         map.addControl(topLeftNavigation);
-                        points = $scope.list;debugger;
+                        points = $scope.list;
                         initMaker();
                         // initMapLine();
                     }
@@ -165,7 +162,7 @@ define(function (require) {
                         bind();
                     };
 
-                    // $scope.$watch('list', function (value) {debugger;
+                    // $scope.$watch('list', function (value) {
                     //     $scope.initMap();
                     // });
                 });
