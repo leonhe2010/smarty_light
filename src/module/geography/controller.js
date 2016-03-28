@@ -18,7 +18,7 @@ define(function (require) {
             initValue();
             bindEvent();
             getChildNode(0, 1);
-            // getLightLocation(0, 0);
+            getLightLocation(0, 0);
         }
 
         function showLeftTree(item) {
