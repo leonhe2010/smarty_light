@@ -121,7 +121,7 @@ define(function (require) {
             var params = {
                 level: +$scope.currentLevel,
                 id: +$scope.currentId,
-                calibration: $scope.statistic.calibrationOption,
+                calibration: +$scope.statistic.calibrationOption,
                 endDate: $scope.endDate,
                 type: +$scope.statisticType
             };
