@@ -29,6 +29,7 @@
     "requirejs": "~2.1.22",
     "underscore": "~1.8.3",
     "requirejs-plugins": "~1.0.3",
-    "zrender": "~2.1.1"
+    "zrender": "~2.1.1",
+    "moment": "~2.10.6"
   }
 }

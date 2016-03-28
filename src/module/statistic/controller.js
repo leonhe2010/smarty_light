@@ -4,8 +4,21 @@ define(function (require) {
     require('common/directive/leftTree/directive');
     var config = require('../config');
     var us = require('underscore');
+    var moment = require('moment');
 
     function Controller($scope, $location, $timeout, $http) {
+
+        function initTime(endDate, len) {
+            var timeArr = [];
+            var i, timeItem;
+            for (i = len; i > 0; i--) {
+                var now = new Date(endDate);
+                var nowMoment = moment(now);
+                timeItem = +(nowMoment.date(nowMoment.date() - (i - 1)).toDate());
+                timeArr.push(moment(timeItem).format('YYYY-MM-DD'));
+            }
+            return timeArr;
+        }
 
         function initValue() {
             $scope.demo = {};
@@ -129,7 +142,7 @@ define(function (require) {
 
             $http.post(url, params).success(function (res) {
                 if (res.data.result) {
-                    initEchart(res.data.brokenInfo);
+                    initEchart(res.data.info);
                 } else {
                     alert(res.error);
                 }
@@ -142,13 +155,29 @@ define(function (require) {
         function initEchart(deviceData) {
             var categoryItem = us.findWhere($scope.statisticTypeOptions, {value: $scope.statisticType})['text'];
             $scope.categoryItem = categoryItem;
-            var itemValue = [];
+            var itemValue = deviceData;
             var itemTime = [];
+            var i;
+
+            switch (+$scope.statistic.calibrationOption) {
+                case 1:
+                    for (i = 0; i < 24; i++) {
+                        itemTime.push('' + i + '时');
+                    }
+                    break;
+                case 2:
+                    itemTime = initTime($scope.endDate, 7);
+                    break;
+                case 3:
+                    itemTime = initTime($scope.endDate, 30);
+                    break;
+                case 4:
+                    itemTime = initTime($scope.endDate, 12);
+                    break;
+                default:
+                    ;
+            }
             if (deviceData) {
-                $.each(deviceData, function (index, value) {
-                    itemValue.push(value.value);
-                    itemTime.push(value.time);
-                });
                 $scope.statisticInfo = {
                     tooltip: {
                         trigger: 'axis'

@@ -387,25 +387,22 @@ exports.mocks = [
             });  
         }
     },
-    
+
     {
         path: '/smartcity/api/get_statistic',
         method: 'POST',
         handler: function (request, reply) {
             var brokenInfo = [];
             var i;
-            for (i = 0; i < 10; i++) {
-                brokenInfo.push({
-                    "value": Math.ceil(Math.random() * 200),
-                    "time": '2016-02-1' + i,
-                });
+            for (i = 0; i < 30; i++) {
+                brokenInfo.push(Math.ceil(Math.random() * 200));
             }
             reply({
                 "status": 200,
                 "data": {
                     "msg": "success",
                     "result": true,
-                    "brokenInfo": brokenInfo
+                    "info": brokenInfo
                 },
                 "error": null
             });  
