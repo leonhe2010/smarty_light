@@ -158,14 +158,14 @@ define(function (require) {
             };
 
             if ($scope.patternType === 1) {
-                url = '/api/get_broken_table';
+                url = '/smartcity/api/get_broken_table';
                 params.pageDto = {
                     pageNum: $scope.currentPage || 1,
                     pageSize: $scope.pageSize
                 };
             }
             else if ($scope.patternType == 2) {
-                url = '/api/get_broken_chart';
+                url = '/smartcity/api/get_broken_chart';
             }
 
             $http.post(url, params).success(function (res) {

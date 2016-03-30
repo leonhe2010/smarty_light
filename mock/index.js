@@ -410,7 +410,7 @@ exports.mocks = [
     },
 
     {
-        path: '/api/get_broken_table',
+        path: '/smartcity/api/get_broken_table',
         method: 'POST',
         handler: function (request, reply) {
             var brokenInfo = [];
@@ -438,7 +438,7 @@ exports.mocks = [
     },
 
     {
-        path: '/api/get_broken_chart',
+        path: '/smartcity/api/get_broken_chart',
         method: 'POST',
         handler: function (request, reply) {
             var i;
