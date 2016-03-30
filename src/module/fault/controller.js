@@ -37,6 +37,7 @@ define(function (require) {
             $scope.demo.itemClicked = showLeftTree;
             $scope.getFaultList = getFaultList;
             $scope.switchPattern = switchPattern;
+            $scope.changeBrokenType = changeBrokenType;
             $scope.$on('changepage', function (event, data) {
                 $scope.currentPage = data.page;
                 getFaultList();
@@ -47,6 +48,10 @@ define(function (require) {
             initValue();
             bindEvent();
             getChildNode(0, 1);
+        }
+
+        function changeBrokenType() {
+            $scope.currentPage = 1;
         }
 
         function showLeftTree(item) {

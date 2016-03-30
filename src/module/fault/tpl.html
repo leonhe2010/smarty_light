@@ -43,7 +43,7 @@
 
             <div class="tjsp_con dkgx_sel">
                 <label>统计类型：</label>
-                <select class="spbx_table" id="tjlx" ng-model="brokenType" ng-options="m.value as m.text for m in brokenTypeOptions">
+                <select class="spbx_table" id="tjlx" ng-model="brokenType" ng-options="m.value as m.text for m in brokenTypeOptions" ng-change="changeBrokenType()">
                 </select>
             </div>
             <div class="dd_search_div">
@@ -83,7 +83,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <paging total-count="{{brokenTableCount}}" size="{{pageSize}}"></paging>
+                        <paging total-count="{{brokenTableCount}}" size="{{pageSize}}" current-page="{{currentPage}}"></paging>
                     </div>
                 </fieldset>
                 <!--列表模式/-->
