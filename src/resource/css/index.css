@@ -1141,7 +1141,7 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
 }
 
 .ms_con fieldset {
-    display: none
+    /*display: none*/
 }
 
 .dgz_qh {

@@ -4,8 +4,8 @@
         <a href="/smartcity/smarty_light/main.html?#/profile">概要</a>
         <a href="/smartcity/smarty_light/main.html?#/geography">地理</a>
         <a href="/smartcity/smarty_light/main.html?#/manipulation">灯控页面</a>
-        <a href="/smartcity/smarty_light/main.html?#/statistic" class="active">统计</a>
-        <a href="/smartcity/smarty_light/main.html?#/fault">故障列表</a>
+        <a href="/smartcity/smarty_light/main.html?#/statistic">统计</a>
+        <a href="/smartcity/smarty_light/main.html?#/fault" class="active">故障列表</a>
         <a href="/smartcity/smarty_light/main.html?#/set">设置</a>
     </div>
     <div class="fr nav_time"><i><img src="images/lm_logo.jpg" width="46" height="53"></i>
@@ -24,7 +24,6 @@
 <!--nav/-->
 <!--content-->
 <div class="w1200 content cut-all">
-    <!--left-->
     <div id="left-panel" class="panel bgh cut-left">
         <!--左右切换按钮-->
         <a id="left-panel-link" href="javascript:void(0)"></a>
@@ -37,42 +36,66 @@
         </ul>
         <!--树型菜单/-->
     </div>
-    <!--left/-->
     <div id="page" class="bgh page cut-page dkgz-con">
         <!--灯-故障-->
         <div class="d_gz">
-            <p class="tit">康桥智慧园区</p>
+            <p class="tit" ng-bind="locationSetted"></p>
 
             <div class="tjsp_con dkgx_sel">
                 <label>统计类型：</label>
-
-                <div class="spbx_table" id="tjlx"><em class="sel_spbx">湿度</em>
-                    <ul>
-                        <li>湿度</li>
-                        <li>湿度</li>
-                        <li>湿度</li>
-                        <li>湿度</li>
-                    </ul>
-                </div>
+                <select class="spbx_table" id="tjlx" ng-model="brokenType" ng-options="m.value as m.text for m in brokenTypeOptions">
+                </select>
             </div>
-            <div class="dd_search_div"><span>起始时间</span>
-                <input type="text" class="dd_text">
+            <div class="dd_search_div">
+                <span>起始时间</span>
+                <input type="text" class="dd_text" ng-model="startDate" placeholder="2016-01-01">
                 <span>结束时间</span>
-                <input type="text" class="dd_text">
+                <input type="text" class="dd_text" ng-model="endDate" placeholder="2016-01-01">
             </div>
             <div class="dd_search_div clearfix">
-                <input type="submit" value="查询" class="dd_bt">
+                <input type="submit" value="查询" class="dd_bt" ng-click="getFaultList()">
             </div>
         </div>
         <!--灯-故障/-->
-        <!--统计-->
+        <!--模式切换-->
         <div class="dgz_qh">
-            <div class="dgz_qhtit"><span class="dgz_sd"><i class="cor_l"></i>湿度</span></div>
+            <div class="dgz_qhtit"><span class="dgz_sd"><i class="cor_l"></i>湿度</span>
+                <ul class="ms_cut">
+                    <li ng-class="{'active': patternType==1}" ng-click="switchPattern(1)">列表模式</li>
+                    <li ng-class="{'active': patternType==2}" ng-click="switchPattern(2)">曲线模式</li>
+                </ul>
+            </div>
             <div class="ms_con">
-                <div class="cut_qxms"><img src="images/table_04.jpg" width="848" height="255"></div>
+                <!--表表模式-->
+                <fieldset style="display:block" ng-if="patternType==1">
+                    <div class="cut_lbms">
+                        <table border="1" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <th>设备类型</th>
+                                    <th>设备编号</th>
+                                    <th>故障时间</th>
+                                </tr>
+                                <tr ng-repeat="item in brokenTable">
+                                    <td ng-bind="item.type | brokenTypeShow"></td>
+                                    <td ng-bind="item.name"></td>
+                                    <td ng-bind="item.time"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <paging total-count="{{brokenTableCount}}" size="{{pageSize}}"></paging>
+                    </div>
+                </fieldset>
+                <!--列表模式/-->
+                <!--曲线模式-->
+                <fieldset ng-if="patternType==2" style="background-color: #fff;">
+                    <div class="cut_qxms">
+                      <div e-chart style="width: 848px;height: 255px;" options="brokenChart" ng-if="brokenChart"></div>
+                    </div>
+                </fieldset>
+                <!--曲线模式/-->
             </div>
         </div>
-        <!--统计/-->
+        <!--模式切换/-->
     </div>
 </div>
-<!--content/-->

@@ -84,5 +84,36 @@ define(function (require) {
                 }
                 return val;
             };
+        })
+        .filter('brokenTypeShow', function () {
+            return function (value) {
+                var val;
+                if ($.isNumeric(value)) {
+                    var key = parseInt(value);
+                    switch (key) {
+                        case 4:
+                            val = '人群';
+                            break;
+                        case 1:
+                            val = '路灯';
+                            break;
+                        case 2:
+                            val = '环境';
+                            break;
+                        case 3:
+                            val = '车辆';
+                            break;
+                        case 5:
+                            val = '语音';
+                            break;
+                        default:
+                            val = '--';
+                    }
+                }
+                else {
+                    val = '--';
+                }
+                return val;
+            };
         });
 });

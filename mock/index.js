@@ -407,5 +407,72 @@ exports.mocks = [
                 "error": null
             });  
         }
+    },
+
+    {
+        path: '/api/get_broken_table',
+        method: 'POST',
+        handler: function (request, reply) {
+            var brokenInfo = [];
+            var i;
+            for (i = 0; i < 10; i++) {
+                brokenInfo.push({
+                    "time": "2016-03-27 15:45:0" + i,
+                    "name": "10" + i,
+                    "type": 2
+                });
+            }
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true,
+                    "brokenInfo": brokenInfo,
+                    "pageDto": {
+                        "totalCount": 78
+                    }
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
+        path: '/api/get_broken_chart',
+        method: 'POST',
+        handler: function (request, reply) {
+            var i;
+            var light = [];
+            var environment = [];
+            var vehicle = [];
+            var crowd = [];
+            var voice = [];
+
+            for (i = 0; i < 10; i++) {
+                light.push(Math.ceil(Math.random() * 200));
+                environment.push(Math.ceil(Math.random() * 200));
+                vehicle.push(Math.ceil(Math.random() * 200));
+                crowd.push(Math.ceil(Math.random() * 200));
+                voice.push(Math.ceil(Math.random() * 200));
+            };
+
+            var brokenInfo = {
+                "light": light,
+                "environment": environment,
+                "vehicle": vehicle,
+                "crowd": crowd,
+                "voice": voice
+            };
+            
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true,
+                    "brokenInfo": brokenInfo
+                },
+                "error": null
+            });  
+        }
     }
 ];

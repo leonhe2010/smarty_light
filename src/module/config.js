@@ -61,6 +61,39 @@ define(function (require) {
             value: 9
         }
     ];
+    
+    config.brokenTypeOptions = [
+        {
+            title: 'light',
+            text: '路灯',
+            value: 1
+        },
+        {
+            title: 'environment',
+            text: '环境',
+            value: 2
+        },
+        {
+            title: 'vehicle',
+            text: '车辆',
+            value: 3
+        },
+        {
+            title: 'crowd',
+            text: '人群',
+            value: 4
+        },
+        {
+            title: 'voice',
+            text: '语音',
+            value: 5
+        },
+        {
+            title: 'all',
+            text: '所有',
+            value: 6
+        }
+    ];
 
     return config;
 
