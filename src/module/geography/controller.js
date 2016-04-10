@@ -6,7 +6,7 @@ define(function (require) {
     var config = require('../config');
     var moment = require('moment');
 
-    function Controller($scope, $location, $timeout, $http, $modal) {
+    function Controller($scope, $location, $timeout, $http, $modal, $sce) {
 
         function initValue() {
             $scope.demo = {};
@@ -94,7 +94,7 @@ define(function (require) {
                 };
                 $http.post(url, params).success(function (res) {
                     if (res.data.result) {
-                        //
+                        showVideoModal(res.data, lightId);
                     } else {
                         alert(res.error);
                     }
@@ -103,6 +103,46 @@ define(function (require) {
                 });
             }
         }
+
+        function showVideoModal(videoData, lightId) {
+            $scope.videoLightNum = videoData.lightNum;
+            $scope.videoSrc = $sce.trustAsResourceUrl(videoData.videoSrc);
+            $scope.videoTab = 1;
+
+            var videoModal = $modal.open({
+                templateUrl: 'src/module/geography/video.html',
+                size: 'lg',
+                scope: $scope,
+                backdrop: 'static'
+            });
+
+            $scope.closeVideoModal = function () {
+                videoModal.close();
+            };
+
+            $scope.getHistoryVideo = function () {
+                $scope.videoTab = 2;
+
+                var url = '/smartcity/api/get_light_history_video';
+                var params = {
+                    "lightId": +lightId,
+                    "pageDto": {
+                        "pageSize": 10,
+                        "pageNum": 1
+                    }
+                };
+                $http.post(url, params).success(function (res) {
+                    if (res.data.result) {
+                        
+                    } else {
+                        alert(res.error);
+                    }
+                }).error(function (res) {
+                    alert('系统异常！');
+                });
+            };
+        }
+
 
         function initTime(endDate, len) {
             var timeArr = [];
@@ -283,7 +323,7 @@ define(function (require) {
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal', '$sce'];
 
     return Controller;
 });

@@ -972,7 +972,7 @@ body {
 }
 
 .tv_con {
-    padding: 40px 40px 70px 40px
+    padding: 0px 40px 70px 40px
 }
 
 .tv_close {
@@ -1363,10 +1363,8 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
 
 .close-detail {
     position: absolute;
-    top: -10px;
-    right: 2px;
-    font-size: 30px;
-    color: #fff;
+    top: 0px;
+    right: -2px;
 }
 .close-detail:hover {
     cursor: pointer;
@@ -1374,4 +1372,13 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
 
 .tree-view i:hover {
     cursor: pointer;
+}
+
+.history_btn:hover {
+    cursor: pointer;
+}
+
+.tv_con_img {
+    width: 1122px;
+    height: 631px;
 }

@@ -1,0 +1,26 @@
+<div class="w1200 content cut-all bg_tv">
+    <!--视频-->
+    <div class="tv_con">
+        <div class="tv_con_tit">
+            <div class="dd_lt_div">
+                <p class="dph fl">灯编号<i class="c_green" ng-bind="videoLightNum"></i></p>
+                <!-- <p class="fl rlmd">人流密度：XXX</p> -->
+                <p class="tv_close"><em class="close_bt close-detail" ng-click="closeVideoModal()">关闭</em></p>
+            </div>
+        </div>
+        <div class="tv_con_img" ng-show="videoTab==1">
+            <video ng-src="{{videoSrc}}" controls="controls" width="1122" height="631">
+                你的浏览器不支持video标签，请使用chrome打开。
+            </video>
+        </div>
+        <div class="tv_con_img" ng-show="videoTab==2">
+            
+        </div>
+        <div class="tv_tip">
+            <i ng-class="{'active': videoTab==1}">视频</i>
+            <!-- <i>帧图片</i>  -->
+            <i ng-class="{'active': videoTab==2}" class="history_btn" ng-click="getHistoryVideo()">历史</i>
+        </div>
+    </div>
+    <!--视频/-->
+</div>
