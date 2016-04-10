@@ -12,6 +12,9 @@ define(function (require) {
 
         function bindEvent() {
             $scope.demo.itemClicked = showLeftTree;
+            $scope.$on('batchreject', function (event, data) {
+                debugger;
+            });
         }
 
         function main() {

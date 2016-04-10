@@ -36,6 +36,23 @@ define(function (require) {
                 }
             };
         })
+        .filter('onOffShow', function () {
+            return function (value) {
+                var val;
+                if ($.isNumeric(value)) {
+                    var key = parseInt(value);
+                    if (key === 0) {
+                        val = '关闭';
+                    }
+                    else {
+                        val = '打开';
+                    }
+                } else {
+                    val = '--';
+                }
+                return val;
+            };
+        })
         .filter('yesNOShow', function () {
             return function (value) {
                 var val;
@@ -52,6 +69,40 @@ define(function (require) {
                             val = '--';
                     }
                 } else {
+                    val = '--';
+                }
+                return val;
+            };
+        })
+        .filter('lightCtrlShow', function () {
+            return function (value) {
+                var val;
+                if ($.isNumeric(value)) {
+                    var key = parseInt(value);
+                    switch (key) {
+                        case 6:
+                            val = '灯控';
+                            break;
+                        case 5:
+                            val = '继电器5';
+                            break;
+                        case 4:
+                            val = '继电器4';
+                            break;
+                        case 1:
+                            val = '继电器1';
+                            break;
+                        case 2:
+                            val = '继电器2';
+                            break;
+                        case 3:
+                            val = '继电器3';
+                            break;
+                        default:
+                            val = '--';
+                    }
+                }
+                else {
                     val = '--';
                 }
                 return val;

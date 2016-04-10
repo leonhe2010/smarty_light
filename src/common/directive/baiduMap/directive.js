@@ -1,8 +1,3 @@
-/**
- * @fileOverview 百度地图
- * @author hanrui
- */
-
 define(function (require) {
     'use strict';
     var BMap = require('async!baiduMap');
@@ -44,7 +39,7 @@ define(function (require) {
                     function getActiveIcon(i) {
                         // 激活icon
                         return new BMap.Icon(
-                            'src/resource/img/markers.png',
+                            'src/resource/images/markers.png',
                             new BMap.Size(24, 36),
                             {
                                 // offset: new BMap.Size(10, 25),
@@ -52,32 +47,33 @@ define(function (require) {
                             }
                         );
                     }
-                    function bind() {
-                        var target = $('.clue-visiting-map-list');
-                        target.on('mouseenter', '.record-list-wrapper', function (event) {
-                            var target = $(event.target);
-                            var id = target.attr('data-id');
-                            if (id) {
-                                var index = target.attr('data-index');
-                                $scope.$apply(function () {
-                                    $scope.selectedId = id;
-                                });
-                                markers[index].setIcon(getActiveIcon(index));
-                            }
+                    // function bind() {
+                        // var target = $('.clue-visiting-map-list');
+                        // target.on('mouseenter', '.record-list-wrapper', function (event) {
+                            // var target = $(event.target);
+                            // var id = target.attr('data-id');
+                            // if (id) {
+                            //     var index = target.attr('data-index');
+                            //     $scope.$apply(function () {
+                            //         $scope.selectedId = id;
+                            //     });
+                            //     markers[index].setIcon(getActiveIcon(index));
+                            // }
+                            // console.log('ereer');
 
-                        });
-                        target.on('mouseleave', '.record-list-wrapper', function () {
-                            var target = $(event.target);
-                            var id = target.attr('data-id');
-                            if (id) {
-                                var index = target.attr('data-index');
-                                $scope.$apply(function () {
-                                    $scope.selectedId = null;
-                                });
-                                markers[index].setIcon(getComIcon(index));
-                            }
-                        });
-                    }
+                        // });
+                        // target.on('mouseleave', '.record-list-wrapper', function () {
+                        //     var target = $(event.target);
+                        //     var id = target.attr('data-id');
+                        //     if (id) {
+                        //         var index = target.attr('data-index');
+                        //         $scope.$apply(function () {
+                        //             $scope.selectedId = null;
+                        //         });
+                        //         markers[index].setIcon(getComIcon(index));
+                        //     }
+                        // });
+                    // }
                     // 初始化图标
                     function initMaker() {
                         if (points && points.length) {
@@ -93,14 +89,15 @@ define(function (require) {
                                 // 创建标注
                                 var marker = new BMap.Marker(pt, { icon: getComIcon(i) });
                                 marker.addEventListener('click', function () {
-                                    $scope.$apply(function () {
-                                        $scope.selectedId = v.id;
-                                    });
-                                    marker.setIcon(getActiveIcon(i));
+                                    // $scope.$apply(function () {
+                                    //     $scope.selectedId = v.id;
+                                    // });
+                                    // marker.setIcon(getActiveIcon(i));
                                     // 创建信息窗口对象
-                                    var infoWindow = new BMap.InfoWindow(v.memo, opts);
+                                    // var infoWindow = new BMap.InfoWindow(v.memo, opts);
                                     //开启信息窗口
-                                    map.openInfoWindow(infoWindow, pt);
+                                    // map.openInfoWindow(infoWindow, pt);
+                                    $scope.$emit('batchreject', {lightId: v.lightId});
                                 });
                                 marker.addEventListener('mouseover', function () {
                                     $scope.$apply(function () {
@@ -157,9 +154,9 @@ define(function (require) {
                         }
                     }
                     $scope.initMap = function () {
-                        init();
+                        // init();
                         initMapInfo();
-                        bind();
+                        // bind();
                     };
 
                     // $scope.$watch('list', function (value) {

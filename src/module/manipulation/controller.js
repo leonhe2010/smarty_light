@@ -2,6 +2,7 @@ define(function (require) {
 
     require('common/directive/echartsRe/directive');
     require('common/directive/leftTree/directive');
+    var config = require('../config');
 
     function Controller($scope, $location, $timeout, $http, $modal) {
 
@@ -20,6 +21,8 @@ define(function (require) {
             $scope.lightOptions = null;
             $scope.lightIds = [];
             $scope.currentParentId = 0;
+            $scope.lightCtrlOptions = config.lightCtrlOptions;
+            $scope.lightCtrl = 6;
         }
 
         function bindEvent() {
@@ -32,6 +35,7 @@ define(function (require) {
             $scope.deletePlan = deletePlan;
             $scope.addGroup = addGroup;
             $scope.setLightIds = setLightIds;
+            $scope.changeLightCtrl = changeLightCtrl;
         }
 
         function main() {
@@ -48,6 +52,16 @@ define(function (require) {
         //     $scope.isLastPlan = false;
         //     $scope.isFullPlan = false;
         // }
+
+        function changeLightCtrl() {
+            $scope.duration = null;
+            initBrightness();
+
+            if ($scope.setPtn == 2) {
+                getSettedPlan();
+            }
+
+        }
 
         function setLightIds(event) {
             var ele = $(event.target);
@@ -121,7 +135,8 @@ define(function (require) {
             var params = {
                 id: $scope.currentId,
                 level: $scope.currentLevel,
-                plans: []
+                plans: [],
+                type: $scope.lightCtrl
             };
             $.extend(true, params.plans, $scope.settedPlan);
             params.plans.pop();
@@ -177,7 +192,8 @@ define(function (require) {
             var url = '/smartcity/api/get_light_plan';
             var params = {
                 id: $scope.currentId,
-                level: $scope.currentLevel
+                level: $scope.currentLevel,
+                type: $scope.lightCtrl
             };
 
             $http.post(url, params).success(function (res) {
@@ -243,7 +259,9 @@ define(function (require) {
                 params = {
                     id: $scope.currentId,
                     level: $scope.currentLevel,
-                    brightness: $scope.brightness
+                    brightness: $scope.brightness,
+                    duration: +$scope.duration,
+                    type: $scope.lightCtrl
                 };
             }
             else if ($scope.setPtn === 2) {
@@ -261,12 +279,20 @@ define(function (require) {
                 });
             }
 
+            if ($scope.lightCtrl !== 6) {
+                params.brightness = +$scope.onOff;
+            }
+
             $http.post(url, params).success(function (res) {
                 if (res.data.result) {
                     alert('设置成功！');
                     initBrightness();
 
-                    if ($scope.setPtn === 2) {
+                    if ($scope.setPtn === 1) {
+                        $scope.duration = null;
+                        $scope.onOff = null;
+                    }
+                    else if ($scope.setPtn === 2) {
                         getSettedPlan();
                     }
                 } else {
@@ -279,6 +305,7 @@ define(function (require) {
 
         function switchPtn(event) {
             $scope.setPtn = +$(event.target).attr('ptn');
+            $scope.lightCtrl = 6;
             if ($scope.setPtn === 2) {
                 getSettedPlan();
             }

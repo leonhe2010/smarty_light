@@ -23,6 +23,33 @@ define(function (require) {
         }
     ];
 
+    config.lightCtrlOptions = [
+        {
+            text: '继电器1',
+            value: 1
+        },
+        {
+            text: '继电器2',
+            value: 2
+        },
+        {
+            text: '继电器3',
+            value: 3
+        },
+        {
+            text: '继电器4',
+            value: 4
+        },
+        {
+            text: '继电器5',
+            value: 5
+        },
+        {
+            text: '灯控',
+            value: 6
+        }
+    ];
+
     config.statisticTypeOptions = [
         {
             text: '电流',
