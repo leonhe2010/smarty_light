@@ -67,7 +67,7 @@ define(function (require) {
                 $scope.lightTypeShow = $(event.target).html();
             };
 
-            $scope.getChartDate = function () {
+            $scope.getChartData = function () {
                 var url = '/smartcity/api/get_statistic';
                 var params = {
                     "id": +lightId,
@@ -86,6 +86,22 @@ define(function (require) {
                     alert('系统异常！');
                 });
             };
+
+            $scope.getVideo = function () {
+                var url = '/smartcity/api/get_light_video';
+                var params = {
+                    "lightId": +lightId
+                };
+                $http.post(url, params).success(function (res) {
+                    if (res.data.result) {
+                        //
+                    } else {
+                        alert(res.error);
+                    }
+                }).error(function (res) {
+                    alert('系统异常！');
+                });
+            }
         }
 
         function initTime(endDate, len) {
