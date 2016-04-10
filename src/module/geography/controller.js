@@ -27,7 +27,7 @@ define(function (require) {
         function getLightDetail(lightId) {
             var url = '/smartcity/api/get_light_detail';
             var params = {
-                lightId: lightId
+                lightId: +lightId
             };
 
             $http.post(url, params).success(function (res) {
