@@ -269,7 +269,8 @@ define(function (require) {
                 params = {
                     id: $scope.currentId,
                     level: $scope.currentLevel,
-                    plans: []
+                    plans: [],
+                    type: $scope.lightCtrl
                 };
                 $.extend(true, params.plans, $scope.settedPlan);
                 params.plans.push({
