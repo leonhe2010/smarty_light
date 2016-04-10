@@ -140,6 +140,35 @@ exports.mocks = [
     },
 
     {
+        path: '/smartcity/api/get_light_history_video',
+        method: 'POST',
+        handler: function (request, reply) {
+            var videoInfo = [];
+            var i;
+            for (i = 0; i < 10; i++) {
+                videoInfo.push({
+                    "videoTime": "2016-03-27 13:00:00",
+                    "videoSrc": "http://123.125.86.20/vlive.qqvideo.tc.qq.com/i0015iurhdl.mp4?sdtfrom=v1010&vkey=9775221235B5925ABC0236071D9A8A751E0EB074A2BDF2D882D42CF29D3BF357790BDACF4D76F40F12655A66F692FC50B2548B501AFE7D5911876BEFC3AC3D90FAF9F45AE7744ABF07E06B7E43780E18062C010FC68EF366"
+                })
+            }
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true,
+                    "pageDto": {
+                        "totalCount": 101
+                    },
+                    "lightNum": "11",
+                    "videoInfo": videoInfo
+                    
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
         path: '/smartcity/api/set_light_manual',
         method: 'POST',
         handler: function (request, reply) {

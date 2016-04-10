@@ -3,6 +3,7 @@ define(function (require) {
     require('common/directive/echartsRe/directive');
     require('common/directive/leftTree/directive');
     require('common/directive/baiduMap/directive');
+    require('common/directive/paging/directive');
     var config = require('../config');
     var moment = require('moment');
 
@@ -108,6 +109,8 @@ define(function (require) {
             $scope.videoLightNum = videoData.lightNum;
             $scope.videoSrc = $sce.trustAsResourceUrl(videoData.videoSrc);
             $scope.videoTab = 1;
+            $scope.currentPage = 1;
+            $scope.pageSize = 10;
 
             var videoModal = $modal.open({
                 templateUrl: 'src/module/geography/video.html',
@@ -127,19 +130,30 @@ define(function (require) {
                 var params = {
                     "lightId": +lightId,
                     "pageDto": {
-                        "pageSize": 10,
-                        "pageNum": 1
+                        "pageSize": $scope.pageSize,
+                        "pageNum": $scope.currentPage
                     }
                 };
                 $http.post(url, params).success(function (res) {
                     if (res.data.result) {
-                        
+                        $scope.historyVideoList = res.data.videoInfo;
+                        $scope.historyVideoCount = res.data.pageDto.totalCount;
                     } else {
                         alert(res.error);
                     }
                 }).error(function (res) {
                     alert('系统异常！');
                 });
+            };
+
+            $scope.$on('changepage', function (event, data) {
+                $scope.currentPage = data.page;
+                $scope.getHistoryVideo();
+            });
+
+            $scope.jumpToVideo = function (event) {
+                $scope.videoTab = 1;
+                $scope.videoSrc = $sce.trustAsResourceUrl($(event.target).html());    
             };
         }
 

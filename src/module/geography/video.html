@@ -14,7 +14,21 @@
             </video>
         </div>
         <div class="tv_con_img" ng-show="videoTab==2">
-            
+            <div class="cut_lbms">
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <th>视频时间</th>
+                            <th>视频链接</th>
+                        </tr>
+                        <tr ng-repeat="item in historyVideoList">
+                            <td ng-bind="item.videoTime"></td>
+                            <td ng-bind="item.videoSrc" ng-click="jumpToVideo($event)"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <paging total-count="{{historyVideoCount}}" size="{{pageSize}}" current-page="{{currentPage}}"></paging>
+            </div>
         </div>
         <div class="tv_tip">
             <i ng-class="{'active': videoTab==1}">视频</i>

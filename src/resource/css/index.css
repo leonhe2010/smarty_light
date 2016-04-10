@@ -1382,3 +1382,19 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
     width: 1122px;
     height: 631px;
 }
+
+.tv_con_img .cut_lbms table {
+    table-layout: fixed;
+    color: #fff;
+    width: 1050px;
+}
+
+.tv_con_img .cut_lbms table td {
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
