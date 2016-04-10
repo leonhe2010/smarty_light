@@ -287,7 +287,7 @@ define(function (require) {
                 if ($scope.lightCtrl !== 6) {
                     planObj.brightness = +$scope.onOff;
                 }
-                
+
                 params.plans.push(planObj);
             }
 
@@ -297,9 +297,10 @@ define(function (require) {
                     alert('设置成功！');
                     initBrightness();
 
+                    $scope.onOff = null;
+                    
                     if ($scope.setPtn === 1) {
                         $scope.duration = null;
-                        $scope.onOff = null;
                     }
                     else if ($scope.setPtn === 2) {
                         getSettedPlan();

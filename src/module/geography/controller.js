@@ -13,7 +13,7 @@ define(function (require) {
         function bindEvent() {
             $scope.demo.itemClicked = showLeftTree;
             $scope.$on('batchreject', function (event, data) {
-                debugger;
+                getLightDetail(data.lightId);
             });
         }
 
@@ -22,6 +22,19 @@ define(function (require) {
             bindEvent();
             getChildNode(0, 1);
             getLightLocation(0, 0);
+        }
+
+        function getLightDetail(lightId) {
+            var url = '/smartcity/api/get_light_detail';
+            var params = {
+                lightId: lightId
+            };
+
+            $http.post(url, params).success(function (res) {
+                console.log(res);
+            }).error(function (res) {
+                console.log(res);
+            });
         }
 
         function showLeftTree(item) {
