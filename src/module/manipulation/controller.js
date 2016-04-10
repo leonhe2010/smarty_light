@@ -263,6 +263,10 @@ define(function (require) {
                     duration: +$scope.duration,
                     type: $scope.lightCtrl
                 };
+
+                if ($scope.lightCtrl !== 6) {
+                    params.brightness = +$scope.onOff;
+                }
             }
             else if ($scope.setPtn === 2) {
                 url = '/smartcity/api/set_light_plan';
@@ -273,16 +277,20 @@ define(function (require) {
                     type: $scope.lightCtrl
                 };
                 $.extend(true, params.plans, $scope.settedPlan);
-                params.plans.push({
+
+                var planObj = {
                     start: ((+$scope.startHour) * 60 + (+$scope.startMinute)),
                     end: ((+$scope.endHour) * 60 + (+$scope.endMinute)),
                     brightness: $scope.brightness
-                });
+                };
+
+                if ($scope.lightCtrl !== 6) {
+                    planObj.brightness = +$scope.onOff;
+                }
+                
+                params.plans.push(planObj);
             }
 
-            if ($scope.lightCtrl !== 6) {
-                params.brightness = +$scope.onOff;
-            }
 
             $http.post(url, params).success(function (res) {
                 if (res.data.result) {
