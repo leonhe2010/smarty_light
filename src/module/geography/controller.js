@@ -3,11 +3,14 @@ define(function (require) {
     require('common/directive/echartsRe/directive');
     require('common/directive/leftTree/directive');
     require('common/directive/baiduMap/directive');
+    var config = require('../config');
+    var moment = require('moment');
 
-    function Controller($scope, $location, $timeout, $http) {
+    function Controller($scope, $location, $timeout, $http, $modal) {
 
         function initValue() {
             $scope.demo = {};
+            $scope.calibrationOptions = config.calibrationOptions;
         }
 
         function bindEvent() {
@@ -31,10 +34,130 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                console.log(res);
+                if (res.data.result) {
+                    showLightModal(res.data, lightId);
+                }
+                else {
+                    alert(res.error);
+                }
             }).error(function (res) {
-                console.log(res);
+                alert('系统异常！');
             });
+        }
+
+        function showLightModal(data, lightId) {
+            $scope.detail = data;
+            $scope.lightType = 1;
+            $scope.lightTypeShow = '路灯';
+            $scope.detail.calibration = 1;
+
+            var detailModal = $modal.open({
+                templateUrl: 'src/module/geography/light.html',
+                size: 'lg',
+                scope: $scope,
+                backdrop: 'static'
+            });
+
+            $scope.closeModal = function () {
+                detailModal.close();
+            };
+
+            $scope.switchLightType = function (event) {
+                $scope.lightType = +$(event.target).attr('type');
+                $scope.lightTypeShow = $(event.target).html();
+            };
+
+            $scope.getChartDate = function () {
+                var url = '/smartcity/api/get_statistic';
+                var params = {
+                    "id": +lightId,
+                    "level": 5,
+                    "calibration": +$scope.detail.calibration,
+                    "endDate": $scope.endDate,
+                    "type": +$scope.lightType
+                };
+                $http.post(url, params).success(function (res) {
+                    if (res.data.result) {
+                        initEchart(res.data.info);
+                    } else {
+                        alert(res.error);
+                    }
+                }).error(function (res) {
+                    alert('系统异常！');
+                });
+            };
+        }
+
+        function initTime(endDate, len) {
+            var timeArr = [];
+            var i, timeItem;
+            for (i = len; i > 0; i--) {
+                var now = new Date(endDate);
+                var nowMoment = moment(now);
+                timeItem = +(nowMoment.date(nowMoment.date() - (i - 1)).toDate());
+                timeArr.push(moment(timeItem).format('YYYY-MM-DD'));
+            }
+            return timeArr;
+        }
+
+        function initEchart(deviceData) {
+            var categoryItem = $scope.lightTypeShow;
+            var itemValue = deviceData;
+            var itemTime = [];
+            var i;
+
+            switch (+$scope.detail.calibration) {
+                case 1:
+                    for (i = 0; i < 24; i++) {
+                        itemTime.push('' + i + '时');
+                    }
+                    break;
+                case 2:
+                    itemTime = initTime($scope.endDate, 7);
+                    break;
+                case 3:
+                    itemTime = initTime($scope.endDate, 30);
+                    break;
+                case 4:
+                    itemTime = initTime($scope.endDate, 12);
+                    break;
+                default:
+                    ;
+            }
+            if (deviceData) {
+                $scope.lightTypeInfo = {
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: [categoryItem]
+                    },
+
+                    calculable: true,
+                    xAxis: [
+                        {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: itemTime
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            name: categoryItem,
+                            type: 'line',
+                            //stack: '总量',
+                            data: itemValue
+                        }
+                    ]
+                };
+            } else {
+                alert('未获取到统计数据！');
+            }
         }
 
         function showLeftTree(item) {
@@ -141,237 +264,10 @@ define(function (require) {
 
         }
 
-        function initEchart(deviceData) {
-            if (deviceData) {
-                $scope.lightOptions = {
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                    legend: {
-                        orient: 'vertical',
-                        x: 'right',
-                        data: ['路灯个数', '打开个数', '故障个数']
-                    },
-                    calculable: true,
-                    series: [
-                        {
-                            name: '路灯信息',
-                            type: 'pie',
-                            radius: ['70%', '90%'],
-                            itemStyle: {
-                                normal: {
-                                    label: {
-                                        show: false
-                                    },
-                                    labelLine: {
-                                        show: false
-                                    }
-                                },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '30',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
-                            },
-                            data: [
-                                {value: deviceData.light.total, name: '路灯个数'},
-                                {value: deviceData.light.work, name: '打开个数'},
-                                {value: deviceData.light.fault, name: '故障个数'}
-                            ]
-                        }
-                    ]
-                };
-                $scope.ctrlOptions = {
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                    legend: {
-                        orient: 'vertical',
-                        x: 'right',
-                        data: ['控制器个数', '打开个数', '故障个数']
-                    },
-                    calculable: true,
-                    series: [
-                        {
-                            name: '控制器信息',
-                            type: 'pie',
-                            radius: ['70%', '90%'],
-                            itemStyle: {
-                                normal: {
-                                    label: {
-                                        show: false
-                                    },
-                                    labelLine: {
-                                        show: false
-                                    }
-                                },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '30',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
-                            },
-                            data: [
-                                {value: deviceData.controller.total, name: '控制器个数'},
-                                {value: deviceData.controller.work, name: '打开个数'},
-                                {value: deviceData.controller.fault, name: '故障个数'}
-                            ]
-                        }
-                    ]
-                };
-                $scope.cameraOptions = {
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                    legend: {
-                        orient: 'vertical',
-                        x: 'right',
-                        data: ['摄像头个数', '打开个数', '故障个数']
-                    },
-                    calculable: true,
-                    series: [
-                        {
-                            name: '摄像头信息',
-                            type: 'pie',
-                            radius: ['70%', '90%'],
-                            itemStyle: {
-                                normal: {
-                                    label: {
-                                        show: false
-                                    },
-                                    labelLine: {
-                                        show: false
-                                    }
-                                },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '30',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
-                            },
-                            data: [
-                                {value: deviceData.camera.total, name: '摄像头个数'},
-                                {value: deviceData.camera.work, name: '打开个数'},
-                                {value: deviceData.camera.fault, name: '故障个数'}
-                            ]
-                        }
-                    ]
-                };
-                $scope.sensorOptions = {
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                    legend: {
-                        orient: 'vertical',
-                        x: 'right',
-                        data: ['传感器个数', '打开个数', '故障个数']
-                    },
-                    calculable: true,
-                    series: [
-                        {
-                            name: '传感器信息',
-                            type: 'pie',
-                            radius: ['70%', '90%'],
-                            itemStyle: {
-                                normal: {
-                                    label: {
-                                        show: false
-                                    },
-                                    labelLine: {
-                                        show: false
-                                    }
-                                },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '30',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
-                            },
-                            data: [
-                                {value: deviceData.sensor.total, name: '传感器个数'},
-                                {value: deviceData.sensor.work, name: '打开个数'},
-                                {value: deviceData.sensor.fault, name: '故障个数'}
-                            ]
-                        }
-                    ]
-                };
-                $scope.wifiOptions = {
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                    legend: {
-                        orient: 'vertical',
-                        x: 'right',
-                        data: ['wifi个数', '打开个数', '故障个数']
-                    },
-                    calculable: true,
-                    series: [
-                        {
-                            name: 'wifi信息',
-                            type: 'pie',
-                            radius: ['70%', '90%'],
-                            itemStyle: {
-                                normal: {
-                                    label: {
-                                        show: false
-                                    },
-                                    labelLine: {
-                                        show: false
-                                    }
-                                },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '30',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
-                            },
-                            data: [
-                                {value: deviceData.wifi.total, name: 'wifi个数'},
-                                {value: deviceData.wifi.work, name: '打开个数'},
-                                {value: deviceData.wifi.fault, name: '故障个数'}
-                            ]
-                        }
-                    ]
-                };
-            } else {
-                alert('未获取设备数据！');
-            }
-        }
-
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal'];
 
     return Controller;
 });

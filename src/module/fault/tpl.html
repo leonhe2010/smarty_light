@@ -8,7 +8,7 @@
         <a href="/smartcity/smarty_light/main.html?#/fault" class="active">故障列表</a>
         <a href="/smartcity/smarty_light/main.html?#/set">设置</a>
     </div>
-    <div class="fr nav_time"><i><img src="images/lm_logo.jpg" width="46" height="53"></i>
+    <div class="fr nav_time"><i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
 
         <div class="daojishi">
             <!--time-->
@@ -88,7 +88,7 @@
                 </fieldset>
                 <!--列表模式/-->
                 <!--曲线模式-->
-                <fieldset ng-if="patternType==2" style="background-color: #fff;">
+                <fieldset ng-if="patternType==2" class="echart">
                     <div class="cut_qxms">
                       <div e-chart style="width: 848px;height: 255px;" options="brokenChart" ng-if="brokenChart"></div>
                     </div>

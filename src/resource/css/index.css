@@ -1346,3 +1346,32 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
     text-align: center;
 
 }
+
+.modal-lg {
+    width: 1200px;
+}
+
+.modal-lg .content {
+    height: 800px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.echart {
+    background-color: #fff;
+}
+
+.close-detail {
+    position: absolute;
+    top: -10px;
+    right: 2px;
+    font-size: 30px;
+    color: #fff;
+}
+.close-detail:hover {
+    cursor: pointer;
+}
+
+.tree-view i:hover {
+    cursor: pointer;
+}

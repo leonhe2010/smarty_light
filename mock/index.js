@@ -58,6 +58,35 @@ exports.mocks = [
     },
 
     {
+        path: '/smartcity/api/get_light_detail',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "crowd": "0",//
+                    "current": 12,//
+                    "environment": "1",//
+                    "humidity": 0,//
+                    "lat": "40.2411",//
+                    "light": "1",//
+                    "lightNum": "11",//
+                    "lng": "116.485",//
+                    "msg": "success",//
+                    "pm2p5": 0,//
+                    "power": 0,//
+                    "result": true,//
+                    "temperature": 0,//
+                    "vehicle": "0",//
+                    "voice": null,//
+                    "voltage": 0//
+                },
+                "error": null
+            });
+        }
+    },
+
+    {
         path: '/smartcity/api/get_child_node',
         method: 'POST',
         handler: function (request, reply) {

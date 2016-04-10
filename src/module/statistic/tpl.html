@@ -8,7 +8,7 @@
         <a href="/smartcity/smarty_light/main.html?#/fault">故障列表</a>
         <a href="/smartcity/smarty_light/main.html?#/set">设置</a>
     </div>
-    <div class="fr nav_time"><i><img src="images/lm_logo.jpg" width="46" height="53"></i>
+    <div class="fr nav_time"><i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
 
         <div class="daojishi">
             <!--time-->
@@ -38,7 +38,7 @@
         <!--树型菜单/-->
     </div>
     <!--left/-->
-    <div id="page" class="bgh page cut-page dkgz-con" style="background-color: #fff;">
+    <div id="page" class="bgh page cut-page dkgz-con">
         <!--灯-故障-->
         <div class="d_gz">
             <p class="tit" ng-bind="locationSetted"></p>
@@ -68,7 +68,7 @@
         <div class="dgz_qh" ng-show="statisticInfo">
             <div class="dgz_qhtit"><span class="dgz_sd"><i class="cor_l"></i>{{categoryItem}}</span></div>
             <div class="ms_con">
-                <div class="cut_qxms">
+                <div class="cut_qxms echart">
                     <div e-chart style="width: 848px;height: 255px;" options="statisticInfo" ng-if="statisticInfo"></div>
                 </div>
             </div>
