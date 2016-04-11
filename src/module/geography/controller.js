@@ -35,7 +35,10 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     showLightModal(res.data, lightId);
                 }
                 else {
@@ -78,9 +81,13 @@ define(function (require) {
                     "type": +$scope.lightType
                 };
                 $http.post(url, params).success(function (res) {
-                    if (res.data.result) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
                         initEchart(res.data.info);
-                    } else {
+                    } 
+                    else {
                         alert(res.error);
                     }
                 }).error(function (res) {
@@ -94,9 +101,13 @@ define(function (require) {
                     "lightId": +lightId
                 };
                 $http.post(url, params).success(function (res) {
-                    if (res.data.result) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
                         showVideoModal(res.data, lightId);
-                    } else {
+                    } 
+                    else {
                         alert(res.error);
                     }
                 }).error(function (res) {
@@ -135,10 +146,14 @@ define(function (require) {
                     }
                 };
                 $http.post(url, params).success(function (res) {
-                    if (res.data.result) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
                         $scope.historyVideoList = res.data.videoInfo;
                         $scope.historyVideoCount = res.data.pageDto.totalCount;
-                    } else {
+                    } 
+                    else {
                         alert(res.error);
                     }
                 }).error(function (res) {
@@ -300,9 +315,13 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     setTreeDate(res.data.nodes, id, level, pid);
-                } else {
+                } 
+                else {
                     alert('获取信息失败！');
                 }
             }).error(function (res) {
@@ -319,13 +338,17 @@ define(function (require) {
             var url = '/smartcity/api/get_lat_lng';
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     $scope.list = res.data.location;
                     setTimeout(function () {
                         $scope.initMap();
                     }, 1000);
                     // initEchart(res.data.device);
-                } else {
+                } 
+                else {
                     alert(res.error);
                 }
             }).error(function (res) {

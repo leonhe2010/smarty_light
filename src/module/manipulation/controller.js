@@ -77,7 +77,10 @@ define(function (require) {
             var url = '/smartcity/api/get_ungrouped_light';
             var params = {id: $scope.currentParentId};
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     $scope.lightOptions = res.data.light;
                     if ($scope.lightOptions.length != 0) {
                         openAddModal();
@@ -85,7 +88,8 @@ define(function (require) {
                     else {
                         alert('没有未分组路灯！');
                     }
-                } else {
+                } 
+                else {
                     alert('获取路灯失败！');
                 }
             }).error(function (res) {
@@ -112,10 +116,14 @@ define(function (require) {
                     id: $scope.currentId
                 };
                 $http.post(url, params).success(function (res) {
-                    if (res.data.result) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
                         alert('添加成功！');
                         dialog.close();
-                    } else {
+                    } 
+                    else {
                         alert('添加失败！');
                     }
                 }).error(function (res) {
@@ -142,10 +150,14 @@ define(function (require) {
             params.plans.pop();
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     alert('删除成功！');
                     getSettedPlan();
-                } else {
+                } 
+                else {
                     alert('获取已设置计划模式失败！');
                 }
             }).error(function (res) {
@@ -197,7 +209,10 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     $scope.settedPlan = res.data.plans;
                     $scope.planData = [];
                     $.extend(true, $scope.planData, $scope.settedPlan);
@@ -206,7 +221,8 @@ define(function (require) {
                         $scope.planData[$scope.planData.length - 1].isLastItem = true;
                     }
                     initInputValue();
-                } else {
+                } 
+                else {
                     alert('获取已设置计划模式失败！');
                 }
             }).error(function (res) {
@@ -293,7 +309,10 @@ define(function (require) {
 
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     alert('设置成功！');
                     initBrightness();
 
@@ -305,7 +324,8 @@ define(function (require) {
                     else if ($scope.setPtn === 2) {
                         getSettedPlan();
                     }
-                } else {
+                } 
+                else {
                     alert('设置失败！');
                 }
             }).error(function (res) {
@@ -395,9 +415,13 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     setTreeDate(res.data.nodes, id, level, pid);
-                } else {
+                } 
+                else {
                     alert('获取信息失败！');
                 }
             }).error(function (res) {

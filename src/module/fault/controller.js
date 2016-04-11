@@ -127,9 +127,13 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     setTreeDate(res.data.nodes, id, level, pid);
-                } else {
+                } 
+                else {
                     alert('获取信息失败！');
                 }
             }).error(function (res) {
@@ -174,7 +178,10 @@ define(function (require) {
             }
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     if ($scope.patternType === 1) {
                         $scope.brokenTable = res.data.brokenInfo;
                         $scope.brokenTableCount = res.data.pageDto.totalCount;

@@ -98,7 +98,10 @@ define(function (require) {
                 }
 
                 $http.post(url, params).success(function (res) {
-                    if (res.data.result) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
                         alert('删除成功！');
                         deleteModal.close();
                         if (unitLevel > 1) {
@@ -111,7 +114,8 @@ define(function (require) {
                         else {
                             getChildNode(0, 1);
                         }
-                    } else {
+                    } 
+                    else {
                         alert('删除失败！');
                     }
                 }).error(function (res) {
@@ -198,12 +202,16 @@ define(function (require) {
                 }
 
                 $http.post(url, params).success(function (res) {
-                    if (res.data.result) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
                         alert('添加成功！');
                         $scope.unitName = null;
                         unitDialog.close();
                         getChildNode(unitId, unitLevel + 1, pid);
-                    } else {
+                    } 
+                    else {
                         alert('添加失败！');
                     }
                 }).error(function (res) {
@@ -223,10 +231,14 @@ define(function (require) {
                 level: $scope.currentLevel
             };
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     $scope.lightOptions = res.data.set;
                     openLightListModal();
-                } else {
+                } 
+                else {
                     alert('获取路灯失败！');
                 }
             }).error(function (res) {
@@ -241,9 +253,13 @@ define(function (require) {
                 level: $scope.currentLevel
             };
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     $scope.lightOptions = res.data.set;
-                } else {
+                } 
+                else {
                     alert('获取路灯失败！');
                 }
             }).error(function (res) {
@@ -263,10 +279,14 @@ define(function (require) {
                     id: +lightId
                 };
                 $http.post(url, params).success(function (res) {
-                    if (res.data.result) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
                         alert('删除成功！');
                         getLightList();
-                    } else {
+                    } 
+                    else {
                         alert(res.error);
                     }
                 }).error(function (res) {
@@ -325,11 +345,15 @@ define(function (require) {
                     // lightLat: +$scope.lightLatIN
                     //};
                     $http.post(url, params).success(function (res) {
-                        if (res.data.result) {
+                        if (res.status == 403) {
+                            $location.url('/login');
+                        }
+                        else if (res.data.result) {
                             alert('添加成功！');
                             $scope.closeEditLight();
                             getLightList();
-                        } else {
+                        } 
+                        else {
                             alert('添加失败！');
                         }
                     }).error(function (res) {
@@ -352,9 +376,13 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     $scope.equipmentList = res.data.set
-                } else {
+                } 
+                else {
                     alert('获取设置采样率失败！');
                 }
             }).error(function (res) {
@@ -388,11 +416,15 @@ define(function (require) {
 
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     alert('设置成功！');
                     initEquipment();
                     getEquipmentList();
-                } else {
+                } 
+                else {
                     alert('设置失败！');
                 }
             }).error(function (res) {
@@ -452,9 +484,13 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     setTreeDate(res.data.nodes, id, level, pid);
-                } else {
+                } 
+                else {
                     alert('获取信息失败！');
                 }
             }).error(function (res) {

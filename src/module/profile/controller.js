@@ -122,9 +122,13 @@ define(function (require) {
             };
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     setTreeDate(res.data.nodes, id, level, pid);
-                } else {
+                } 
+                else {
                     alert('获取信息失败！');
                 }
             }).error(function (res) {
@@ -141,11 +145,15 @@ define(function (require) {
             var url = '/smartcity/api/get_basic_info';
 
             $http.post(url, params).success(function (res) {
-                if (res.data.result) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
                     $scope.info = res.data;
                     initEchart(res.data.device);
-                } else {
-
+                } 
+                else {
+                    alert(res.error);
                 }
             }).error(function (res) {
                 alert('系统异常！');

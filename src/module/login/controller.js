@@ -21,7 +21,8 @@ define(function (require) {
             }).success(function (res) {
                 if (res.data.result) {
                     $location.url('/profile');
-                } else {
+                } 
+                else {
                     $scope.loginTip = res.error;
                 }
             }).error(function (res) {
