@@ -24,28 +24,53 @@ define(function (require) {
                     // marker对象,key:id,value:maker
                     var markers;
                     // 普通icon
-                    function getComIcon(i) {
-                        return new BMap.Icon(
-                            'src/resource/images/markers.png',
-                            new BMap.Size(21, 30),
-                            {
-                                // offset: new BMap.Size(10, 25),
-                                imageOffset: new BMap.Size(0 - i * 21, 0)
-                            }
-                        );
+                    function getComIcon(i, isWorked) {
+                        if (isWorked == 1) {
+                            return new BMap.Icon(
+                                'src/resource/images/markers.png',
+                                new BMap.Size(24, 36),
+                                {
+                                    // offset: new BMap.Size(10, 25),
+                                    imageOffset: new BMap.Size(0, -156)
+                                }
+                            );
+                        }
+                        else {
+                            return new BMap.Icon(
+                                'src/resource/images/markers.png',
+                                new BMap.Size(21, 30),
+                                {
+                                    // offset: new BMap.Size(10, 25),
+                                    imageOffset: new BMap.Size(0, -116)
+                                }
+                            );
+                        }
+                        
                     }
 
                     // 激活icon
-                    function getActiveIcon(i) {
+                    function getActiveIcon(i, isWorked) {
                         // 激活icon
-                        return new BMap.Icon(
-                            'src/resource/images/markers.png',
-                            new BMap.Size(24, 36),
-                            {
-                                // offset: new BMap.Size(10, 25),
-                                imageOffset: new BMap.Size(0 - i * 24, -70)
-                            }
-                        );
+                        if (isWorked == 1) {
+                            return new BMap.Icon(
+                                'src/resource/images/markers.png',
+                                new BMap.Size(25, 25),
+                                {
+                                    // offset: new BMap.Size(10, 25),
+                                    imageOffset: new BMap.Size(-34, -156)
+                                }
+                            );
+                        }
+                        else {
+                            return new BMap.Icon(
+                                'src/resource/images/markers.png',
+                                new BMap.Size(22, 22),
+                                {
+                                    // offset: new BMap.Size(10, 25),
+                                    imageOffset: new BMap.Size(-34, -116)
+                                }
+                            );
+                        }
                     }
                     // function bind() {
                         // var target = $('.clue-visiting-map-list');
@@ -87,7 +112,7 @@ define(function (require) {
                                 var pt = new BMap.Point(v.lng, v.lat);
                                 mapPoints.push(pt);
                                 // 创建标注
-                                var marker = new BMap.Marker(pt, { icon: getComIcon(i) });
+                                var marker = new BMap.Marker(pt, { icon: getComIcon(i, v.isWorked) });
                                 marker.addEventListener('click', function () {
                                     // $scope.$apply(function () {
                                     //     $scope.selectedId = v.id;
@@ -103,13 +128,13 @@ define(function (require) {
                                     $scope.$apply(function () {
                                         $scope.selectedId = v.id;
                                     });
-                                    marker.setIcon(getActiveIcon(i));
+                                    marker.setIcon(getActiveIcon(i, v.isWorked));
                                 });
                                 marker.addEventListener('mouseout', function () {
                                     $scope.$apply(function () {
                                         $scope.selectedId = null;
                                     });
-                                    marker.setIcon(getComIcon(i));
+                                    marker.setIcon(getComIcon(i, v.isWorked));
                                 });
                                 markers.push(marker);
                                 map.addOverlay(marker);
