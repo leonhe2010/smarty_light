@@ -32,7 +32,10 @@
         <!--左右切换按钮/-->
         <!--树型菜单-->
         <ul id="tree" class="lightTreeview">
-            <button ng-click="demo.addItem(null, $event)">add</button>
+            <!-- <button ng-click="demo.addItem(null, $event)">add</button> -->
+            <em class="i_edit">
+                <i class="i_add" ng-click="demo.addItem(null, $event)"></i>
+            </em>
             <edit-tree-view tree-data="demo.tree" text-field="name" value-field='id'
                             item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)"
                             add-Item="demo.addItem(item, e)" minus-item="demo.minusItem(item, e)"

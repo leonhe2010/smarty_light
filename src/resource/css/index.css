@@ -219,8 +219,8 @@ body {
 
 .i_edit {
     margin-top: 2px;
-    float: left;
-    display: none;
+    /*float: left;
+    display: none;*/
 }
 
 .i_edit i {
