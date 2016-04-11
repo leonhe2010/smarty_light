@@ -11,12 +11,22 @@ define(function (require) {
         function initTime(endDate, len) {
             var timeArr = [];
             var i, timeItem;
-            for (i = len; i > 0; i--) {
-                var now = new Date(endDate);
-                var nowMoment = moment(now);
-                timeItem = +(nowMoment.date(nowMoment.date() - (i - 1)).toDate());
-                timeArr.push(moment(timeItem).format('YYYY-MM-DD'));
+
+            if (len == 12) {
+                for (i = len; i > 0; i--) {
+                    timeItem = moment(new Date(endDate)).subtract(i - 1, 'months');
+                    timeArr.push(timeItem.format('YYYY-MM'));
+                }
             }
+            else {
+                for (i = len; i > 0; i--) {
+                    var now = new Date(endDate);
+                    var nowMoment = moment(now);
+                    timeItem = +(nowMoment.date(nowMoment.date() - (i - 1)).toDate());
+                    timeArr.push(moment(timeItem).format('YYYY-MM-DD'));
+                }
+            }
+
             return timeArr;
         }
 
