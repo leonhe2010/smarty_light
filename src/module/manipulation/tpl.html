@@ -28,7 +28,7 @@
     <!--left-->
     <div id="left-panel" class="panel bgh cut-left">
         <!--左右切换按钮-->
-        <a id="left-panel-link" href="javascript:void(0)"></a>
+        <!-- <a id="left-panel-link" href="javascript:void(0)"></a> -->
         <!--左右切换按钮/-->
         <!--树型菜单-->
         <ul id="tree" class="lightTreeview">
@@ -54,12 +54,13 @@
                 <div class="clearfix">
                     <div class="dk_time_div">
                         <span>设置类型:</span>
-                        <select class="spbx_table" ng-model="lightCtrl" ng-options="m.value as m.text for m in lightCtrlOptions" ng-change="changeLightCtrl()">
+                        <select class="spbx_table dd_text" ng-model="lightCtrl"
+                                ng-options="m.value as m.text for m in lightCtrlOptions" ng-change="changeLightCtrl()">
                         </select>
                     </div>
                 </div>
             </div>
-            
+
             <div class="dk_time" ng-show="setPtn==1">
                 <div class="clearfix">
                     <div class="dk_time_div">
@@ -70,7 +71,36 @@
                 </div>
             </div>
 
-            <div class="dk_time" ng-show="setPtn==2">
+            <div class="cut_lbms" ng-show="setPtn==2" style="color: #fff;">
+                <table border="1" cellspacing="0" cellpadding="0" ng-if="settedPlan.length">
+                    <tbody>
+                    <tr>
+                        <th>设置类型</th>
+                        <th>时间段</th>
+                        <th ng-if="lightCtrl==6">亮度</th>
+                        <th ng-if="lightCtrl!=6">开关</th>
+                        <th>设置层级</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr ng-repeat="item in planData">
+                        <td ng-bind="lightCtrl | lightCtrlShow"></td>
+                        <td>{{item.start | minuteTimeShow}}-{{item.end | minuteTimeShow}}</td>
+                        <td ng-if="lightCtrl==6">{{item.brightness}}%</td>
+                        <td ng-if="lightCtrl!=6" ng-bind="item.brightness | onOffShow"></td>
+                        <td ng-bind="tableLevel | levelShow"></td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="deletePlan(item.planId)"
+                                    ng-disabled="!item.isLastItem">删除
+                            </button>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- <div class="dk_time" ng-show="setPtn==2">
                 <table class="table table-striped table-bordered table-condensed" ng-if="settedPlan.length">
                     <tr>
                         <th>设置类型</th>
@@ -109,7 +139,7 @@
                         分
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="dk_time" ng-show="lightCtrl!=6">
                 <div class="clearfix">

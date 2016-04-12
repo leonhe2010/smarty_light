@@ -485,6 +485,28 @@ exports.mocks = [
     },
 
     {
+        path: '/smartcity/api/get_sampling_frequency',
+        method: 'POST',
+        handler: function (request, reply) {
+            
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true,
+                    "set": {
+                        "environment": {
+                            "frequency": "70", 
+                            "level": "4"
+                        }
+                    }
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
         path: '/smartcity/api/get_broken_table',
         method: 'POST',
         handler: function (request, reply) {

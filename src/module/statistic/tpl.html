@@ -27,7 +27,7 @@
     <!--left-->
     <div id="left-panel" class="panel bgh cut-left">
         <!--左右切换按钮-->
-        <a id="left-panel-link" href="javascript:void(0)"></a>
+        <!-- <a id="left-panel-link" href="javascript:void(0)"></a> -->
         <!--左右切换按钮/-->
         <!--树型菜单-->
         <ul id="tree" class="lightTreeview">
@@ -45,7 +45,8 @@
 
             <div class="tjsp_con dkgx_sel">
                 <label>统计类型：</label>
-                <select class="spbx_table" id="tjlx" ng-model="statisticType" ng-options="m.value as m.text for m in statisticTypeOptions">
+                <select class="spbx_table dd_text" id="tjlx" ng-model="statisticType"
+                        ng-options="m.value as m.text for m in statisticTypeOptions">
                 </select>
             </div>
             <div class="dd_search_div">
@@ -54,8 +55,9 @@
             </div>
             <div class="dd_search_div">
                 <span>查询时间段</span>
-                <span class=""  ng-repeat="item in calibrationOptions">
-                    <input type="radio" name="calibration" ng-model="statistic.calibrationOption" value="{{item.value}}">
+                <span class="" ng-repeat="item in calibrationOptions">
+                    <input type="radio" name="calibration" ng-model="statistic.calibrationOption"
+                           value="{{item.value}}">
                     <label>{{item.text}}</label>
                 </span>
             </div>
@@ -69,7 +71,8 @@
             <div class="dgz_qhtit"><span class="dgz_sd"><i class="cor_l"></i>{{categoryItem}}</span></div>
             <div class="ms_con">
                 <div class="cut_qxms echart">
-                    <div e-chart style="width: 848px;height: 255px;" options="statisticInfo" ng-if="statisticInfo"></div>
+                    <div e-chart style="width: 848px;height: 255px;" options="statisticInfo"
+                         ng-if="statisticInfo"></div>
                 </div>
             </div>
         </div>

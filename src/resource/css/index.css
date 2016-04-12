@@ -279,14 +279,15 @@ body {
     padding-top: 15px;
 }
 
-.splx input, .cysj input {
+.splx select, .cysj input {
     border: medium none;
     background: #303740;
     height: 35px;
     line-height: 35px;
     padding-left: 10px;
     border-radius: 5px;
-    color: #fff
+    color: #fff;
+    width: 120px;
 }
 
 .submit_cyl {
@@ -1397,4 +1398,11 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.close-light, .close_unit {
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+    font-size: 16px;
 }

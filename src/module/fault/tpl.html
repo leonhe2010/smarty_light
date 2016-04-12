@@ -26,7 +26,7 @@
 <div class="w1200 content cut-all">
     <div id="left-panel" class="panel bgh cut-left">
         <!--左右切换按钮-->
-        <a id="left-panel-link" href="javascript:void(0)"></a>
+        <!-- <a id="left-panel-link" href="javascript:void(0)"></a> -->
         <!--左右切换按钮/-->
         <!--树型菜单-->
         <ul id="tree" class="lightTreeview">
@@ -43,7 +43,8 @@
 
             <div class="tjsp_con dkgx_sel">
                 <label>统计类型：</label>
-                <select class="spbx_table" id="tjlx" ng-model="brokenType" ng-options="m.value as m.text for m in brokenTypeOptions" ng-change="changeBrokenType()">
+                <select class="spbx_table dd_text" id="tjlx" ng-model="brokenType"
+                        ng-options="m.value as m.text for m in brokenTypeOptions" ng-change="changeBrokenType()">
                 </select>
             </div>
             <div class="dd_search_div">
@@ -71,26 +72,28 @@
                     <div class="cut_lbms">
                         <table border="1" cellspacing="0" cellpadding="0">
                             <tbody>
-                                <tr>
-                                    <th>设备类型</th>
-                                    <th>设备编号</th>
-                                    <th>故障时间</th>
-                                </tr>
-                                <tr ng-repeat="item in brokenTable">
-                                    <td ng-bind="item.type | brokenTypeShow"></td>
-                                    <td ng-bind="item.name"></td>
-                                    <td ng-bind="item.time"></td>
-                                </tr>
+                            <tr>
+                                <th>设备类型</th>
+                                <th>设备编号</th>
+                                <th>故障时间</th>
+                            </tr>
+                            <tr ng-repeat="item in brokenTable">
+                                <td ng-bind="item.type | brokenTypeShow"></td>
+                                <td ng-bind="item.name"></td>
+                                <td ng-bind="item.time"></td>
+                            </tr>
                             </tbody>
                         </table>
-                        <paging total-count="{{brokenTableCount}}" size="{{pageSize}}" current-page="{{currentPage}}"></paging>
+                        <paging total-count="{{brokenTableCount}}" size="{{pageSize}}"
+                                current-page="{{currentPage}}"></paging>
                     </div>
                 </fieldset>
                 <!--列表模式/-->
                 <!--曲线模式-->
                 <fieldset ng-if="patternType==2" class="echart">
                     <div class="cut_qxms">
-                      <div e-chart style="width: 848px;height: 255px;" options="brokenChart" ng-if="brokenChart"></div>
+                        <div e-chart style="width: 848px;height: 255px;" options="brokenChart"
+                             ng-if="brokenChart"></div>
                     </div>
                 </fieldset>
                 <!--曲线模式/-->
