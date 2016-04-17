@@ -40,7 +40,7 @@
         <!--灯-故障-->
         <div class="d_gz">
             <p class="tit" ng-bind="locationSetted"></p>
-
+            <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div>
             <div class="tjsp_con dkgx_sel">
                 <label>统计类型：</label>
                 <select class="spbx_table dd_text" id="tjlx" ng-model="brokenType"

@@ -390,6 +390,32 @@ define(function (require) {
             });
         }
 
+        function getLightNum(type, id) {
+            var params = {
+                level: +type,
+                id: +id
+            };
+
+            var url = '/smartcity/api/count_light';
+
+            $http.post(url, params).success(function (res) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
+                    $scope.allLight = res.data.all;
+                    $scope.openLight = res.data.open;
+                    $scope.closeLight = res.data.close;
+                    $scope.faultLight = res.data.fault;
+                } 
+                else {
+                    alert(res.error);
+                }
+            }).error(function (res) {
+                alert('系统异常！');
+            });
+        }
+
         function initEquipment() {
             $scope.equipmentFrequency = null;
             $scope.equipmentType = null;

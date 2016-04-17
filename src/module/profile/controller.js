@@ -7,6 +7,7 @@ define(function (require) {
 
         function initValue() {
             $scope.demo = {};
+            $scope.locationSetted = '全国';
             $scope.currentLevel = 0;
             $scope.currentId = 0;
         }
@@ -20,10 +21,38 @@ define(function (require) {
             bindEvent();
             getChildNode(0, 1);
             getLightInfo(0, 0);
+            getLightNum(0, 0);
+        }
+
+        function getLightNum(type, id) {
+            var params = {
+                level: +type,
+                id: +id
+            };
+
+            var url = '/smartcity/api/count_light';
+
+            $http.post(url, params).success(function (res) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
+                    $scope.allLight = res.data.all;
+                    $scope.openLight = res.data.open;
+                    $scope.closeLight = res.data.close;
+                    $scope.faultLight = res.data.fault;
+                } 
+                else {
+                    alert(res.error);
+                }
+            }).error(function (res) {
+                alert('系统异常！');
+            });
         }
 
         function showLeftTree(item) {
             var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
+            $scope.locationSetted = item.name;
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
 
@@ -50,6 +79,7 @@ define(function (require) {
             }
 
             getLightInfo(pidArr.length, item.id);
+            getLightNum(pidArr.length, item.id);
 
             // 1. 查找数据，如果没有重新请求
             // 2. 查找路灯信息

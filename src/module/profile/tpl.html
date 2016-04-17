@@ -42,8 +42,8 @@ nav-->
     <div id="page" class="bgh page cut-page">
         <!--实时数据-->
         <div class="sssj">
-            <p class="tit">实时数据</p>
-
+            <p class="tit"><span ng-bind="locationSetted"></span>实时数据</p>
+            <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div>
             <div class="sssj_con">
                 <dl>
                     <dt>{{info.power}}<i>kw</i></dt>

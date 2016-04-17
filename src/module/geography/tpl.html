@@ -39,6 +39,8 @@
     </div>
     <!--left/-->
     <div id="page" class="bgh page cut-page">
+        <p class="tit" ng-bind="locationSetted"></p>
+        <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div>
         <!--灯控-地理-->
         <div class="dk_dl">
             <div class="dk_dl_img" width="900" height="601">

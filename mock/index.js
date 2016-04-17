@@ -58,6 +58,26 @@ exports.mocks = [
     },
 
     {
+        path: '/smartcity/api/count_light',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "all": 100,
+                    "open": 71,
+                    "result": true,
+                    "close": 20,
+                    "fault": 9
+                    // 'particle': 223,
+                },
+                "error": null
+            });
+        }
+    },
+
+    {
         path: '/smartcity/api/get_light_detail',
         method: 'POST',
         handler: function (request, reply) {

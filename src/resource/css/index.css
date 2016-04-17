@@ -121,7 +121,9 @@ body {
 .tit {
     font-size: 14px;
     color: #fff;
-    padding-bottom: 20px
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .sssj_con, .sbxx, .sbxx_con {
