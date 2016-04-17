@@ -202,7 +202,7 @@ define(function (require) {
                                         show: true,
                                         position: 'center',
                                         textStyle: {
-                                            fontSize: '30',
+                                            fontSize: '16',
                                             fontWeight: 'bold'
                                         }
                                     }
@@ -246,7 +246,7 @@ define(function (require) {
                                         show: true,
                                         position: 'center',
                                         textStyle: {
-                                            fontSize: '30',
+                                            fontSize: '16',
                                             fontWeight: 'bold'
                                         }
                                     }
@@ -290,7 +290,7 @@ define(function (require) {
                                         show: true,
                                         position: 'center',
                                         textStyle: {
-                                            fontSize: '30',
+                                            fontSize: '16',
                                             fontWeight: 'bold'
                                         }
                                     }
@@ -334,7 +334,7 @@ define(function (require) {
                                         show: true,
                                         position: 'center',
                                         textStyle: {
-                                            fontSize: '30',
+                                            fontSize: '16',
                                             fontWeight: 'bold'
                                         }
                                     }
@@ -378,7 +378,7 @@ define(function (require) {
                                         show: true,
                                         position: 'center',
                                         textStyle: {
-                                            fontSize: '30',
+                                            fontSize: '16',
                                             fontWeight: 'bold'
                                         }
                                     }
