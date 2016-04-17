@@ -480,6 +480,14 @@ define(function (require) {
             var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
+
+            $('.text-field').removeClass('c_red');
+            $.each($('.text-field'), function (key, value) {
+                if ($(value).attr('pid') == item.pid) {
+                    $(value).addClass('c_red');
+                }
+            });
+            
             if (pidArr.length < 4) {
                 getChildNode(item.id, pidArr.length + 1, item.pid);
             }

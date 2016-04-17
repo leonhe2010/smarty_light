@@ -70,6 +70,9 @@ define(function (require) {
             getChildNode(0, 1);
             getLightNum(1, 2);
             getSettedPlan();
+            setTimeout(function() {
+                $($('.text-field')[0]).addClass('c_red');
+            }, 1000);
         }
 
         // function initPlanPtnInput() {
@@ -374,6 +377,13 @@ define(function (require) {
             var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
+
+            $('.text-field').removeClass('c_red');
+            $.each($('.text-field'), function (key, value) {
+                if ($(value).attr('pid') == item.pid) {
+                    $(value).addClass('c_red');
+                }
+            });
 
             switch (pidArr.length) {
                 case 1:

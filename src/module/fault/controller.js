@@ -22,8 +22,6 @@ define(function (require) {
         }
 
         function initValue() {
-            var now = new Date();
-            var nowMoment = moment(now);
             $scope.demo = {};
             $scope.locationSetted = '全国';
             $scope.currentLevel = 0;
@@ -33,6 +31,8 @@ define(function (require) {
             $scope.patternType = 1;
             $scope.currentPage = 1;
             $scope.pageSize = 10;
+            var now = new Date();
+            var nowMoment = moment(now);
             $scope.endDate = nowMoment.format('YYYY-MM-DD');
             $scope.startDate = (nowMoment.subtract(365 * 24 * 60 * 60 * 1000)).format('YYYY-MM-DD');
         }
@@ -91,6 +91,13 @@ define(function (require) {
             var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
+
+            $('.text-field').removeClass('c_red');
+            $.each($('.text-field'), function (key, value) {
+                if ($(value).attr('pid') == item.pid) {
+                    $(value).addClass('c_red');
+                }
+            });
 
             switch (pidArr.length) {
                 case 1:

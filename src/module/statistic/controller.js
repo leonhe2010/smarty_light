@@ -89,6 +89,13 @@ define(function (require) {
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
 
+            $('.text-field').removeClass('c_red');
+            $.each($('.text-field'), function (key, value) {
+                if ($(value).attr('pid') == item.pid) {
+                    $(value).addClass('c_red');
+                }
+            });
+
             switch (pidArr.length) {
                 case 1:
                     if (!$scope.demo.tree[pidArr[0]]['children']) {
