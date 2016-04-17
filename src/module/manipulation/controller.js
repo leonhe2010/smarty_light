@@ -8,10 +8,10 @@ define(function (require) {
 
         function initValue() {
             $scope.demo = {};
-            $scope.setPtn = 1;
-            $scope.locationSetted = '全国';
-            $scope.currentLevel = 0;
-            $scope.currentId = 0;
+            $scope.setPtn = 2;
+            $scope.locationSetted = '上海';
+            $scope.currentLevel = 1;
+            $scope.currentId = 2;
             $scope.isDrag = false;
             $scope.ox = 0;
             // $scope.lx = 0;
@@ -68,7 +68,8 @@ define(function (require) {
             initValue();
             bindEvent();
             getChildNode(0, 1);
-            getLightNum(0, 0);
+            getLightNum(1, 2);
+            getSettedPlan();
         }
 
         // function initPlanPtnInput() {

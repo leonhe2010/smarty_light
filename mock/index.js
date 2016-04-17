@@ -37,11 +37,11 @@ exports.mocks = [
                 "data": {
                     "current": 12,
                     "device": {
-                        "camera": {total: 100, work: 10, fault: 30},
-                        "controller": {total: 1, work: 1, fault: 0},
-                        "light": {total: 12, work: 2, fault: 0},
-                        "sensor": {total: 14, work: 1, fault: 0},
-                        "wifi": {total: 1, work: 1, fault: 0}
+                        "light": {total: 100, work: 10, fault: 30},
+                        "crowd": {total: 1, work: 1, fault: 0},
+                        "environment": {total: 12, work: 2, fault: 0},
+                        "vehicle": {total: 14, work: 1, fault: 0},
+                        "voice": {total: 1, work: 1, fault: 0}
                     },
                     "humidity": 60,
                     "msg": "success",

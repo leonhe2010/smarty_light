@@ -173,12 +173,12 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['路灯个数', '打开个数', '故障个数']
+                        data: ['路灯传感器个数', '打开个数', '故障个数']
                     },
                     calculable: true,
                     series: [
                         {
-                            name: '路灯信息',
+                            name: '路灯传感器信息',
                             type: 'pie',
                             radius: ['70%', '90%'],
                             itemStyle: {
@@ -202,7 +202,7 @@ define(function (require) {
                                 }
                             },
                             data: [
-                                {value: deviceData.light.total, name: '路灯个数'},
+                                {value: deviceData.light.total, name: '路灯传感器个数'},
                                 {value: deviceData.light.work, name: '打开个数'},
                                 {value: deviceData.light.fault, name: '故障个数'}
                             ]
@@ -217,12 +217,12 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['控制器个数', '打开个数', '故障个数']
+                        data: ['人群传感器个数', '打开个数', '故障个数']
                     },
                     calculable: true,
                     series: [
                         {
-                            name: '控制器信息',
+                            name: '人群传感器信息',
                             type: 'pie',
                             radius: ['70%', '90%'],
                             itemStyle: {
@@ -246,9 +246,9 @@ define(function (require) {
                                 }
                             },
                             data: [
-                                {value: deviceData.controller.total, name: '控制器个数'},
-                                {value: deviceData.controller.work, name: '打开个数'},
-                                {value: deviceData.controller.fault, name: '故障个数'}
+                                {value: deviceData.crowd.total, name: '人群传感器个数'},
+                                {value: deviceData.crowd.work, name: '打开个数'},
+                                {value: deviceData.crowd.fault, name: '故障个数'}
                             ]
                         }
                     ]
@@ -261,12 +261,12 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['摄像头个数', '打开个数', '故障个数']
+                        data: ['环境传感器个数', '打开个数', '故障个数']
                     },
                     calculable: true,
                     series: [
                         {
-                            name: '摄像头信息',
+                            name: '环境传感器信息',
                             type: 'pie',
                             radius: ['70%', '90%'],
                             itemStyle: {
@@ -290,9 +290,9 @@ define(function (require) {
                                 }
                             },
                             data: [
-                                {value: deviceData.camera.total, name: '摄像头个数'},
-                                {value: deviceData.camera.work, name: '打开个数'},
-                                {value: deviceData.camera.fault, name: '故障个数'}
+                                {value: deviceData.environment.total, name: '环境传感器个数'},
+                                {value: deviceData.environment.work, name: '打开个数'},
+                                {value: deviceData.environment.fault, name: '故障个数'}
                             ]
                         }
                     ]
@@ -305,12 +305,12 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['传感器个数', '打开个数', '故障个数']
+                        data: ['车辆传感器个数', '打开个数', '故障个数']
                     },
                     calculable: true,
                     series: [
                         {
-                            name: '传感器信息',
+                            name: '车辆传感器信息',
                             type: 'pie',
                             radius: ['70%', '90%'],
                             itemStyle: {
@@ -334,9 +334,9 @@ define(function (require) {
                                 }
                             },
                             data: [
-                                {value: deviceData.sensor.total, name: '传感器个数'},
-                                {value: deviceData.sensor.work, name: '打开个数'},
-                                {value: deviceData.sensor.fault, name: '故障个数'}
+                                {value: deviceData.vehicle.total, name: '车辆传感器个数'},
+                                {value: deviceData.vehicle.work, name: '打开个数'},
+                                {value: deviceData.vehicle.fault, name: '故障个数'}
                             ]
                         }
                     ]
@@ -349,12 +349,12 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['wifi个数', '打开个数', '故障个数']
+                        data: ['声音传感器个数', '打开个数', '故障个数']
                     },
                     calculable: true,
                     series: [
                         {
-                            name: 'wifi信息',
+                            name: '声音传感器信息',
                             type: 'pie',
                             radius: ['70%', '90%'],
                             itemStyle: {
@@ -378,9 +378,9 @@ define(function (require) {
                                 }
                             },
                             data: [
-                                {value: deviceData.wifi.total, name: 'wifi个数'},
-                                {value: deviceData.wifi.work, name: '打开个数'},
-                                {value: deviceData.wifi.fault, name: '故障个数'}
+                                {value: deviceData.voice.total, name: '声音传感器个数'},
+                                {value: deviceData.voice.work, name: '打开个数'},
+                                {value: deviceData.voice.fault, name: '故障个数'}
                             ]
                         }
                     ]
