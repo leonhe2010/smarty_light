@@ -189,6 +189,30 @@ exports.mocks = [
     },
 
     {
+        path: '/smartcity/api/get_undistricted_light',
+        method: 'POST',
+        handler: function (request, reply) {
+            var videoInfo = [];
+            var i;
+            for (i = 0; i < 10; i++) {
+                videoInfo.push({
+                    "lightId": i + 1,
+                    "lightName": 111 * (i + 1)
+                });
+            }
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true,
+                    "light": videoInfo
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
         path: '/smartcity/api/set_light_manual',
         method: 'POST',
         handler: function (request, reply) {
@@ -375,19 +399,19 @@ exports.mocks = [
                             lightLng: 23.12,
                             lightLat: 12.344,
                             lightId: 1,
-                            lightName: "编号1灯"
+                            lightName: "1111"
                         },
                         {
                             lightId: 2,
                             lightLng: 213.12,
                             lightLat: 132.344,
-                            lightName: "编号2灯"
+                            lightName: "2222"
                         },
                         {
                             lightId: 3,
                             lightLng: 2.12,
                             lightLat: 9.834,
-                            lightName: "编号3灯"
+                            lightName: "3333"
                         }
                     ],
                     "result": true

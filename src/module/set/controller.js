@@ -292,18 +292,42 @@ define(function (require) {
                 }).error(function (res) {
                     alert('系统异常！');
                 });
-            }
+            };
 
             $scope.editLight = function (lightInfo) {
-                var editDialog = $modal.open({
-                    templateUrl: 'src/module/set/addLight.html',
-                    scope: $scope,
-                });
+                var editDialog;
 
                 if (lightInfo) {
                     $scope.lightNameIN = lightInfo.lightName;
                     $scope.lightLngIN = lightInfo.lightLng;
                     $scope.lightLatIN = lightInfo.lightLat;
+                    $scope.isEdit = true;
+
+                    editDialog = $modal.open({
+                        templateUrl: 'src/module/set/addLight.html',
+                        scope: $scope
+                    });
+                }
+                else {
+                    $scope.isEdit = false;
+                    var newLightUrl = '/smartcity/api/get_undistricted_light';
+                    $http.post(newLightUrl, {}).success(function (res) {
+                        if (res.status == 403) {
+                            $location.url('/login');
+                        }
+                        else if (res.data.result) {
+                            $scope.newLightOptions = res.data.light;
+                            editDialog = $modal.open({
+                                templateUrl: 'src/module/set/addLight.html',
+                                scope: $scope
+                            });
+                        } 
+                        else {
+                            alert(res.error);
+                        }
+                    }).error(function (res) {
+                        alert('系统异常！');
+                    });
                 }
 
                 $scope.closeEditLight = function () {
@@ -317,7 +341,7 @@ define(function (require) {
                     }
                     var url = '';
                     var params = {};
-                    if (lightInfo) {
+                    if ($scope.isEdit) {
                         url = '/smartcity/api/edit_light';
                         params = {
                             id: +lightInfo.lightId,
@@ -336,14 +360,7 @@ define(function (require) {
                             lightLat: +$scope.lightLatIN
                         };
                     }
-                    // var url = '/smartcity/api/add_light';
-                    //var params = {
-                    //  id: $scope.currentId,
-                    //level: $scope.currentLevel,
-                    // lightName: +$scope.lightNameIN,
-                    // lightLng: +$scope.lightLngIN,
-                    // lightLat: +$scope.lightLatIN
-                    //};
+                    
                     $http.post(url, params).success(function (res) {
                         if (res.status == 403) {
                             $location.url('/login');

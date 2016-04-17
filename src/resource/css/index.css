@@ -442,7 +442,7 @@ body {
     line-height: 28px
 }
 
-.dg_con input {
+.dg_con input, .dg_con select {
     border: medium none;
     background: #303740;
     height: 28px;

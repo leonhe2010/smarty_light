@@ -2,7 +2,10 @@
     <div class="close-light"><span>添加灯杆</span><em class="close_bt" ng-click="closeEditLight()">关闭</em></div>
     <div class="dg_con">
         <label>灯杆编号：</label>
-        <input type="text" ng-model="$parent.lightNameIN">
+        <input type="text" ng-model="$parent.lightNameIN" ng-show="isEdit" readonly="readonly" />
+        <select class="" ng-model="$parent.lightNameIN" ng-options="m.lightName as m.lightName for m in newLightOptions" ng-show="!isEdit">
+            <option value="">请选择</option>
+        </select>
         <label>经度：</label>
         <input type="text" ng-model="$parent.lightLngIN">
         <label>纬度：</label>
