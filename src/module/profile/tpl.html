@@ -57,19 +57,19 @@ nav-->
                     <dt>{{info.current}}<i>A</i></dt>
                     <dd>平均电流</dd>
                 </dl>
-                <dl>
+                <dl ng-show="currentLevel!=0 && currentLevel!=1">
                     <dt>{{info.temperature}}<i>C</i></dt>
                     <dd>温度</dd>
                 </dl>
-                <dl>
+                <dl ng-show="currentLevel!=0 && currentLevel!=1">
                     <dt>{{info.humidity}}<i>%</i></dt>
                     <dd>湿度</dd>
                 </dl>
-                <dl>
+                <dl ng-show="currentLevel!=0 && currentLevel!=1">
                     <dt>{{info.pm2p5}}<i>克</i></dt>
                     <dd>PM2.5</dd>
                 </dl>
-                <dl>
+                <dl ng-show="false">
                     <dt>23<i>%</i></dt>
                     <dd>可吸入颗粒物</dd>
                 </dl>

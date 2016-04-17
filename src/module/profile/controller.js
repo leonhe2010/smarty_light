@@ -7,38 +7,8 @@ define(function (require) {
 
         function initValue() {
             $scope.demo = {};
-            // $scope.demo.tree = [
-            //     {
-            //         "id": "2", 
-            //         "name": "上海",
-            //         "pid": "1l2",
-            //         "children": [
-            //             {
-            //                 "id": "2", 
-            //                 "name": "上海",
-            //                 "pid": "2l2",
-            //                 "children": [
-            //                     {
-            //                         "id": "2", 
-            //                         "name": "康桥智慧园区",
-            //                         "pid": "3l2", 
-            //                         "children": [
-            //                             {
-            //                                 "id": "2", 
-            //                                 "name": "分组一",
-            //                                 "pid": "4l2"
-            //                             }
-            //                         ]
-            //                     }
-            //                 ]
-            //             }
-            //         ]
-            //     }, 
-            //     {
-            //         "id": "1", 
-            //         "name": "北京"
-            //     }
-            // ];
+            $scope.currentLevel = 0;
+            $scope.currentId = 0;
         }
 
         function bindEvent() {
@@ -54,6 +24,8 @@ define(function (require) {
 
         function showLeftTree(item) {
             var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
+            $scope.currentLevel = +pidArr.length;
+            $scope.currentId = +item.id;
 
             switch (pidArr.length) {
                 case 1:
