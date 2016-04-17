@@ -19,11 +19,11 @@
 
                 <p>实时功耗：<i ng-bind="detail.power"></i>w</p>
 
-                <p>温度：<i ng-bind="detail.temperature"></i></p>
+                <p ng-show="detail.environment!=null">温度：<i ng-bind="detail.temperature"></i></p>
 
-                <p>湿度：<i ng-bind="detail.humidity"></i>%</p>
+                <p ng-show="detail.environment!=null">湿度：<i ng-bind="detail.humidity"></i>%</p>
 
-                <p>PM2.5：<i ng-bind="detail.pm2p5"></i></p>
+                <p ng-show="detail.environment!=null">PM2.5：<i ng-bind="detail.pm2p5"></i></p>
             </div>
             <div class="dd_lt_div">
                 <p ng-if="detail.light==1">路灯情况：<i class="c_green">正常</i></p>
@@ -65,11 +65,15 @@
         <div class="dd_search">
             <div class="dd_search_div clearfix">
                 <span>类型：</span>
-                <i ng-class="{'active': lightType==1}" type="1" ng-click="switchLightType($event)">路灯</i>
-                <i ng-class="{'active': lightType==2}" type="2" ng-click="switchLightType($event)">环境</i>
-                <i ng-class="{'active': lightType==3}" type="3" ng-click="switchLightType($event)">车辆</i>
-                <i ng-class="{'active': lightType==4}" type="4" ng-click="switchLightType($event)">人群</i>
-                <i ng-class="{'active': lightType==5}" type="5" ng-click="switchLightType($event)">语音</i>
+                <i ng-class="{'active': lightType==1}" type="1" ng-click="switchLightType($event)">电流</i>
+                <i ng-class="{'active': lightType==2}" type="2" ng-click="switchLightType($event)">LED电压</i>
+                <i ng-class="{'active': lightType==3}" type="3" ng-click="switchLightType($event)">LED电流</i>
+                <i ng-class="{'active': lightType==4}" type="4" ng-click="switchLightType($event)">PWM1功率</i>
+                <i ng-class="{'active': lightType==5}" type="5" ng-click="switchLightType($event)">PWM1剩余时间</i>
+                <i ng-class="{'active': lightType==6}" type="6" ng-click="switchLightType($event)">温度</i>
+                <i ng-class="{'active': lightType==7}" type="7" ng-click="switchLightType($event)">湿度</i>
+                <i ng-class="{'active': lightType==8}" type="8" ng-click="switchLightType($event)">PM2.5</i>
+                <i ng-class="{'active': lightType==9}" type="9" ng-click="switchLightType($event)">噪声值</i>
             </div>
             <div class="dd_search_div v">
                 <span>查询时间：</span>
