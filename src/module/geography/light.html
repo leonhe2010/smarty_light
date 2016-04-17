@@ -19,42 +19,42 @@
 
                 <p>实时功耗：<i ng-bind="detail.power"></i>w</p>
 
-                <p ng-show="detail.environment!=null">温度：<i ng-bind="detail.temperature"></i></p>
+                <p ng-show="detail.environment!=-1">温度：<i ng-bind="detail.temperature"></i></p>
 
-                <p ng-show="detail.environment!=null">湿度：<i ng-bind="detail.humidity"></i>%</p>
+                <p ng-show="detail.environment!=-1">湿度：<i ng-bind="detail.humidity"></i>%</p>
 
-                <p ng-show="detail.environment!=null">PM2.5：<i ng-bind="detail.pm2p5"></i></p>
+                <p ng-show="detail.environment!=-1">PM2.5：<i ng-bind="detail.pm2p5"></i></p>
             </div>
             <div class="dd_lt_div">
                 <p ng-if="detail.light==1">路灯情况：<i class="c_green">正常</i></p>
 
                 <p ng-if="detail.light==0">路灯情况：<i class="c_red">故障</i></p>
 
-                <p ng-if="detail.light==null">路灯情况：<i class="c_red">--</i></p>
+                <p ng-if="detail.light==-1">路灯情况：<i class="c_red">--</i></p>
 
                 <p ng-if="detail.crowd==1">人群情况：<i class="c_green">正常</i></p>
 
                 <p ng-if="detail.crowd==0">人群情况：<i class="c_red">故障</i></p>
 
-                <p ng-if="detail.crowd==null">人群情况：<i class="c_red">--</i></p>
+                <p ng-if="detail.crowd==-1">人群情况：<i class="c_red">--</i></p>
 
                 <p ng-if="detail.environment==1">环境情况：<i class="c_green">正常</i></p>
 
                 <p ng-if="detail.environment==0">环境情况：<i class="c_red">故障</i></p>
 
-                <p ng-if="detail.environment==null">环境情况：<i class="c_red">--</i></p>
+                <p ng-if="detail.environment==-1">环境情况：<i class="c_red">--</i></p>
 
                 <p ng-if="detail.vehicle==1">车辆情况：<i class="c_green">正常</i></p>
 
                 <p ng-if="detail.vehicle==0">车辆情况：<i class="c_red">故障</i></p>
 
-                <p ng-if="detail.vehicle==null">车辆情况：<i class="c_red">--</i></p>
+                <p ng-if="detail.vehicle==-1">车辆情况：<i class="c_red">--</i></p>
 
                 <p ng-if="detail.voice==1">语音情况：<i class="c_green">正常</i></p>
 
                 <p ng-if="detail.voice==0">语音情况：<i class="c_red">故障</i></p>
 
-                <p ng-if="detail.voice==null">语音情况：<i class="c_red">--</i></p>
+                <p ng-if="detail.voice==-1">语音情况：<i class="c_red">--</i></p>
             </div>
         </div>
 

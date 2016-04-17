@@ -37,8 +37,11 @@ define(function (require) {
             $scope.currentId = 0;
             $scope.calibrationOptions = config.calibrationOptions;
             $scope.statisticTypeOptions = config.statisticTypeOptions;
-            $scope.statistic = {calibrationOption: 1};
+            $scope.statistic = {calibrationOption: 4};
             $scope.statisticType = 1;
+            var now = new Date();
+            var nowMoment = moment(now);
+            $scope.endDate = nowMoment.format('YYYY-MM-DD');
         }
 
         function bindEvent() {
@@ -51,6 +54,7 @@ define(function (require) {
             bindEvent();
             getChildNode(0, 1);
             getLightNum(0, 0);
+            getStatisticInfo();
         }
 
         function getLightNum(type, id) {
@@ -226,6 +230,9 @@ define(function (require) {
                 $scope.statisticInfo = {
                     tooltip: {
                         trigger: 'axis'
+                    },
+                     legend: {
+                        data:[categoryItem]
                     },
                     calculable: true,
                     xAxis: [

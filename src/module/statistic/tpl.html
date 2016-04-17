@@ -51,7 +51,7 @@
             </div>
             <div class="dd_search_div">
                 <span>查询日期</span>
-                <input type="text" class="dd_text" ng-model="endDate">
+                <input type="text" class="dd_text" ng-model="endDate" placeholder="2016-01-01">
             </div>
             <div class="dd_search_div">
                 <span>查询时间段</span>
@@ -68,7 +68,7 @@
         <!--灯-故障/-->
         <!--统计-->
         <div class="dgz_qh" ng-show="statisticInfo">
-            <div class="dgz_qhtit"><span class="dgz_sd"><i class="cor_l"></i>{{categoryItem}}</span></div>
+            <!-- <div class="dgz_qhtit"><span class="dgz_sd"><i class="cor_l"></i>{{categoryItem}}</span></div> -->
             <div class="ms_con">
                 <div class="cut_qxms echart">
                     <div e-chart style="width: 848px;height: 255px;" options="statisticInfo"

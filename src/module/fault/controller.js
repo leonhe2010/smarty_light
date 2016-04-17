@@ -22,15 +22,19 @@ define(function (require) {
         }
 
         function initValue() {
+            var now = new Date();
+            var nowMoment = moment(now);
             $scope.demo = {};
             $scope.locationSetted = '全国';
             $scope.currentLevel = 0;
             $scope.currentId = 0;
             $scope.brokenTypeOptions = config.brokenTypeOptions;
-            $scope.brokenType = 1;
+            $scope.brokenType = 6;
             $scope.patternType = 1;
             $scope.currentPage = 1;
             $scope.pageSize = 10;
+            $scope.endDate = nowMoment.format('YYYY-MM-DD');
+            $scope.startDate = (nowMoment.subtract(365 * 24 * 60 * 60 * 1000)).format('YYYY-MM-DD');
         }
 
         function bindEvent() {
@@ -49,6 +53,7 @@ define(function (require) {
             bindEvent();
             getChildNode(0, 1);
             getLightNum(0, 0);
+            getFaultList();
         }
 
         function changeBrokenType() {
