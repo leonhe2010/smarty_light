@@ -353,11 +353,11 @@ define(function (require) {
                     else {
                         url = '/smartcity/api/add_light';
                         params = {
-                            id: $scope.currentId,
-                            level: $scope.currentLevel,
-                            lightName: +$scope.lightNameIN,
-                            lightLng: +$scope.lightLngIN,
-                            lightLat: +$scope.lightLatIN
+                            district_id: $scope.currentId,
+                            // level: $scope.currentLevel,
+                            lightId: +$scope.lightNameIN,
+                            lightLng: $scope.lightLngIN,
+                            lightLat: $scope.lightLatIN
                         };
                     }
                     
@@ -487,7 +487,7 @@ define(function (require) {
                     $(value).addClass('c_red');
                 }
             });
-            
+
             if (pidArr.length < 4) {
                 getChildNode(item.id, pidArr.length + 1, item.pid);
             }
