@@ -353,7 +353,7 @@ define(function (require) {
                     else {
                         url = '/smartcity/api/add_light';
                         params = {
-                            district_id: $scope.currentId,
+                            districtId: $scope.currentId,
                             // level: $scope.currentLevel,
                             lightId: +$scope.lightNameIN,
                             lightLng: $scope.lightLngIN,
