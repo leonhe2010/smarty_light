@@ -7,7 +7,7 @@ define(function (require) {
     var config = require('../config');
     var moment = require('moment');
 
-    function Controller($scope, $location, $timeout, $http, $modal, $sce) {
+    function Controller($scope, $location, $timeout, $http, $modal, $sce, util) {
 
         function initValue() {
             $scope.demo = {};
@@ -46,10 +46,10 @@ define(function (require) {
                     showLightModal(res.data, lightId);
                 }
                 else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -92,10 +92,10 @@ define(function (require) {
                         initEchart(res.data.info);
                     } 
                     else {
-                        alert(res.error);
+                        util.showMessage(res.error);
                     }
                 }).error(function (res) {
-                    alert('系统异常！');
+                    util.showMessage('系统异常！');
                 });
             };
 
@@ -112,10 +112,10 @@ define(function (require) {
                         showVideoModal(res.data, lightId);
                     } 
                     else {
-                        alert(res.error);
+                        util.showMessage(res.error);
                     }
                 }).error(function (res) {
-                    alert('系统异常！');
+                    util.showMessage('系统异常！');
                 });
             }
         }
@@ -158,10 +158,10 @@ define(function (require) {
                         $scope.historyVideoCount = res.data.pageDto.totalCount;
                     } 
                     else {
-                        alert(res.error);
+                        util.showMessage(res.error);
                     }
                 }).error(function (res) {
-                    alert('系统异常！');
+                    util.showMessage('系统异常！');
                 });
             };
 
@@ -255,7 +255,7 @@ define(function (require) {
                     ]
                 };
             } else {
-                alert('未获取到统计数据！');
+                util.showMessage('未获取到统计数据！');
             }
         }
 
@@ -278,10 +278,10 @@ define(function (require) {
                     $scope.faultLight = res.data.fault;
                 } 
                 else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -372,10 +372,10 @@ define(function (require) {
                     setTreeDate(res.data.nodes, id, level, pid);
                 } 
                 else {
-                    alert('获取信息失败！');
+                    util.showMessage('获取信息失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -399,10 +399,10 @@ define(function (require) {
                     // initEchart(res.data.device);
                 } 
                 else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
 
         }
@@ -410,7 +410,7 @@ define(function (require) {
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal', '$sce'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal', '$sce', 'utilService'];
 
     return Controller;
 });

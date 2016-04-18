@@ -7,7 +7,7 @@ define(function (require) {
     var us = require('underscore');
     var moment = require('moment');
 
-    function Controller($scope, $location, $timeout, $http) {
+    function Controller($scope, $location, $timeout, $http, util) {
 
         function initTime(endDate, len) {
             var timeArr = [];
@@ -79,10 +79,10 @@ define(function (require) {
                     $scope.faultLight = res.data.fault;
                 } 
                 else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -173,10 +173,10 @@ define(function (require) {
                     setTreeDate(res.data.nodes, id, level, pid);
                 } 
                 else {
-                    alert('获取信息失败！');
+                    util.showMessage('获取信息失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -192,7 +192,7 @@ define(function (require) {
 
         function getFaultList() {
             if (!$scope.endDate || !$scope.startDate) {
-                alert('请输入查询日期！');
+                util.showMessage('请输入查询日期！');
                 return;
             }
 
@@ -229,10 +229,10 @@ define(function (require) {
                         initEchart(res.data.brokenInfo);
                     }
                 } else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
 
         }
@@ -330,14 +330,14 @@ define(function (require) {
                 console.log(JSON.stringify($scope.brokenChart));
             }
             else {
-                alert('未获取到故障数据！');
+                util.showMessage('未获取到故障数据！');
             }
         }
 
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', 'utilService'];
 
     return Controller;
 });

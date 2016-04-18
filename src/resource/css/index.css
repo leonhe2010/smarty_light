@@ -1327,12 +1327,12 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
 /*点击减号竖型菜单弹窗*/
 .i_minus_layer_con {
     /*display:none;*/
-    width: 400px;
+    /*width: 400px;*/
     padding-bottom: 20px;
     box-shadow: -2px 0 5px #222830, 0 -2px 5px #222830, 0 2px 5px #222830, 2px 0 5px #222830;
-    position: absolute;
-    top: 180px;
-    left: -15%;
+    /*position: absolute;*/
+    /*top: 180px;*/
+    /*left: -50%;*/
     background: #2a313b;
     color: #fff;
     font-size: 14px

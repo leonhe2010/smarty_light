@@ -4,7 +4,7 @@ define(function (require) {
     require('common/directive/leftTree/directive');
     var config = require('../config');
 
-    function Controller($scope, $location, $timeout, $http, $modal) {
+    function Controller($scope, $location, $timeout, $http, $modal, util) {
 
         function initValue() {
             $scope.demo = {};
@@ -57,10 +57,10 @@ define(function (require) {
                     $scope.faultLight = res.data.fault;
                 } 
                 else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -117,14 +117,14 @@ define(function (require) {
                         openAddModal();
                     }
                     else {
-                        alert('没有未分组路灯！');
+                        util.showMessage('没有未分组路灯！');
                     }
                 } 
                 else {
-                    alert('获取路灯失败！');
+                    util.showMessage('获取路灯失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -137,7 +137,7 @@ define(function (require) {
             $scope.ok = function (event) {
 
                 if ($scope.lightIds.length == 0) {
-                    alert('请选择路灯！');
+                    util.showMessage('请选择路灯！');
                     return;
                 }
 
@@ -151,14 +151,14 @@ define(function (require) {
                         $location.url('/login');
                     }
                     else if (res.data.result) {
-                        alert('添加成功！');
+                        util.showMessage('添加成功！');
                         dialog.close();
                     } 
                     else {
-                        alert('添加失败！');
+                        util.showMessage('添加失败！');
                     }
                 }).error(function (res) {
-                    alert('系统异常！');
+                    util.showMessage('系统异常！');
                 });
 
             };
@@ -185,14 +185,14 @@ define(function (require) {
                     $location.url('/login');
                 }
                 else if (res.data.result) {
-                    alert('删除成功！');
+                    util.showMessage('删除成功！');
                     getSettedPlan();
                 } 
                 else {
-                    alert('获取已设置计划模式失败！');
+                    util.showMessage('获取已设置计划模式失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -254,10 +254,10 @@ define(function (require) {
                     initInputValue();
                 } 
                 else {
-                    alert('获取已设置计划模式失败！');
+                    util.showMessage('获取已设置计划模式失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -344,7 +344,7 @@ define(function (require) {
                     $location.url('/login');
                 }
                 else if (res.data.result) {
-                    alert('设置成功！');
+                    util.showMessage('设置成功！');
                     initBrightness();
 
                     $scope.onOff = null;
@@ -357,10 +357,10 @@ define(function (require) {
                     }
                 } 
                 else {
-                    alert('设置失败！');
+                    util.showMessage('设置失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -462,17 +462,17 @@ define(function (require) {
                     setTreeDate(res.data.nodes, id, level, pid);
                 } 
                 else {
-                    alert('获取信息失败！');
+                    util.showMessage('获取信息失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal', 'utilService'];
 
     return Controller;
 });

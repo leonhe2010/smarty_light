@@ -9,6 +9,7 @@ define(function (require) {
     require('underscore');
     require('uiRoute');
     require('common/filter/filter');
+    require('common/utilservice');
     // require('cookie');
     // require('./main.tpl');
 

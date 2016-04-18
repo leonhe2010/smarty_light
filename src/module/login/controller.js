@@ -2,7 +2,7 @@ define(function (require) {
 
     require('common/directive/leftTree/directive');
 
-    function Controller($scope, $location, $timeout, $http) {
+    function Controller($scope, $location, $timeout, $http, util) {
 
         $scope.login = function (argument) {
             if ($scope.userName == undefined) {
@@ -26,7 +26,7 @@ define(function (require) {
                     $scope.loginTip = res.error;
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         };
 
@@ -38,7 +38,7 @@ define(function (require) {
 
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', 'utilService'];
 
     return Controller;
 });

@@ -9,7 +9,8 @@ define(function (require) {
             'ui.router',
             'ui.bootstrap',
             'app.directives',
-            'app.filters'
+            'app.filters',
+            'app.services'
         ]);
 
     return app;

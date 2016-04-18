@@ -3,7 +3,7 @@ define(function (require) {
     require('common/directive/echartsRe/directive');
     require('common/directive/leftTree/directive');
 
-    function Controller($scope, $location, $timeout, $http) {
+    function Controller($scope, $location, $timeout, $http, util) {
 
         function initValue() {
             $scope.demo = {};
@@ -43,10 +43,10 @@ define(function (require) {
                     $scope.faultLight = res.data.fault;
                 } 
                 else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -138,10 +138,10 @@ define(function (require) {
                     setTreeDate(res.data.nodes, id, level, pid);
                 } 
                 else {
-                    alert('获取信息失败！');
+                    util.showMessage('获取信息失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -162,10 +162,10 @@ define(function (require) {
                     initEchart(res.data.device);
                 } 
                 else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
 
         }
@@ -393,14 +393,14 @@ define(function (require) {
                     ]
                 };
             } else {
-                alert('未获取设备数据！');
+                util.showMessage('未获取设备数据！');
             }
         }
 
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', 'utilService'];
 
     return Controller;
 });

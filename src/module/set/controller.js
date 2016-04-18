@@ -2,9 +2,10 @@ define(function (require) {
 
     require('common/directive/echartsRe/directive');
     require('common/directive/editLeftTree/directive');
+
     var us = require('underscore');
 
-    function Controller($scope, $location, $timeout, $http, $modal) {
+    function Controller($scope, $location, $timeout, $http, $modal, util) {
 
         function initValue() {
             $scope.demo = {};
@@ -102,7 +103,7 @@ define(function (require) {
                         $location.url('/login');
                     }
                     else if (res.data.result) {
-                        alert('删除成功！');
+                        util.showMessage('删除成功！');
                         deleteModal.close();
                         if (unitLevel > 1) {
                             var pos = pid.lastIndexOf(unitId + 'l');
@@ -116,10 +117,10 @@ define(function (require) {
                         }
                     } 
                     else {
-                        alert('删除失败！');
+                        util.showMessage('删除失败！');
                     }
                 }).error(function (res) {
-                    alert('系统异常！');
+                    util.showMessage('系统异常！');
                 });
             };
 
@@ -163,7 +164,7 @@ define(function (require) {
 
             $scope.postUnit = function () {
                 if (!$scope.unitName) {
-                    alert('请输入' + $scope.unitType);
+                    util.showMessage('请输入' + $scope.unitType);
                     return;
                 }
 
@@ -206,16 +207,16 @@ define(function (require) {
                         $location.url('/login');
                     }
                     else if (res.data.result) {
-                        alert('添加成功！');
+                        util.showMessage('添加成功！');
                         $scope.unitName = null;
                         unitDialog.close();
                         getChildNode(unitId, unitLevel + 1, pid);
                     } 
                     else {
-                        alert('添加失败！');
+                        util.showMessage('添加失败！');
                     }
                 }).error(function (res) {
-                    alert('系统异常！');
+                    util.showMessage('系统异常！');
                 });
             };
 
@@ -239,10 +240,10 @@ define(function (require) {
                     openLightListModal();
                 } 
                 else {
-                    alert('获取路灯失败！');
+                    util.showMessage('获取路灯失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -260,10 +261,10 @@ define(function (require) {
                     $scope.lightOptions = res.data.set;
                 } 
                 else {
-                    alert('获取路灯失败！');
+                    util.showMessage('获取路灯失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -283,14 +284,14 @@ define(function (require) {
                         $location.url('/login');
                     }
                     else if (res.data.result) {
-                        alert('删除成功！');
+                        util.showMessage('删除成功！');
                         getLightList();
                     } 
                     else {
-                        alert(res.error);
+                        util.showMessage(res.error);
                     }
                 }).error(function (res) {
-                    alert('系统异常！');
+                    util.showMessage('系统异常！');
                 });
             };
 
@@ -323,10 +324,10 @@ define(function (require) {
                             });
                         } 
                         else {
-                            alert(res.error);
+                            util.showMessage(res.error);
                         }
                     }).error(function (res) {
-                        alert('系统异常！');
+                        util.showMessage('系统异常！');
                     });
                 }
 
@@ -336,7 +337,7 @@ define(function (require) {
 
                 $scope.postLightInfo = function () {
                     if (!$scope.lightNameIN || !$scope.lightLngIN || !$scope.lightLatIN) {
-                        alert('请填写完整的路灯信息！');
+                        util.showMessage('请填写完整的路灯信息！');
                         return;
                     }
                     var url = '';
@@ -366,15 +367,15 @@ define(function (require) {
                             $location.url('/login');
                         }
                         else if (res.data.result) {
-                            alert('添加成功！');
+                            util.showMessage('添加成功！');
                             $scope.closeEditLight();
                             getLightList();
                         } 
                         else {
-                            alert('添加失败！');
+                            util.showMessage('添加失败！');
                         }
                     }).error(function (res) {
-                        alert('系统异常！');
+                        util.showMessage('系统异常！');
                     });
                 };
 
@@ -400,10 +401,10 @@ define(function (require) {
                     $scope.equipmentList = res.data.set
                 } 
                 else {
-                    alert('获取设置采样率失败！');
+                    util.showMessage('获取设置采样率失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -426,10 +427,10 @@ define(function (require) {
                     $scope.faultLight = res.data.fault;
                 } 
                 else {
-                    alert(res.error);
+                    util.showMessage(res.error);
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -440,12 +441,12 @@ define(function (require) {
 
         function postEquipment() {
             if (!$scope.equipmentType) {
-                alert('请选择设备类型！');
+                util.showMessage('请选择设备类型！');
                 return;
             }
 
             if (!$scope.equipmentFrequency || !$.isNumeric($scope.equipmentFrequency)) {
-                alert('请输入正确的采样时间频率！');
+                util.showMessage('请输入正确的采样时间频率！');
                 return;
             }
 
@@ -463,15 +464,15 @@ define(function (require) {
                     $location.url('/login');
                 }
                 else if (res.data.result) {
-                    alert('设置成功！');
+                    util.showMessage('设置成功！');
                     initEquipment();
                     getEquipmentList();
                 } 
                 else {
-                    alert('设置失败！');
+                    util.showMessage('设置失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
@@ -542,17 +543,17 @@ define(function (require) {
                     setTreeDate(res.data.nodes, id, level, pid);
                 } 
                 else {
-                    alert('获取信息失败！');
+                    util.showMessage('获取信息失败！');
                 }
             }).error(function (res) {
-                alert('系统异常！');
+                util.showMessage('系统异常！');
             });
         }
 
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal', 'utilService'];
 
     return Controller;
 });
