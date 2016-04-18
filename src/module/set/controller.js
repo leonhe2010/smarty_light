@@ -482,10 +482,10 @@ define(function (require) {
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
 
-            $('.text-field').removeClass('c_red');
+            $('.text-field').removeClass('c_green');
             $.each($('.text-field'), function (key, value) {
                 if ($(value).attr('pid') == item.pid) {
-                    $(value).addClass('c_red');
+                    $(value).addClass('c_green');
                 }
             });
 

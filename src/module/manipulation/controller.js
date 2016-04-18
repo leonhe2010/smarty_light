@@ -71,7 +71,7 @@ define(function (require) {
             getLightNum(1, 2);
             getSettedPlan();
             setTimeout(function() {
-                $($('.text-field')[0]).addClass('c_red');
+                $($('.text-field')[0]).addClass('c_green');
             }, 1000);
         }
 
@@ -378,10 +378,10 @@ define(function (require) {
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
 
-            $('.text-field').removeClass('c_red');
+            $('.text-field').removeClass('c_green');
             $.each($('.text-field'), function (key, value) {
                 if ($(value).attr('pid') == item.pid) {
-                    $(value).addClass('c_red');
+                    $(value).addClass('c_green');
                 }
             });
 

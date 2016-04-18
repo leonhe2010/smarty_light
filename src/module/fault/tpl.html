@@ -24,7 +24,7 @@
 <!--nav/-->
 <!--content-->
 <div class="w1200 content cut-all">
-    <div id="left-panel" class="panel bgh cut-left">
+    <div id="left-panel" class="panel bgh cut-left fault_left">
         <!--左右切换按钮-->
         <!-- <a id="left-panel-link" href="javascript:void(0)"></a> -->
         <!--左右切换按钮/-->
@@ -49,9 +49,9 @@
             </div>
             <div class="dd_search_div">
                 <span>起始时间</span>
-                <input type="text" class="dd_text" ng-model="startDate" placeholder="2016-01-01">
+                <input type="text" class="dd_text" ng-model="startDate" placeholder="输入格式：2016-01-01">
                 <span>结束时间</span>
-                <input type="text" class="dd_text" ng-model="endDate" placeholder="2016-01-01">
+                <input type="text" class="dd_text" ng-model="endDate" placeholder="输入格式：2016-01-01">
             </div>
             <div class="dd_search_div clearfix">
                 <input type="submit" value="查询" class="dd_bt" ng-click="getFaultList()">

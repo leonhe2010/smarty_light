@@ -56,10 +56,10 @@ define(function (require) {
             $scope.currentLevel = +pidArr.length;
             $scope.currentId = +item.id;
 
-            $('.text-field').removeClass('c_red');
+            $('.text-field').removeClass('c_green');
             $.each($('.text-field'), function (key, value) {
                 if ($(value).attr('pid') == item.pid) {
-                    $(value).addClass('c_red');
+                    $(value).addClass('c_green');
                 }
             });
 
@@ -180,7 +180,7 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['路灯传感器个数', '打开个数', '故障个数']
+                        data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
                     series: [
@@ -197,20 +197,20 @@ define(function (require) {
                                         show: false
                                     }
                                 },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '16',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
+                                // emphasis: {
+                                //     label: {
+                                //         show: true,
+                                //         position: 'center',
+                                //         textStyle: {
+                                //             fontSize: '14',
+                                //             fontWeight: 'bold'
+                                //         }
+                                //     }
+                                // }
                             },
                             data: [
-                                {value: deviceData.light.total, name: '路灯传感器个数'},
                                 {value: deviceData.light.work, name: '打开个数'},
+                                {value: deviceData.light.total - deviceData.light.work - deviceData.light.fault, name: '关闭个数'},
                                 {value: deviceData.light.fault, name: '故障个数'}
                             ]
                         }
@@ -241,16 +241,16 @@ define(function (require) {
                                         show: false
                                     }
                                 },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '16',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
+                                // emphasis: {
+                                //     label: {
+                                //         show: true,
+                                //         position: 'center',
+                                //         textStyle: {
+                                //             fontSize: '16',
+                                //             fontWeight: 'bold'
+                                //         }
+                                //     }
+                                // }
                             },
                             data: [
                                 {value: deviceData.crowd.total, name: '人群传感器个数'},
@@ -285,16 +285,16 @@ define(function (require) {
                                         show: false
                                     }
                                 },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '16',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
+                                // emphasis: {
+                                //     label: {
+                                //         show: true,
+                                //         position: 'center',
+                                //         textStyle: {
+                                //             fontSize: '16',
+                                //             fontWeight: 'bold'
+                                //         }
+                                //     }
+                                // }
                             },
                             data: [
                                 {value: deviceData.environment.total, name: '环境传感器个数'},
@@ -329,16 +329,16 @@ define(function (require) {
                                         show: false
                                     }
                                 },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '16',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
+                                // emphasis: {
+                                //     label: {
+                                //         show: true,
+                                //         position: 'center',
+                                //         textStyle: {
+                                //             fontSize: '16',
+                                //             fontWeight: 'bold'
+                                //         }
+                                //     }
+                                // }
                             },
                             data: [
                                 {value: deviceData.vehicle.total, name: '车辆传感器个数'},
@@ -373,16 +373,16 @@ define(function (require) {
                                         show: false
                                     }
                                 },
-                                emphasis: {
-                                    label: {
-                                        show: true,
-                                        position: 'center',
-                                        textStyle: {
-                                            fontSize: '16',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                }
+                                // emphasis: {
+                                //     label: {
+                                //         show: true,
+                                //         position: 'center',
+                                //         textStyle: {
+                                //             fontSize: '16',
+                                //             fontWeight: 'bold'
+                                //         }
+                                //     }
+                                // }
                             },
                             data: [
                                 {value: deviceData.voice.total, name: '声音传感器个数'},
