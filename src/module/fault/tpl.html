@@ -39,8 +39,38 @@
     <div id="page" class="bgh page cut-page dkgz-con">
         <!--灯-故障-->
         <div class="d_gz">
-            <p class="tit" ng-bind="locationSetted"></p>
-            <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div>
+            <!-- <p class="tit" ng-bind="locationSetted"></p>
+            <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div> -->
+            <div class="sssj_con current_light_info">
+                <dl>
+                    <dt>{{locationSetted}}<i></i></dt>
+                    <dd></dd>
+                </dl>
+                <dl>
+                    <dt>{{allLight}}<i>个</i></dt>
+                    <dd>总路灯</dd>
+                </dl>
+                <dl>
+                    <dt>{{openLight}}<i>个</i></dt>
+                    <dd>打开路灯</dd>
+                </dl>
+                <dl>
+                    <dt>{{closeLight}}<i>个</i></dt>
+                    <dd>关闭路灯</dd>
+                </dl>
+                <dl>
+                    <dt>{{faultLight}}<i>个</i></dt>
+                    <dd>故障路灯</dd>
+                </dl>
+                <!-- <dl ng-show="currentLevel!=0 && currentLevel!=1">
+                    <dt>{{info.pm2p5}}<i>克</i></dt>
+                    <dd>PM2.5</dd>
+                </dl> -->
+                <dl ng-show="false">
+                    <dt>23<i>%</i></dt>
+                    <dd>可吸入颗粒物</dd>
+                </dl>
+            </div>
             <div class="tjsp_con dkgx_sel">
                 <label>统计类型：</label>
                 <select class="spbx_table dd_text" id="tjlx" ng-model="brokenType"
@@ -48,9 +78,9 @@
                 </select>
             </div>
             <div class="dd_search_div">
-                <span>起始时间</span>
+                <span>开始日期</span>
                 <input type="text" class="dd_text" ng-model="startDate" placeholder="输入格式：2016-01-01">
-                <span>结束时间</span>
+                <span>结束日期</span>
                 <input type="text" class="dd_text" ng-model="endDate" placeholder="输入格式：2016-01-01">
             </div>
             <div class="dd_search_div clearfix">

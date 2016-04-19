@@ -105,16 +105,18 @@ define(function (require) {
                     else if (res.data.result) {
                         util.showMessage('删除成功！');
                         deleteModal.close();
+                        console.log($scope.demo.tree);
                         if (unitLevel > 1) {
                             var pos = pid.lastIndexOf(unitId + 'l');
                             var prtPid = pid.substring(0, pos);
                             var prtIdArr = prtPid.substr(0, prtPid.length - 1).split('l');
                             var prtId = prtIdArr[prtIdArr.length - 1];
-                            getChildNode(unitId, unitLevel, prtPid);
+                            getChildNode(prtId, unitLevel, prtPid);
                         }
                         else {
                             getChildNode(0, 1);
                         }
+                        console.log($scope.demo.tree);
                     } 
                     else {
                         util.showMessage('删除失败！');

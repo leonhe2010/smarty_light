@@ -196,17 +196,7 @@ define(function (require) {
                                     labelLine: {
                                         show: false
                                     }
-                                },
-                                // emphasis: {
-                                //     label: {
-                                //         show: true,
-                                //         position: 'center',
-                                //         textStyle: {
-                                //             fontSize: '14',
-                                //             fontWeight: 'bold'
-                                //         }
-                                //     }
-                                // }
+                                }
                             },
                             data: [
                                 {value: deviceData.light.work, name: '打开个数'},
@@ -224,7 +214,7 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['人群传感器个数', '打开个数', '故障个数']
+                        data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
                     series: [
@@ -240,21 +230,11 @@ define(function (require) {
                                     labelLine: {
                                         show: false
                                     }
-                                },
-                                // emphasis: {
-                                //     label: {
-                                //         show: true,
-                                //         position: 'center',
-                                //         textStyle: {
-                                //             fontSize: '16',
-                                //             fontWeight: 'bold'
-                                //         }
-                                //     }
-                                // }
+                                }
                             },
                             data: [
-                                {value: deviceData.crowd.total, name: '人群传感器个数'},
                                 {value: deviceData.crowd.work, name: '打开个数'},
+                                {value: deviceData.crowd.total - deviceData.crowd.work - deviceData.crowd.fault, name: '关闭个数'},
                                 {value: deviceData.crowd.fault, name: '故障个数'}
                             ]
                         }
@@ -268,7 +248,7 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['环境传感器个数', '打开个数', '故障个数']
+                        data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
                     series: [
@@ -284,21 +264,11 @@ define(function (require) {
                                     labelLine: {
                                         show: false
                                     }
-                                },
-                                // emphasis: {
-                                //     label: {
-                                //         show: true,
-                                //         position: 'center',
-                                //         textStyle: {
-                                //             fontSize: '16',
-                                //             fontWeight: 'bold'
-                                //         }
-                                //     }
-                                // }
+                                }
                             },
                             data: [
-                                {value: deviceData.environment.total, name: '环境传感器个数'},
                                 {value: deviceData.environment.work, name: '打开个数'},
+                                {value: deviceData.environment.total - deviceData.environment.work - deviceData.environment.fault, name: '关闭个数'},
                                 {value: deviceData.environment.fault, name: '故障个数'}
                             ]
                         }
@@ -312,7 +282,7 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['车辆传感器个数', '打开个数', '故障个数']
+                        data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
                     series: [
@@ -328,21 +298,11 @@ define(function (require) {
                                     labelLine: {
                                         show: false
                                     }
-                                },
-                                // emphasis: {
-                                //     label: {
-                                //         show: true,
-                                //         position: 'center',
-                                //         textStyle: {
-                                //             fontSize: '16',
-                                //             fontWeight: 'bold'
-                                //         }
-                                //     }
-                                // }
+                                }
                             },
                             data: [
-                                {value: deviceData.vehicle.total, name: '车辆传感器个数'},
                                 {value: deviceData.vehicle.work, name: '打开个数'},
+                                {value: deviceData.vehicle.total - deviceData.vehicle.work - deviceData.vehicle.fault, name: '关闭个数'},
                                 {value: deviceData.vehicle.fault, name: '故障个数'}
                             ]
                         }
@@ -356,7 +316,7 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
-                        data: ['声音传感器个数', '打开个数', '故障个数']
+                        data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
                     series: [
@@ -372,21 +332,11 @@ define(function (require) {
                                     labelLine: {
                                         show: false
                                     }
-                                },
-                                // emphasis: {
-                                //     label: {
-                                //         show: true,
-                                //         position: 'center',
-                                //         textStyle: {
-                                //             fontSize: '16',
-                                //             fontWeight: 'bold'
-                                //         }
-                                //     }
-                                // }
+                                }
                             },
                             data: [
-                                {value: deviceData.voice.total, name: '声音传感器个数'},
                                 {value: deviceData.voice.work, name: '打开个数'},
+                                {value: deviceData.voice.total - deviceData.voice.work - deviceData.voice.fault, name: '关闭个数'},
                                 {value: deviceData.voice.fault, name: '故障个数'}
                             ]
                         }

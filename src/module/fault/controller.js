@@ -196,6 +196,18 @@ define(function (require) {
                 return;
             }
 
+            var reg = /^\d\d\d\d\-\d\d\-\d\d$/;
+
+            if (!reg.test($scope.endDate) || !reg.test($scope.startDate)) {
+                util.showMessage('请输入正确的日期格式！');
+                return;
+            }
+
+            if (+new Date($scope.endDate) <= +new Date($scope.startDate)) {
+                util.showMessage('开始日期要小于结束日期！');
+                return;
+            }
+
             var url;
             var params = {
                 level: +$scope.currentLevel,

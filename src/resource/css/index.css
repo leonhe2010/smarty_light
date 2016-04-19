@@ -1362,13 +1362,13 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
 }
 
 .echart {
-    background-color: #9d9d9d;
+    background-color: #fff;
     position: relative;
 }
 
 .echart .ctrl_title {
     position: absolute;
-    color: #fff;
+    color: #000;
     font-size: 13px;
     top: 2px;
     left: 6px;

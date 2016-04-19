@@ -39,8 +39,38 @@
     </div>
     <!--left/-->
     <div id="page" class="bgh page cut-page">
-        <p class="tit" ng-bind="locationSetted"></p>
-        <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div>
+        <!-- <p class="tit" ng-bind="locationSetted"></p>
+        <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div> -->
+        <div class="sssj_con current_light_info">
+            <dl>
+                <dt>{{locationSetted}}<i></i></dt>
+                <dd></dd>
+            </dl>
+            <dl>
+                <dt>{{allLight}}<i>个</i></dt>
+                <dd>总路灯</dd>
+            </dl>
+            <dl>
+                <dt>{{openLight}}<i>个</i></dt>
+                <dd>打开路灯</dd>
+            </dl>
+            <dl>
+                <dt>{{closeLight}}<i>个</i></dt>
+                <dd>关闭路灯</dd>
+            </dl>
+            <dl>
+                <dt>{{faultLight}}<i>个</i></dt>
+                <dd>故障路灯</dd>
+            </dl>
+            <!-- <dl ng-show="currentLevel!=0 && currentLevel!=1">
+                <dt>{{info.pm2p5}}<i>克</i></dt>
+                <dd>PM2.5</dd>
+            </dl> -->
+            <dl ng-show="false">
+                <dt>23<i>%</i></dt>
+                <dd>可吸入颗粒物</dd>
+            </dl>
+        </div>
         <!--灯控-地理-->
         <div class="dk_dl">
             <div class="dk_dl_img" width="900" height="601">
