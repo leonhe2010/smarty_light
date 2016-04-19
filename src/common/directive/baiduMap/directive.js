@@ -27,21 +27,31 @@ define(function (require) {
                     function getComIcon(i, isWorked) {
                         if (isWorked == 1) {
                             return new BMap.Icon(
-                                'src/resource/images/markers.png',
-                                new BMap.Size(24, 36),
+                                'src/resource/images/markers_new.png',
+                                new BMap.Size(20, 28),
                                 {
                                     // offset: new BMap.Size(10, 25),
-                                    imageOffset: new BMap.Size(0, -156)
+                                    imageOffset: new BMap.Size(-15, -165)
+                                }
+                            );
+                        }
+                        else if (isWorked == 2) {
+                            return new BMap.Icon(
+                                'src/resource/images/markers_new.png',
+                                new BMap.Size(20, 28),
+                                {
+                                    // offset: new BMap.Size(10, 25),
+                                    imageOffset: new BMap.Size(-15, -129)
                                 }
                             );
                         }
                         else {
                             return new BMap.Icon(
-                                'src/resource/images/markers.png',
-                                new BMap.Size(21, 30),
+                                'src/resource/images/markers_new.png',
+                                new BMap.Size(20, 28),
                                 {
                                     // offset: new BMap.Size(10, 25),
-                                    imageOffset: new BMap.Size(0, -116)
+                                    imageOffset: new BMap.Size(-15, -202)
                                 }
                             );
                         }
@@ -53,21 +63,31 @@ define(function (require) {
                         // 激活icon
                         if (isWorked == 1) {
                             return new BMap.Icon(
-                                'src/resource/images/markers.png',
-                                new BMap.Size(25, 25),
+                                'src/resource/images/markers_new.png',
+                                new BMap.Size(24, 34),
                                 {
                                     // offset: new BMap.Size(10, 25),
-                                    imageOffset: new BMap.Size(-34, -156)
+                                    imageOffset: new BMap.Size(-15, -42)
+                                }
+                            );
+                        }
+                        else if (isWorked == 2) {
+                            return new BMap.Icon(
+                                'src/resource/images/markers_new.png',
+                                new BMap.Size(24, 34),
+                                {
+                                    // offset: new BMap.Size(10, 25),
+                                    imageOffset: new BMap.Size(-15, -2)
                                 }
                             );
                         }
                         else {
                             return new BMap.Icon(
-                                'src/resource/images/markers.png',
-                                new BMap.Size(22, 22),
+                                'src/resource/images/markers_new.png',
+                                new BMap.Size(24, 34),
                                 {
                                     // offset: new BMap.Size(10, 25),
-                                    imageOffset: new BMap.Size(-34, -116)
+                                    imageOffset: new BMap.Size(-15, -86)
                                 }
                             );
                         }

@@ -491,7 +491,7 @@ exports.mocks = [
                 location.push({
                     "lat": 40.04111723476737 + Math.ceil(Math.random() * 10) / 50 + '',
                     "lng": 116.3248028932062 + Math.ceil(Math.random() * 10) / 50 + '',
-                    "isWorked": i % 2 + 1,
+                    "isWorked": i % 3 + 1,
                     "lightId": i + 1,
                 });
             }
