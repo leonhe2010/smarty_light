@@ -499,9 +499,9 @@ define(function (require) {
 
         // 刷新列表
         function setTreeDate(nodes, parentId, parentLevel, parentPid) {
-            if (nodes.length === 0) {
-                return;
-            }
+            // if (nodes.length === 0) {
+            //     return;
+            // }
             if (parentLevel === 1) {
                 $.each(nodes, function (index, value) {
                     nodes[index].pid = nodes[index].id + 'l';
