@@ -159,9 +159,7 @@ define(function (require) {
                 }
                 else if (res.data.result) {
                     $scope.info = res.data;
-                    setTimeout(function () {
-                        initEchart(res.data.device);
-                    }, 500);
+                    initEchart(res.data.device);
                 } 
                 else {
                     util.showMessage(res.error);
