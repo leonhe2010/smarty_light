@@ -189,7 +189,7 @@ define(function (require) {
                         {
                             name: '路灯传感器信息',
                             type: 'pie',
-                            radius: ['70%', '90%'],
+                            radius: ['50%', '70%'],
                             itemStyle: {
                                 normal: {
                                     label: {
@@ -225,7 +225,7 @@ define(function (require) {
                         {
                             name: '人群传感器信息',
                             type: 'pie',
-                            radius: ['70%', '90%'],
+                            radius: ['50%', '70%'],
                             itemStyle: {
                                 normal: {
                                     label: {
@@ -261,7 +261,7 @@ define(function (require) {
                         {
                             name: '环境传感器信息',
                             type: 'pie',
-                            radius: ['70%', '90%'],
+                            radius: ['50%', '70%'],
                             itemStyle: {
                                 normal: {
                                     label: {
@@ -297,7 +297,7 @@ define(function (require) {
                         {
                             name: '车辆传感器信息',
                             type: 'pie',
-                            radius: ['70%', '90%'],
+                            radius: ['50%', '70%'],
                             itemStyle: {
                                 normal: {
                                     label: {
@@ -333,7 +333,7 @@ define(function (require) {
                         {
                             name: '声音传感器信息',
                             type: 'pie',
-                            radius: ['70%', '90%'],
+                            radius: ['50%', '70%'],
                             itemStyle: {
                                 normal: {
                                     label: {
