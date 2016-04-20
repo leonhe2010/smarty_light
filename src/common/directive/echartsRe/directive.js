@@ -14,7 +14,10 @@ define(function (require) {
 
                     var chart = echarts.init($elem[0]);
 
-                    chart.setOption($scope.options);
+                    // chart.setOption($scope.options);
+                    setTimeout(function () {
+                        chart.setOption($scope.options);
+                    }, 100);
 
                     chart.on(echarts.config.EVENT.CLICK, function (point) {
                         $scope.clickHandler({
