@@ -1363,12 +1363,15 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
 
 .echart {
     background-color: #fff;
+}
+
+.profile_echart {
     position: relative;
 }
 
-.echart .ctrl_title {
+.profile_echart .ctrl_title {
     position: absolute;
-    color: #000;
+    color: #fff;
     font-size: 13px;
     top: 2px;
     left: 6px;

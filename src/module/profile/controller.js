@@ -180,9 +180,11 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
+                        textStyle: {color: '#848c97'},
                         data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
+                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
                     series: [
                         {
                             name: '路灯传感器信息',
@@ -214,9 +216,11 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
+                        textStyle: {color: '#848c97'},
                         data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
+                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
                     series: [
                         {
                             name: '人群传感器信息',
@@ -248,9 +252,11 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
+                        textStyle: {color: '#848c97'},
                         data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
+                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
                     series: [
                         {
                             name: '环境传感器信息',
@@ -282,9 +288,11 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
+                        textStyle: {color: '#848c97'},
                         data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
+                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
                     series: [
                         {
                             name: '车辆传感器信息',
@@ -316,9 +324,11 @@ define(function (require) {
                     legend: {
                         orient: 'vertical',
                         x: 'right',
+                        textStyle: {color: '#848c97'},
                         data: ['打开个数', '关闭个数', '故障个数']
                     },
                     calculable: true,
+                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
                     series: [
                         {
                             name: '声音传感器信息',
