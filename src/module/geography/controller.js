@@ -76,6 +76,11 @@ define(function (require) {
             };
 
             $scope.getChartData = function () {
+                if (!$scope.endDate) {
+                    util.showMessage('请输入查询日期！');
+                    return;
+                }
+                
                 var url = '/smartcity/api/get_statistic';
                 var params = {
                     "id": +lightId,
