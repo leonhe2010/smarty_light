@@ -217,8 +217,8 @@ define(function (require) {
                 }
                 $('#bt').css('left', $scope.left);
                 $('#bgcolor').width($scope.left);
-                $scope.brightness = parseInt($scope.left / 6.9);
-                $('#text').html(parseInt($scope.left / 6.9));
+                $scope.brightness = parseInt($scope.left / 7);
+                $('#text').html(parseInt($scope.left / 7));
             }
         }
 
@@ -227,8 +227,8 @@ define(function (require) {
             $scope.left = 0;
             $('#bt').css('left', $scope.left);
             $('#bgcolor').width($scope.left);
-            $scope.brightness = parseInt($scope.left / 6.9);
-            $('#text').html(parseInt($scope.left / 6.9));
+            $scope.brightness = parseInt($scope.left / 7);
+            $('#text').html(parseInt($scope.left / 7));
         }
 
         function getSettedPlan() {
