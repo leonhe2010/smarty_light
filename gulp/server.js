@@ -3,6 +3,10 @@ var Hapi = require('hapi');
 var through2 = require('through2');
 // var autoprefixer = require('gulp-autoprefixer');
 var gulpBrowserify2 = require('gulp-browserify2');
+var concat = require('gulp-concat');
+var jshint = require('gulp-jshint');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 // var gulpSass = require('gulp-sass');
 var to5ify = require('6to5ify');
 

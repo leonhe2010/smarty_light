@@ -141,7 +141,7 @@ define(function (require) {
                     return;
                 }
 
-                var url = '/smartcity/api/add_light_ungrouped';
+                var url = '/smartcity/api/group_light';
                 var params = {
                     lightIds: $scope.lightIds,
                     id: $scope.currentId
