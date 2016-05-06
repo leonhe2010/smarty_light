@@ -1,87 +1,46 @@
-<div class="w1200 bgh nav">
-    <div class="fl nav_link">
-        <!--当前选中状态 加 class="active"-->
-        <a href="/smartcity/smarty_light/main.html?#/profile">概要</a>
-        <a href="/smartcity/smarty_light/main.html?#/geography" class="active">地理</a>
-        <a href="/smartcity/smarty_light/main.html?#/manipulation">灯控页面</a>
-        <a href="/smartcity/smarty_light/main.html?#/statistic">统计</a>
-        <a href="/smartcity/smarty_light/main.html?#/fault">故障列表</a>
-        <a href="/smartcity/smarty_light/main.html?#/set">设置</a>
+<div id="page" class="bgh page cut-page">
+    <!-- <p class="tit" ng-bind="locationSetted"></p>
+    <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div> -->
+    <div class="sssj_con current_light_info">
+        <dl>
+            <dt>{{locationSetted}}<i></i></dt>
+            <dd></dd>
+        </dl>
+        <dl>
+            <dt>{{allLight}}<i>个</i></dt>
+            <dd>总路灯</dd>
+        </dl>
+        <dl>
+            <dt>{{openLight}}<i>个</i></dt>
+            <dd>打开路灯</dd>
+        </dl>
+        <dl>
+            <dt>{{closeLight}}<i>个</i></dt>
+            <dd>关闭路灯</dd>
+        </dl>
+        <dl>
+            <dt>{{faultLight}}<i>个</i></dt>
+            <dd>故障路灯</dd>
+        </dl>
+        <!-- <dl ng-show="currentLevel!=0 && currentLevel!=1">
+            <dt>{{info.pm2p5}}<i>克</i></dt>
+            <dd>PM2.5</dd>
+        </dl> -->
+        <dl ng-show="false">
+            <dt>23<i>%</i></dt>
+            <dd>可吸入颗粒物</dd>
+        </dl>
     </div>
-    <div class="fr nav_time"><i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
-
-        <div class="daojishi">
-            <!--time-->
-            <div class="dowebok">
-                <div class="hours"></div>
-                <div class="minutes"></div>
-                <div class="seconds" style="display:none"></div>
-            </div>
-            <!--time/-->
+    <!--灯控-地理-->
+    <div class="dk_dl">
+        <div class="dk_dl_img" width="900" height="601">
+            <baidu-map></baidu-map>
+        </div>
+        <div class="dk_dl_cr">
+            <span><i class="cor_l"></i>正常</span>
+            <span><i class="cor_h"></i>灯灭</span>
+            <span><i class="cor_r"></i>故障</span>
         </div>
     </div>
-</div>
-<!--nav/-->
-<!--content-->
-<div class="w1200 content cut-all">
-    <!--left-->
-    <div id="left-panel" class="panel bgh cut-left">
-        <!--左右切换按钮-->
-        <!-- <a id="left-panel-link" href="javascript:void(0)"></a> -->
-        <!--左右切换按钮/-->
-        <!--树型菜单-->
-        <ul id="tree" class="lightTreeview">
-            <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)"
-                       item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view>
-
-        </ul>
-        <!--树型菜单/-->
-    </div>
-    <!--left/-->
-    <div id="page" class="bgh page cut-page">
-        <!-- <p class="tit" ng-bind="locationSetted"></p>
-        <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div> -->
-        <div class="sssj_con current_light_info">
-            <dl>
-                <dt>{{locationSetted}}<i></i></dt>
-                <dd></dd>
-            </dl>
-            <dl>
-                <dt>{{allLight}}<i>个</i></dt>
-                <dd>总路灯</dd>
-            </dl>
-            <dl>
-                <dt>{{openLight}}<i>个</i></dt>
-                <dd>打开路灯</dd>
-            </dl>
-            <dl>
-                <dt>{{closeLight}}<i>个</i></dt>
-                <dd>关闭路灯</dd>
-            </dl>
-            <dl>
-                <dt>{{faultLight}}<i>个</i></dt>
-                <dd>故障路灯</dd>
-            </dl>
-            <!-- <dl ng-show="currentLevel!=0 && currentLevel!=1">
-                <dt>{{info.pm2p5}}<i>克</i></dt>
-                <dd>PM2.5</dd>
-            </dl> -->
-            <dl ng-show="false">
-                <dt>23<i>%</i></dt>
-                <dd>可吸入颗粒物</dd>
-            </dl>
-        </div>
-        <!--灯控-地理-->
-        <div class="dk_dl">
-            <div class="dk_dl_img" width="900" height="601">
-                <baidu-map></baidu-map>
-            </div>
-            <div class="dk_dl_cr">
-                <span><i class="cor_l"></i>正常</span>
-                <span><i class="cor_h"></i>灯灭</span>
-                <span><i class="cor_r"></i>故障</span>
-            </div>
-        </div>
-        <!--灯控-地理/-->
-    </div>
+    <!--灯控-地理/-->
 </div>

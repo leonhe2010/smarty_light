@@ -16,7 +16,49 @@
 </head>
 <body>
 <div class="app-container">
+    
+    <!--nav-->
+<div class="w1200 bgh nav" ng-show="!isLoginPage()">
+    <div class="fl nav_link">
+        <!--当前选中状态 加 class="active"-->
+        <a href="/smartcity/smarty_light/main.html?#/profile" ng-class="{'active': isProfilePage()}">概要</a>
+        <a href="/smartcity/smarty_light/main.html?#/geography" ng-class="{'active': isGeographyPage()}">地理</a>
+        <a href="/smartcity/smarty_light/main.html?#/manipulation" ng-class="{'active': isManipulationPage()}">灯控页面</a>
+        <a href="/smartcity/smarty_light/main.html?#/statistic" ng-class="{'active': isStatisticPage()}">统计</a>
+        <a href="/smartcity/smarty_light/main.html?#/fault" ng-class="{'active': isFaultPage()}">故障列表</a>
+        <a href="/smartcity/smarty_light/main.html?#/set" ng-class="{'active': isSetPage()}">设置</a>
+    </div>
+    <div class="fr nav_time"><i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
+
+        <div class="daojishi">
+            <!--time-->
+            <div class="dowebok">
+                <div class="hours"></div>
+                <div class="minutes"></div>
+                <div class="seconds" style="display:none"></div>
+            </div>
+            <!--time/-->
+        </div>
+    </div>
+</div>
+<!--nav/-->
+<!--content-->
+<div class="w1200 content cut-all">
+    <!--left-->
+    <div id="left-panel" class="panel bgh cut-left" ng-show="!isLoginPage()">
+        <!--左右切换按钮-->
+        <!-- <a id="left-panel-link" href="javascript:void(0)"></a> -->
+        <!--左右切换按钮/-->
+        <!--树型菜单-->
+        <ul id="tree" class="lightTreeview">
+            <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)"
+                       item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view>
+        </ul>
+        <!--树型菜单/-->
+    </div>
+    <!--left/-->
     <div ng-view></div>
+</div>
 </div>
 </body>
 <script type="text/javascript" src="src/dep/base.js"></script>

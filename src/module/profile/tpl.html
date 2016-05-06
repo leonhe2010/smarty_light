@@ -1,45 +1,4 @@
-<!--nav-->
-<div class="w1200 bgh nav">
-    <div class="fl nav_link">
-        <!--当前选中状态 加 class="active"-->
-        <a href="/smartcity/smarty_light/main.html?#/profile" class="active">概要</a>
-        <a href="/smartcity/smarty_light/main.html?#/geography">地理</a>
-        <a href="/smartcity/smarty_light/main.html?#/manipulation">灯控页面</a>
-        <a href="/smartcity/smarty_light/main.html?#/statistic">统计</a>
-        <a href="/smartcity/smarty_light/main.html?#/fault">故障列表</a>
-        <a href="/smartcity/smarty_light/main.html?#/set">设置</a>
-    </div>
-    <div class="fr nav_time"><i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
-
-        <div class="daojishi">
-            <!--time-->
-            <div class="dowebok">
-                <div class="hours"></div>
-                <div class="minutes"></div>
-                <div class="seconds" style="display:none"></div>
-            </div>
-            <!--time/-->
-        </div>
-    </div>
-</div>
-<!--nav/-->
-<!--content-->
-<div class="w1200 content cut-all">
-    <!--left-->
-    <div id="left-panel" class="panel bgh cut-left">
-        <!--左右切换按钮-->
-        <!-- <a id="left-panel-link" href="javascript:void(0)"></a> -->
-        <!--左右切换按钮/-->
-        <!--树型菜单-->
-        <ul id="tree" class="lightTreeview">
-            <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)"
-                       item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view>
-
-        </ul>
-        <!--树型菜单/-->
-    </div>
-    <!--left/-->
-    <div id="page" class="bgh page cut-page">
+<div id="page" class="bgh page cut-page">
         <!--实时数据-->
         <div class="sssj">
             <!-- <p class="tit">
@@ -145,6 +104,4 @@
             </div>
         </div>
         <!--设备信息/-->
-    </div>
 </div>
-<!-- <tree-view tree-data="demo.tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true"></tree-view> 
