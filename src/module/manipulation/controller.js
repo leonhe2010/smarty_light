@@ -18,8 +18,8 @@ define(function (require) {
             $scope.left = 0;
             // $scope.bgleft = 0;
             $scope.brightness = 0;
-            // $scope.lightOptions = null;
-            // $scope.lightIds = [];
+            $scope.unLightOptions = null;
+            $scope.lightIds = [];
             $scope.currentParentId = 0;
             $scope.lightCtrlOptions = config.lightCtrlOptions;
             $scope.lightCtrl = 6;
@@ -33,8 +33,8 @@ define(function (require) {
             $scope.releaseBtn = releaseBtn;
             $scope.calculateWidth = calculateWidth;
             $scope.deletePlan = deletePlan;
-            // $scope.addGroup = addGroup;
-            // $scope.setLightIds = setLightIds;
+            $scope.addGroup = addGroup;
+            $scope.setLightIds = setLightIds;
             $scope.changeLightCtrl = changeLightCtrl;
         }
 
@@ -94,80 +94,80 @@ define(function (require) {
 
         }
 
-        // function setLightIds(event) {
-        //     var ele = $(event.target);
-        //     if (ele.is(':checked')) {
-        //         $scope.lightIds.push(+ele.attr('lid'));
-        //     }
-        //     else {
-        //         $scope.lightIds.splice($.inArray(+ele.attr('lid'), $scope.lightIds), 1);
-        //     }
-        // }
+        function setLightIds(event) {
+            var ele = $(event.target);
+            if (ele.is(':checked')) {
+                $scope.lightIds.push(+ele.attr('lid'));
+            }
+            else {
+                $scope.lightIds.splice($.inArray(+ele.attr('lid'), $scope.lightIds), 1);
+            }
+        }
 
-        // function addGroup() {
-        //     var url = '/smartcity/api/get_ungrouped_light';
-        //     var params = {id: $scope.currentParentId};
-        //     $http.post(url, params).success(function (res) {
-        //         if (res.status == 403) {
-        //             $location.url('/login');
-        //         }
-        //         else if (res.data.result) {
-        //             $scope.lightOptions = res.data.light;
-        //             if ($scope.lightOptions.length != 0) {
-        //                 openAddModal();
-        //             }
-        //             else {
-        //                 util.showMessage('没有未分组路灯！');
-        //             }
-        //         } 
-        //         else {
-        //             util.showMessage('获取路灯失败！');
-        //         }
-        //     }).error(function (res) {
-        //         util.showMessage('系统异常！');
-        //     });
-        // }
+        function addGroup() {
+            var url = '/smartcity/api/get_ungrouped_light';
+            var params = {id: $scope.currentParentId};
+            $http.post(url, params).success(function (res) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
+                    $scope.unLightOptions = res.data.light;
+                    if ($scope.unLightOptions.length != 0) {
+                        openAddModal();
+                    }
+                    else {
+                        util.showMessage('没有未分组路灯！');
+                    }
+                } 
+                else {
+                    util.showMessage('获取路灯失败！');
+                }
+            }).error(function (res) {
+                util.showMessage('系统异常！');
+            });
+        }
 
-        // function openAddModal() {
-        //     var dialog = $modal.open({
-        //         templateUrl: 'src/module/manipulation/addLight.html',
-        //         scope: $scope,
-        //     });
+        function openAddModal() {
+            var dialog = $modal.open({
+                templateUrl: 'src/module/manipulation/addLight.html',
+                scope: $scope,
+            });
 
-        //     $scope.ok = function (event) {
+            $scope.ok = function (event) {
 
-        //         if ($scope.lightIds.length == 0) {
-        //             util.showMessage('请选择路灯！');
-        //             return;
-        //         }
+                if ($scope.lightIds.length == 0) {
+                    util.showMessage('请选择路灯！');
+                    return;
+                }
 
-        //         var url = '/smartcity/api/group_light';
-        //         var params = {
-        //             lightIds: $scope.lightIds,
-        //             id: $scope.currentId
-        //         };
-        //         $http.post(url, params).success(function (res) {
-        //             if (res.status == 403) {
-        //                 $location.url('/login');
-        //             }
-        //             else if (res.data.result) {
-        //                 util.showMessage('添加成功！');
-        //                 dialog.close();
-        //             } 
-        //             else {
-        //                 util.showMessage('添加失败！');
-        //             }
-        //         }).error(function (res) {
-        //             util.showMessage('系统异常！');
-        //         });
+                var url = '/smartcity/api/group_light';
+                var params = {
+                    lightIds: $scope.lightIds,
+                    id: $scope.currentId
+                };
+                $http.post(url, params).success(function (res) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
+                        util.showMessage('添加成功！');
+                        dialog.close();
+                    } 
+                    else {
+                        util.showMessage('添加失败！');
+                    }
+                }).error(function (res) {
+                    util.showMessage('系统异常！');
+                });
 
-        //     };
+            };
 
-        //     $scope.cancel = function () {
-        //         $scope.lightIds = [];
-        //         dialog.close();
-        //     };
-        // }
+            $scope.cancel = function () {
+                $scope.lightIds = [];
+                dialog.close();
+            };
+        }
 
         function deletePlan(planId) {
             var url = '/smartcity/api/set_light_plan';
@@ -403,9 +403,9 @@ define(function (require) {
                     }
                     $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['id'];
                     // 待确认
-                    // setTimeout(function () {
-                    //     $scope.lightOptions = $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children'];
-                    // });
+                    setTimeout(function () {
+                        $scope.unLightOptions = $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children'];
+                    });
                     break;
                 case 4:
                     $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['id'];
