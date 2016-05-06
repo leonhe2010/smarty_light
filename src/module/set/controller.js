@@ -14,6 +14,9 @@ define(function (require) {
             $scope.currentLevel = 0;
             $scope.currentId = 0;
             $scope.lightOptions = null;
+            $scope.currentParentId = 0;
+            $scope.unLightOptions = null;
+            $scope.lightIds = [];
         }
 
         function bindEvent() {
@@ -23,6 +26,8 @@ define(function (require) {
             $scope.demo.minusItem = minusItem;
             $scope.addLightGroup = addLightGroup;
             $scope.postEquipment = postEquipment;
+            $scope.addGroup = addGroup;
+            $scope.setLightIds = setLightIds;
         }
 
         function main() {
@@ -225,6 +230,81 @@ define(function (require) {
             $scope.closeAddModal = function () {
                 unitDialog.close();
             };
+        }
+
+        function addGroup() {
+            var url = '/smartcity/api/get_ungrouped_light';
+            var params = {id: $scope.currentParentId};
+            $http.post(url, params).success(function (res) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
+                    $scope.unLightOptions = res.data.light;
+                    if ($scope.unLightOptions.length != 0) {
+                        openAddModal();
+                    }
+                    else {
+                        util.showMessage('没有未分组路灯！');
+                    }
+                } 
+                else {
+                    util.showMessage('获取路灯失败！');
+                }
+            }).error(function (res) {
+                util.showMessage('系统异常！');
+            });
+        }
+
+        function openAddModal() {
+            var dialog = $modal.open({
+                templateUrl: 'src/module/manipulation/addLight.html',
+                scope: $scope,
+            });
+
+            $scope.ok = function (event) {
+
+                if ($scope.lightIds.length == 0) {
+                    util.showMessage('请选择路灯！');
+                    return;
+                }
+
+                var url = '/smartcity/api/group_light';
+                var params = {
+                    lightIds: $scope.lightIds,
+                    id: $scope.currentId
+                };
+                $http.post(url, params).success(function (res) {
+                    if (res.status == 403) {
+                        $location.url('/login');
+                    }
+                    else if (res.data.result) {
+                        util.showMessage('添加成功！');
+                        dialog.close();
+                    } 
+                    else {
+                        util.showMessage('添加失败！');
+                    }
+                }).error(function (res) {
+                    util.showMessage('系统异常！');
+                });
+
+            };
+
+            $scope.cancel = function () {
+                $scope.lightIds = [];
+                dialog.close();
+            };
+        }
+
+        function setLightIds(event) {
+            var ele = $(event.target);
+            if (ele.is(':checked')) {
+                $scope.lightIds.push(+ele.attr('lid'));
+            }
+            else {
+                $scope.lightIds.splice($.inArray(+ele.attr('lid'), $scope.lightIds), 1);
+            }
         }
 
         function addLightGroup() {
@@ -490,6 +570,10 @@ define(function (require) {
                     $(value).addClass('c_green');
                 }
             });
+
+            if (pidArr.length > 1) {
+                $scope.currentParentId = +pidArr[pidArr.length - 2];
+            }
 
             if (pidArr.length < 4) {
                 getChildNode(item.id, pidArr.length + 1, item.pid);

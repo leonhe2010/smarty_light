@@ -6,7 +6,7 @@
 
     <div class="fz_table">
         <p class="clearfix">
-            <span ng-repeat="item in lightOptions">
+            <span ng-repeat="item in unLightOptions">
                 <input type="checkbox" class="radiocheck" name="{{item.lightId}}" id="{{item.lightId}}"
                        lid="{{item.lightId}}" ng-click="setLightIds($event)">
                 <label class="nofull default left" for="{{item.lightId}}" ng-bind="item.lightName"></label>
