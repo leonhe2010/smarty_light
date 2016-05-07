@@ -560,6 +560,7 @@ exports.mocks = [
                 brokenInfo.push({
                     "time": "2016-03-27 15:45:0" + i,
                     "name": "10" + i,
+                    "status": 3,
                     "type": 2
                 });
             }

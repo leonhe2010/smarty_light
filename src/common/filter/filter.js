@@ -74,6 +74,28 @@ define(function (require) {
                 return val;
             };
         })
+        .filter('faultShow', function () {
+            return function (value) {
+                var val;
+                if ($.isNumeric(value)) {
+                    var key = parseInt(value);
+                    switch (key) {
+                        case 0:
+                            val = '网络故障';
+                            break;
+                        case 3:
+                            val = '硬件故障';
+                            break;
+                        default:
+                            val = '--';
+                    }
+                } 
+                else {
+                    val = '--';
+                }
+                return val;
+            };
+        })
         .filter('lightCtrlShow', function () {
             return function (value) {
                 var val;

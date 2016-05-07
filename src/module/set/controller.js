@@ -433,10 +433,20 @@ define(function (require) {
                             lightLat: +$scope.lightLatIN
                         };
                     }
-                    else {
-                        url = '/smartcity/api/add_light';
+                    else if ($scope.currentLevel == 3) {
+                        url = '/smartcity/api/add_light_to_district';
                         params = {
                             districtId: $scope.currentId,
+                            // level: $scope.currentLevel,
+                            lightId: +$scope.lightNameIN,
+                            lightLng: $scope.lightLngIN,
+                            lightLat: $scope.lightLatIN
+                        };
+                    }
+                    else if ($scope.currentLevel == 4) {
+                        url = '/smartcity/api/add_light_to_group';
+                        params = {
+                            groupId: $scope.currentId,
                             // level: $scope.currentLevel,
                             lightId: +$scope.lightNameIN,
                             lightLng: $scope.lightLngIN,

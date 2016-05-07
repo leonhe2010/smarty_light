@@ -106,11 +106,13 @@
                             <tr>
                                 <th>设备类型</th>
                                 <th>设备编号</th>
+                                <th>设备类型</th>
                                 <th>故障时间</th>
                             </tr>
                             <tr ng-repeat="item in brokenTable">
                                 <td ng-bind="item.type | brokenTypeShow"></td>
                                 <td ng-bind="item.name"></td>
+                                <td ng-bind="item.status | faultShow"></td>
                                 <td ng-bind="item.time"></td>
                             </tr>
                             </tbody>
