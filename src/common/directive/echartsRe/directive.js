@@ -17,6 +17,7 @@ define(function (require) {
                     // chart.setOption($scope.options);
                     setTimeout(function () {
                         chart.setOption($scope.options);
+                        // console.log($scope.options);
                     }, 100);
 
                     chart.on(echarts.config.EVENT.CLICK, function (point) {
@@ -32,7 +33,9 @@ define(function (require) {
                     });
 
                     $scope.$watch('options', function (newValue, oldValue) {
-                        chart.setOption($scope.options, true);
+                        if (newValue) {
+                            chart.setOption($scope.options, true);
+                        }
                     }, true)
                 });
             }

@@ -40,7 +40,7 @@
 <div class="w1200 content cut-all">
     <div id="left-panel" class="panel bgh cut-left" ng-show="!isLoginPage()">
         <ul id="tree" class="lightTreeview">
-            <em class="i_edit">
+            <em class="i_edit" ng-show="isSetPage()">
                 <i class="i_add" ng-click="demo.addItem(null, $event)"></i>
             </em>
             <edit-tree-view tree-data="demo.tree" text-field="name" value-field='id'
