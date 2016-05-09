@@ -1,107 +1,90 @@
 <div id="page" class="bgh page cut-page">
-        <!--实时数据-->
-        <div class="sssj">
-            <!-- <p class="tit">
-                <span ng-bind="locationSetted"></span>实时数据
-            </p>
-            <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div> -->
-            <div class="sssj_con current_light_info">
-                <dl>
-                    <dt>{{locationSetted}}<i></i></dt>
-                    <dd></dd>
-                </dl>
-                <dl>
-                    <dt>{{allLight}}<i>个</i></dt>
-                    <dd>总路灯</dd>
-                </dl>
-                <dl>
-                    <dt>{{openLight}}<i>个</i></dt>
-                    <dd>打开路灯</dd>
-                </dl>
-                <dl>
-                    <dt>{{closeLight}}<i>个</i></dt>
-                    <dd>关闭路灯</dd>
-                </dl>
-                <dl>
-                    <dt>{{faultLight}}<i>个</i></dt>
-                    <dd>故障路灯</dd>
-                </dl>
-                <!-- <dl ng-show="currentLevel!=0 && currentLevel!=1">
-                    <dt>{{info.pm2p5}}<i>克</i></dt>
-                    <dd>PM2.5</dd>
-                </dl> -->
-                <dl ng-show="false">
-                    <dt>23<i>%</i></dt>
-                    <dd>可吸入颗粒物</dd>
-                </dl>
-            </div>
-            <div class="sssj_con">
-                <dl ng-show="false">
-                    <dt>{{locationSetted}}<i></i></dt>
-                    <dd></dd>
-                </dl>
-                <dl>
-                    <dt>{{info.power}}<i>kw</i></dt>
-                    <dd>总功耗</dd>
-                </dl>
-                <dl>
-                    <dt>{{info.voltage}}<i>V</i></dt>
-                    <dd>平均电压</dd>
-                </dl>
-                <dl>
-                    <dt>{{info.current}}<i>A</i></dt>
-                    <dd>平均电流</dd>
-                </dl>
-                <dl ng-show="currentLevel!=0 && currentLevel!=1">
-                    <dt>{{info.temperature}}<i>C</i></dt>
-                    <dd>温度</dd>
-                </dl>
-                <dl ng-show="currentLevel!=0 && currentLevel!=1">
-                    <dt>{{info.humidity}}<i>%</i></dt>
-                    <dd>湿度</dd>
-                </dl>
-                <dl ng-show="currentLevel!=0 && currentLevel!=1">
-                    <dt>{{info.pm2p5}}<i>克</i></dt>
-                    <dd>PM2.5</dd>
-                </dl>
-                <dl ng-show="false">
-                    <dt>23<i>%</i></dt>
-                    <dd>可吸入颗粒物</dd>
-                </dl>
-            </div>
+    <div class="sssj">
+        <div class="sssj_con current_light_info">
+            <dl>
+                <dt>{{locationSetted}}<i></i></dt>
+                <dd></dd>
+            </dl>
+            <dl>
+                <dt>{{allLight}}<i>个</i></dt>
+                <dd>总路灯</dd>
+            </dl>
+            <dl>
+                <dt>{{openLight}}<i>个</i></dt>
+                <dd>打开路灯</dd>
+            </dl>
+            <dl>
+                <dt>{{closeLight}}<i>个</i></dt>
+                <dd>关闭路灯</dd>
+            </dl>
+            <dl>
+                <dt>{{faultLight}}<i>个</i></dt>
+                <dd>故障路灯</dd>
+            </dl>
+            <dl ng-show="false">
+                <dt>23<i>%</i></dt>
+                <dd>可吸入颗粒物</dd>
+            </dl>
         </div>
-        <!--实时数据/-->
-        <!--设备信息-->
-        <div class="sbxx">
-            <p class="tit profile_tile">设备信息</p>
+        <div class="sssj_con">
+            <dl ng-show="false">
+                <dt>{{locationSetted}}<i></i></dt>
+                <dd></dd>
+            </dl>
+            <dl>
+                <dt>{{info.power}}<i>kw</i></dt>
+                <dd>总功耗</dd>
+            </dl>
+            <dl>
+                <dt>{{info.voltage}}<i>V</i></dt>
+                <dd>平均电压</dd>
+            </dl>
+            <dl>
+                <dt>{{info.current}}<i>A</i></dt>
+                <dd>平均电流</dd>
+            </dl>
+            <dl ng-show="currentLevel!=0 && currentLevel!=1">
+                <dt>{{info.temperature}}<i>C</i></dt>
+                <dd>温度</dd>
+            </dl>
+            <dl ng-show="currentLevel!=0 && currentLevel!=1">
+                <dt>{{info.humidity}}<i>%</i></dt>
+                <dd>湿度</dd>
+            </dl>
+            <dl ng-show="currentLevel!=0 && currentLevel!=1">
+                <dt>{{info.pm2p5}}<i>克</i></dt>
+                <dd>PM2.5</dd>
+            </dl>
+            <dl ng-show="false">
+                <dt>23<i>%</i></dt>
+                <dd>可吸入颗粒物</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="sbxx">
+        <p class="tit profile_tile">设备信息</p>
 
-            <div class="sbxx_con">
-                <div class="sbxx_div profile_echart">
-                    <div class="ctrl_title">路灯传感器</div>
-                    <div e-chart class="pie_chart" options="lightOptions"></div>
-                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
-                </div>
-                <div class="sbxx_div profile_echart">
-                    <div class="ctrl_title">人群传感器</div>
-                    <div e-chart class="pie_chart" options="ctrlOptions"></div>
-                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
-                </div>
-                <div class="sbxx_div profile_echart">
-                    <div class="ctrl_title">环境传感器</div>
-                    <div e-chart class="pie_chart" options="cameraOptions"></div>
-                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
-                </div>
-                <div class="sbxx_div profile_echart">
-                    <div class="ctrl_title">车辆传感器</div>
-                    <div e-chart class="pie_chart" options="sensorOptions"></div>
-                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
-                </div>
-                <div class="sbxx_div profile_echart">
-                    <div class="ctrl_title">声音传感器</div>
-                    <div e-chart class="pie_chart" options="wifiOptions"></div>
-                    <!-- <img src="src/resource/images/table_01.jpg" width="312" height="145"> -->
-                </div>
+        <div class="sbxx_con">
+            <div class="sbxx_div profile_echart">
+                <div class="ctrl_title">路灯传感器</div>
+                <div e-chart class="pie_chart" options="lightOptions"></div>
+            </div>
+            <div class="sbxx_div profile_echart">
+                <div class="ctrl_title">人群传感器</div>
+                <div e-chart class="pie_chart" options="ctrlOptions"></div>
+            </div>
+            <div class="sbxx_div profile_echart">
+                <div class="ctrl_title">环境传感器</div>
+                <div e-chart class="pie_chart" options="cameraOptions"></div>
+            </div>
+            <div class="sbxx_div profile_echart">
+                <div class="ctrl_title">车辆传感器</div>
+                <div e-chart class="pie_chart" options="sensorOptions"></div>
+            </div>
+            <div class="sbxx_div profile_echart">
+                <div class="ctrl_title">声音传感器</div>
+                <div e-chart class="pie_chart" options="wifiOptions"></div>
             </div>
         </div>
-        <!--设备信息/-->
+    </div>
 </div>

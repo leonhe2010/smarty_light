@@ -1,8 +1,5 @@
 <div id="page" class="bgh page cut-page">
-    <!--灯控-计划模式-->
     <div class="dk_jhms">
-        <!-- <p class="tit" ng-bind="locationSetted"></p>
-        <div class="tit">总共有路灯<span ng-bind="allLight"></span>个，其中打开<span ng-bind="openLight"></span>个，关闭<span ng-bind="closeLight"></span>个，故障<span ng-bind="faultLight"></span>个。</div> -->
         <div class="sssj_con current_light_info">
             <dl>
                 <dt>{{locationSetted}}<i></i></dt>
@@ -24,10 +21,6 @@
                 <dt>{{faultLight}}<i>个</i></dt>
                 <dd>故障路灯</dd>
             </dl>
-            <!-- <dl ng-show="currentLevel!=0 && currentLevel!=1">
-                <dt>{{info.pm2p5}}<i>克</i></dt>
-                <dd>PM2.5</dd>
-            </dl> -->
             <dl ng-show="false">
                 <dt>23<i>%</i></dt>
                 <dd>可吸入颗粒物</dd>
@@ -50,7 +43,6 @@
                 </div>
             </div>
         </div>
-
         <div class="dk_time" ng-show="setPtn==1">
             <div class="clearfix">
                 <div class="dk_time_div">
@@ -60,7 +52,6 @@
                 </div>
             </div>
         </div>
-
         <div class="cut_lbms" ng-show="setPtn==2" style="color: #fff;">
             <table border="1" cellspacing="0" cellpadding="0" ng-if="settedPlan.length">
                 <tbody>
@@ -84,35 +75,10 @@
                         </button>
                     </td>
                 </tr>
-
-
                 </tbody>
             </table>
         </div>
-
         <div class="dk_time" ng-show="setPtn==2">
-            <!-- <table class="table table-striped table-bordered table-condensed" ng-if="settedPlan.length">
-                <tr>
-                    <th>设置类型</th>
-                    <th>时间段</th>
-                    <th ng-if="lightCtrl==6">亮度</th>
-                    <th ng-if="lightCtrl!=6">开关</th>
-                    <th>设置层级</th>
-                    <th>操作</th>
-                </tr>
-                <tr ng-repeat="item in planData">
-                    <td ng-bind="lightCtrl | lightCtrlShow"></td>
-                    <td>{{item.start | minuteTimeShow}}-{{item.end | minuteTimeShow}}</td>
-                    <td ng-if="lightCtrl==6">{{item.brightness}}%</td>
-                    <td ng-if="lightCtrl!=6" ng-bind="item.brightness | onOffShow"></td>
-                    <td ng-bind="tableLevel | levelShow"></td>
-                    <td>
-                        <button class="btn btn-primary" ng-click="deletePlan(item.planId)"
-                                ng-disabled="!item.isLastItem">删除
-                        </button>
-                    </td>
-                </tr>
-            </table> -->
             <div class="clearfix" ng-show="!isFullPlan">
                 <div class="dk_time_div">
                     <span>开灯时间:</span>
@@ -130,7 +96,6 @@
                 </div>
             </div>
         </div>
-
         <div class="dk_time" ng-show="lightCtrl!=6">
             <div class="clearfix">
                 <div class="dk_time_div">
@@ -139,8 +104,6 @@
                 </div>
             </div>
         </div>
-
-        <!--亮度调整-->
         <div class="ldtz" ng-show="!isFullPlan && lightCtrl==6">
             <div class="ld_lt">亮度</div>
             <div id="box" ng-mousemove="calculateWidth($event)">
@@ -153,14 +116,10 @@
             <div class="ld_text"><span class="bf_01">0%</span><span class="bf_02">25%</span><span
                     class="bf_03">50%</span><span class="bf_04">75%</span><span class="bf_05">100%</span></div>
             <div id="text" style="display:none"></div>
-            <!--亮度调整/-->
-            <!--确认添加分组-->
-            <div class="clearfix two_bt">
-                <a href="" class="ld_submit" ng-click="postPtn()" ng-show="!isFullPlan">确认</a>
-                <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组路灯</a>
-            </div>
-            <!--确认添加分组/-->
+        </div>
+        <div class="clearfix two_bt">
+            <a href="" class="ld_submit" ng-click="postPtn()" ng-show="!isFullPlan">确认</a>
+            <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组路灯</a>
         </div>
     </div>
-    <!--灯控-计划模式/-->
 </div>
