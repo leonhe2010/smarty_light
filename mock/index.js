@@ -117,8 +117,8 @@ exports.mocks = [
                 "data": {
                     "msg": "success",
                     "nodes": [
-                        {"id": "23", "name": "上海"}, 
-                        {"id": "15", "name": "北京"}
+                        {"id": "23", "name": "上海", "fault": 4, "work": 18, "close": 1, "all": 23}, 
+                        {"id": "15", "name": "北京", "fault": 34, "work": 182, "close": 17, "all": 233}
                     ],
                     "result": true
                 },

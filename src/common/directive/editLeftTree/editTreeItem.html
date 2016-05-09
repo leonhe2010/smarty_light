@@ -2,7 +2,7 @@
 
     <!-- <input type="checkbox" ng-model="item.$$isChecked" class="check-box" ng-if="canChecked" ng-change="warpCallback('itemCheckedChanged', item, $event)"> -->
     <span class="flex-ico" ng-class="{'flex-close': !item.$$isExpend}" ng-click="warpCallback('itemClicked', item, $event)"></span>
-    <span class='text-field'  pid="{{item.pid}}" ng-click="warpCallback('itemClicked', item, $event)" ng-bind="item.name"></span>
+    <span class='text-field'  pid="{{item.pid}}" ng-click="warpCallback('itemClicked', item, $event)">{{item.name}}({{item.all}}/{{item.work}}/{{item.fault}})</span>
     <em class="i_edit" ng-show="isSetPage()">
     	<i class="i_add" ng-click="addItemHandler(item.pid, $event)" ng-show="!item.addShow"></i>
     	<i class="i_minus" ng-click="minusItemHandler(item.pid, $event)"></i>
