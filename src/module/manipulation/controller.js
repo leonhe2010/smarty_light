@@ -1,17 +1,17 @@
 define(function (require) {
 
     require('common/directive/echartsRe/directive');
-    require('common/directive/leftTree/directive');
+    // require('common/directive/leftTree/directive');
     var config = require('../config');
 
     function Controller($scope, $location, $timeout, $http, $modal, util) {
 
         function initValue() {
-            $scope.demo = {};
+            // $scope.demo = {};
             $scope.setPtn = 2;
-            $scope.locationSetted = '上海';
-            $scope.currentLevel = 1;
-            $scope.currentId = 2;
+            // $scope.locationSetted = '上海';
+            // $scope.currentLevel = 1;
+            // $scope.currentId = 2;
             $scope.isDrag = false;
             $scope.ox = 0;
             // $scope.lx = 0;
@@ -26,7 +26,13 @@ define(function (require) {
         }
 
         function bindEvent() {
-            $scope.demo.itemClicked = showLeftTree;
+            // $scope.demo.itemClicked = showLeftTree;
+            $scope.$on('initLeftTree', function () {
+                getLightNum();
+                if ($scope.setPtn === 2) {
+                    getSettedPlan();
+                }
+            });
             $scope.switchPtn = switchPtn;
             $scope.postPtn = postPtn;
             $scope.dragBtn = dragBtn;
@@ -38,10 +44,10 @@ define(function (require) {
             $scope.changeLightCtrl = changeLightCtrl;
         }
 
-        function getLightNum(type, id) {
+        function getLightNum() {
             var params = {
-                level: +type,
-                id: +id
+                level: $scope.currentLevel,
+                id: $scope.currentId
             };
 
             var url = '/smartcity/api/count_light';
@@ -67,12 +73,14 @@ define(function (require) {
         function main() {
             initValue();
             bindEvent();
-            getChildNode(0, 1);
-            getLightNum(1, 2);
-            getSettedPlan();
-            setTimeout(function() {
-                $($('.text-field')[0]).addClass('c_green');
-            }, 1000);
+            // getChildNode(0, 1);
+            getLightNum();
+            if ($scope.currentLevel != 0) {
+                getSettedPlan();
+            }
+            // setTimeout(function() {
+            //     $($('.text-field')[0]).addClass('c_green');
+            // }, 1000);
         }
 
         // function initPlanPtnInput() {
