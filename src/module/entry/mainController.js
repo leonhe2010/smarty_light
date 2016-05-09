@@ -1,5 +1,6 @@
 define(function (require) {
 	var us = require('underscore');
+	require('common/directive/editLeftTree/directive');
 
     function mainController($scope, $location, $interval, $window, $timeout, $rootScope, $http) {
     	$scope.isLoginPage = function () {

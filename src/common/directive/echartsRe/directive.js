@@ -17,8 +17,8 @@ define(function (require) {
                     // chart.setOption($scope.options);
                     setTimeout(function () {
                         chart.setOption($scope.options);
-                        // console.log($scope.options);
-                    }, 100);
+                        console.log($scope.options);
+                    }, 500);
 
                     chart.on(echarts.config.EVENT.CLICK, function (point) {
                         $scope.clickHandler({

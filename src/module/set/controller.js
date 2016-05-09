@@ -1,39 +1,46 @@
 define(function (require) {
 
     require('common/directive/echartsRe/directive');
-    require('common/directive/editLeftTree/directive');
+    // require('common/directive/editLeftTree/directive');
 
     var us = require('underscore');
 
-    function Controller($scope, $location, $timeout, $http, $modal, util) {
+    function Controller($scope, $location, $timeout, $http, $modal, util, $rootScope) {
 
         function initValue() {
-            $scope.demo = {};
+            console.log($rootScope.isSetPage());
+            // $scope.demo = {};
             $scope.setPtn = 1;
-            $scope.locationSetted = '全国';
-            $scope.currentLevel = 0;
-            $scope.currentId = 0;
+            // $scope.locationSetted = '全国';
+            // $scope.currentLevel = 0;
+            // $scope.currentId = 0;
             $scope.lightOptions = null;
-            $scope.currentParentId = 0;
+            // $scope.currentParentId = 0;
             $scope.unLightOptions = null;
             $scope.lightIds = [];
         }
 
         function bindEvent() {
-            $scope.demo.itemClicked = {};
-            $scope.demo.itemClicked = showLeftTree;
-            $scope.demo.addItem = addItem;
-            $scope.demo.minusItem = minusItem;
+            // $scope.demo.itemClicked = {};
+            // $scope.demo.itemClicked = showLeftTree;
+            $rootScope.demo.addItem = addItem;
+            $rootScope.demo.minusItem = minusItem;
             $scope.addLightGroup = addLightGroup;
             $scope.postEquipment = postEquipment;
             $scope.addGroup = addGroup;
             $scope.setLightIds = setLightIds;
+            $scope.$on('initLeftTree', function () {
+                getEquipmentList();
+            });
         }
 
         function main() {
             initValue();
             bindEvent();
-            getChildNode(0, 1);
+            if ($scope.currentLevel != 0) {
+                getEquipmentList();
+            }
+            // getChildNode(0, 1);
         }
 
         function minusItem(pid, e) {
@@ -568,88 +575,88 @@ define(function (require) {
             });
         }
 
-        function showLeftTree(item) {
-            $scope.locationSetted = item.name;
-            var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
-            $scope.currentLevel = +pidArr.length;
-            $scope.currentId = +item.id;
+        // function showLeftTree(item) {
+        //     $scope.locationSetted = item.name;
+        //     var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
+        //     $scope.currentLevel = +pidArr.length;
+        //     $scope.currentId = +item.id;
 
-            $('.text-field').removeClass('c_green');
-            $.each($('.text-field'), function (key, value) {
-                if ($(value).attr('pid') == item.pid) {
-                    $(value).addClass('c_green');
-                }
-            });
+        //     $('.text-field').removeClass('c_green');
+        //     $.each($('.text-field'), function (key, value) {
+        //         if ($(value).attr('pid') == item.pid) {
+        //             $(value).addClass('c_green');
+        //         }
+        //     });
 
-            if (pidArr.length > 1) {
-                $scope.currentParentId = +pidArr[pidArr.length - 2];
-            }
+        //     if (pidArr.length > 1) {
+        //         $scope.currentParentId = +pidArr[pidArr.length - 2];
+        //     }
 
-            if (pidArr.length < 4) {
-                getChildNode(item.id, pidArr.length + 1, item.pid);
-            }
-            getEquipmentList();
-        }
+        //     if (pidArr.length < 4) {
+        //         getChildNode(item.id, pidArr.length + 1, item.pid);
+        //     }
+        //     getEquipmentList();
+        // }
 
         // 刷新列表
-        function setTreeDate(nodes, parentId, parentLevel, parentPid) {
-            // if (nodes.length === 0) {
-            //     return;
-            // }
-            if (parentLevel === 1) {
-                $.each(nodes, function (index, value) {
-                    nodes[index].pid = nodes[index].id + 'l';
-                });
-                $scope.demo.tree = nodes;
-            }
-            else {
-                $.each(nodes, function (index, value) {
-                    nodes[index].pid = parentPid + nodes[index].id + 'l';
-                });
-                var pidArr = parentPid.substr(0, parentPid.length - 1).split('l');
-                if (pidArr.length === 1) {
-                    us.findWhere($scope.demo.tree, {id: pidArr[0]})['children'] = nodes;
-                }
-                else if (pidArr.length === 2) {
-                    us.findWhere(us.findWhere($scope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'] = nodes;
-                }
-                else if (pidArr.length === 3) {
-                    $.each(nodes, function (index, value) {
-                        nodes[index]['addShow'] = true;
-                    });
-                    us.findWhere(us.findWhere(us.findWhere($scope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'] = nodes;
-                }
-            }
-            console.log($scope.demo.tree);
-        }
+        // function setTreeDate(nodes, parentId, parentLevel, parentPid) {
+        //     // if (nodes.length === 0) {
+        //     //     return;
+        //     // }
+        //     if (parentLevel === 1) {
+        //         $.each(nodes, function (index, value) {
+        //             nodes[index].pid = nodes[index].id + 'l';
+        //         });
+        //         $scope.demo.tree = nodes;
+        //     }
+        //     else {
+        //         $.each(nodes, function (index, value) {
+        //             nodes[index].pid = parentPid + nodes[index].id + 'l';
+        //         });
+        //         var pidArr = parentPid.substr(0, parentPid.length - 1).split('l');
+        //         if (pidArr.length === 1) {
+        //             us.findWhere($scope.demo.tree, {id: pidArr[0]})['children'] = nodes;
+        //         }
+        //         else if (pidArr.length === 2) {
+        //             us.findWhere(us.findWhere($scope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'] = nodes;
+        //         }
+        //         else if (pidArr.length === 3) {
+        //             $.each(nodes, function (index, value) {
+        //                 nodes[index]['addShow'] = true;
+        //             });
+        //             us.findWhere(us.findWhere(us.findWhere($scope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'] = nodes;
+        //         }
+        //     }
+        //     console.log($scope.demo.tree);
+        // }
 
-        function getChildNode(id, level, pid) {
-            var url = '/smartcity/api/get_child_node';
+        // function getChildNode(id, level, pid) {
+        //     var url = '/smartcity/api/get_child_node';
 
-            var params = {
-                id: +id,
-                level: +level
-            };
+        //     var params = {
+        //         id: +id,
+        //         level: +level
+        //     };
 
-            $http.post(url, params).success(function (res) {
-                if (res.status == 403) {
-                    $location.url('/login');
-                }
-                else if (res.data.result) {
-                    setTreeDate(res.data.nodes, id, level, pid);
-                } 
-                else {
-                    util.showMessage('获取信息失败！');
-                }
-            }).error(function (res) {
-                util.showMessage('系统异常！');
-            });
-        }
+        //     $http.post(url, params).success(function (res) {
+        //         if (res.status == 403) {
+        //             $location.url('/login');
+        //         }
+        //         else if (res.data.result) {
+        //             setTreeDate(res.data.nodes, id, level, pid);
+        //         } 
+        //         else {
+        //             util.showMessage('获取信息失败！');
+        //         }
+        //     }).error(function (res) {
+        //         util.showMessage('系统异常！');
+        //     });
+        // }
 
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal', 'utilService'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', '$modal', 'utilService', '$rootScope'];
 
     return Controller;
 });
