@@ -15,6 +15,8 @@ define(function (require) {
             $scope.currentLevel = 0;
             $scope.currentId = 0;
             $scope.calibrationOptions = config.calibrationOptions;
+            var nowMoment = moment(new Date());
+            $scope.endDate = nowMoment.format('YYYY-MM-DD');
         }
 
         function bindEvent() {
@@ -56,8 +58,10 @@ define(function (require) {
         function showLightModal(data, lightId) {
             $scope.detail = data;
             $scope.lightType = 1;
-            $scope.lightTypeShow = '路灯';
+            $scope.lightTypeShow = '电流';
             $scope.detail.calibration = 1;
+            $scope.getChartData = getChartData;
+            getChartData();
 
             var detailModal = $modal.open({
                 templateUrl: 'src/module/geography/light.html',
@@ -75,7 +79,7 @@ define(function (require) {
                 $scope.lightTypeShow = $(event.target).html();
             };
 
-            $scope.getChartData = function () {
+            function getChartData() {
                 if (!$scope.endDate) {
                     util.showMessage('请输入查询日期！');
                     return;

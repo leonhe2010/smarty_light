@@ -153,13 +153,14 @@
             <div class="ld_text"><span class="bf_01">0%</span><span class="bf_02">25%</span><span
                     class="bf_03">50%</span><span class="bf_04">75%</span><span class="bf_05">100%</span></div>
             <div id="text" style="display:none"></div>
+            <!--亮度调整/-->
+            <!--确认添加分组-->
+            <div class="clearfix two_bt">
+                <a href="" class="ld_submit" ng-click="postPtn()" ng-show="!isFullPlan">确认</a>
+                <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组路灯</a>
+            </div>
+            <!--确认添加分组/-->
         </div>
-        <!--亮度调整/-->
-        <!--确认添加分组-->
-        <div class="clearfix two_bt">
-            <a href="" class="ld_submit" ng-click="postPtn()" ng-show="!isFullPlan">确认</a>
-            <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组</a></div>
-        <!--确认添加分组/-->
     </div>
     <!--灯控-计划模式/-->
 </div>

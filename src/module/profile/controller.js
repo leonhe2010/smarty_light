@@ -217,10 +217,10 @@ define(function (require) {
                         orient: 'vertical',
                         x: 'right',
                         textStyle: {color: '#848c97'},
-                        data: ['打开个数', '关闭个数', '故障个数']
+                        data: ['打开个数', '故障个数']
                     },
                     calculable: true,
-                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
+                    color: ['#4ebf81', '#fa2c2c'],
                     series: [
                         {
                             name: '人群传感器信息',
@@ -238,7 +238,7 @@ define(function (require) {
                             },
                             data: [
                                 {value: deviceData.crowd.work, name: '打开个数'},
-                                {value: deviceData.crowd.total - deviceData.crowd.work - deviceData.crowd.fault, name: '关闭个数'},
+                                // {value: deviceData.crowd.total - deviceData.crowd.work - deviceData.crowd.fault, name: '关闭个数'},
                                 {value: deviceData.crowd.fault, name: '故障个数'}
                             ]
                         }
@@ -253,10 +253,10 @@ define(function (require) {
                         orient: 'vertical',
                         x: 'right',
                         textStyle: {color: '#848c97'},
-                        data: ['打开个数', '关闭个数', '故障个数']
+                        data: ['打开个数', '故障个数']
                     },
                     calculable: true,
-                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
+                    color: ['#4ebf81', '#fa2c2c'],
                     series: [
                         {
                             name: '环境传感器信息',
@@ -274,7 +274,7 @@ define(function (require) {
                             },
                             data: [
                                 {value: deviceData.environment.work, name: '打开个数'},
-                                {value: deviceData.environment.total - deviceData.environment.work - deviceData.environment.fault, name: '关闭个数'},
+                                // {value: deviceData.environment.total - deviceData.environment.work - deviceData.environment.fault, name: '关闭个数'},
                                 {value: deviceData.environment.fault, name: '故障个数'}
                             ]
                         }
@@ -289,10 +289,10 @@ define(function (require) {
                         orient: 'vertical',
                         x: 'right',
                         textStyle: {color: '#848c97'},
-                        data: ['打开个数', '关闭个数', '故障个数']
+                        data: ['打开个数', '故障个数']
                     },
                     calculable: true,
-                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
+                    color: ['#4ebf81', '#fa2c2c'],
                     series: [
                         {
                             name: '车辆传感器信息',
@@ -310,7 +310,7 @@ define(function (require) {
                             },
                             data: [
                                 {value: deviceData.vehicle.work, name: '打开个数'},
-                                {value: deviceData.vehicle.total - deviceData.vehicle.work - deviceData.vehicle.fault, name: '关闭个数'},
+                                // {value: deviceData.vehicle.total - deviceData.vehicle.work - deviceData.vehicle.fault, name: '关闭个数'},
                                 {value: deviceData.vehicle.fault, name: '故障个数'}
                             ]
                         }
@@ -325,10 +325,10 @@ define(function (require) {
                         orient: 'vertical',
                         x: 'right',
                         textStyle: {color: '#848c97'},
-                        data: ['打开个数', '关闭个数', '故障个数']
+                        data: ['打开个数', '故障个数']
                     },
                     calculable: true,
-                    color: ['#4ebf81', '#1f262e', '#fa2c2c'],
+                    color: ['#4ebf81', '#fa2c2c'],
                     series: [
                         {
                             name: '声音传感器信息',
@@ -346,7 +346,7 @@ define(function (require) {
                             },
                             data: [
                                 {value: deviceData.voice.work, name: '打开个数'},
-                                {value: deviceData.voice.total - deviceData.voice.work - deviceData.voice.fault, name: '关闭个数'},
+                                // {value: deviceData.voice.total - deviceData.voice.work - deviceData.voice.fault, name: '关闭个数'},
                                 {value: deviceData.voice.fault, name: '故障个数'}
                             ]
                         }

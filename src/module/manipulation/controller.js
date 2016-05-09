@@ -18,7 +18,7 @@ define(function (require) {
             $scope.left = 0;
             // $scope.bgleft = 0;
             $scope.brightness = 0;
-            $scope.lightOptions = null;
+            $scope.unLightOptions = null;
             $scope.lightIds = [];
             $scope.currentParentId = 0;
             $scope.lightCtrlOptions = config.lightCtrlOptions;
@@ -112,8 +112,8 @@ define(function (require) {
                     $location.url('/login');
                 }
                 else if (res.data.result) {
-                    $scope.lightOptions = res.data.light;
-                    if ($scope.lightOptions.length != 0) {
+                    $scope.unLightOptions = res.data.light;
+                    if ($scope.unLightOptions.length != 0) {
                         openAddModal();
                     }
                     else {
@@ -402,8 +402,9 @@ define(function (require) {
                         getChildNode(item.id, 4, item.pid);
                     }
                     $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['id'];
+                    // 待确认
                     setTimeout(function () {
-                        $scope.lightOptions = $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children'];
+                        $scope.unLightOptions = $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children'];
                     });
                     break;
                 case 4:

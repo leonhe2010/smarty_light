@@ -59,37 +59,50 @@
                 <li ng-class="{'active': patternType==2}" ng-click="switchPattern(2)">曲线模式</li>
             </ul>
         </div>
-        <div class="ms_con">
-            <!--表表模式-->
-            <fieldset style="display:block" ng-if="patternType==1">
-                <div class="cut_lbms">
-                    <table border="1" cellspacing="0" cellpadding="0">
-                        <tbody>
-                        <tr>
-                            <th>设备类型</th>
-                            <th>设备编号</th>
-                            <th>故障时间</th>
-                        </tr>
-                        <tr ng-repeat="item in brokenTable">
-                            <td ng-bind="item.type | brokenTypeShow"></td>
-                            <td ng-bind="item.name"></td>
-                            <td ng-bind="item.time"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <paging total-count="{{brokenTableCount}}" size="{{pageSize}}"
-                            current-page="{{currentPage}}"></paging>
-                </div>
-            </fieldset>
-            <!--列表模式/-->
-            <!--曲线模式-->
-            <fieldset ng-if="patternType==2" class="echart">
-                <div class="cut_qxms">
-                    <div e-chart style="width: 848px;height: 255px;" options="brokenChart"
-                         ng-if="brokenChart"></div>
-                </div>
-            </fieldset>
-            <!--曲线模式/-->
+        <!--灯-故障/-->
+        <!--模式切换-->
+        <div class="dgz_qh">
+            <div class="dgz_qhtit">
+                <!-- <span class="dgz_sd"><i class="cor_l"></i>湿度</span> -->
+                <ul class="ms_cut">
+                    <li ng-class="{'active': patternType==1}" ng-click="switchPattern(1)">列表模式</li>
+                    <li ng-class="{'active': patternType==2}" ng-click="switchPattern(2)">曲线模式</li>
+                </ul>
+            </div>
+            <div class="ms_con">
+                <!--表表模式-->
+                <fieldset style="display:block" ng-if="patternType==1">
+                    <div class="cut_lbms">
+                        <table border="1" cellspacing="0" cellpadding="0">
+                            <tbody>
+                            <tr>
+                                <th>设备类型</th>
+                                <th>设备编号</th>
+                                <th>设备类型</th>
+                                <th>故障时间</th>
+                            </tr>
+                            <tr ng-repeat="item in brokenTable">
+                                <td ng-bind="item.type | brokenTypeShow"></td>
+                                <td ng-bind="item.name"></td>
+                                <td ng-bind="item.status | faultShow"></td>
+                                <td ng-bind="item.time"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <paging total-count="{{brokenTableCount}}" size="{{pageSize}}"
+                                current-page="{{currentPage}}"></paging>
+                    </div>
+                </fieldset>
+                <!--列表模式/-->
+                <!--曲线模式-->
+                <fieldset ng-if="patternType==2" class="echart">
+                    <div class="cut_qxms">
+                        <div e-chart style="width: 848px;height: 255px;" options="brokenChart"
+                             ng-if="brokenChart"></div>
+                    </div>
+                </fieldset>
+                <!--曲线模式/-->
+            </div>
         </div>
     </div>
     <!--模式切换/-->
