@@ -44,7 +44,7 @@
                 <li style="display:none;">自动模式</li>
             </ul>
         </div>
-        <div class="dk_time">
+        <div class="dk_time" ng-show="currentLevel!=0">
             <div class="clearfix">
                 <div class="dk_time_div">
                     <span>设置类型:</span>
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="dk_time" ng-show="setPtn==1">
+        <div class="dk_time" ng-show="currentLevel!=0 && setPtn==1">
             <div class="clearfix">
                 <div class="dk_time_div">
                     <span>持续时间:</span>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="cut_lbms" ng-show="setPtn==2" style="color: #fff;">
+        <div class="cut_lbms" ng-show="currentLevel!=0 && setPtn==2" style="color: #fff;">
             <table border="1" cellspacing="0" cellpadding="0" ng-if="settedPlan.length">
                 <tbody>
                 <tr>
@@ -89,7 +89,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="dk_time" ng-show="setPtn==2">
+        <div class="dk_time" ng-show="currentLevel!=0 && setPtn==2">
             <div class="clearfix" ng-show="!isFullPlan">
                 <div class="dk_time_div">
                     <span>开灯时间:</span>
@@ -107,7 +107,7 @@
                 </div>
             </div>
         </div>
-        <div class="dk_time" ng-show="lightCtrl!=6">
+        <div class="dk_time" ng-show="currentLevel!=0 && lightCtrl!=6">
             <div class="clearfix">
                 <div class="dk_time_div">
                     <span>开关:</span>
@@ -115,7 +115,7 @@
                 </div>
             </div>
         </div>
-        <div class="ldtz" ng-show="!isFullPlan && lightCtrl==6">
+        <div class="ldtz" ng-show="currentLevel!=0 && !isFullPlan && lightCtrl==6">
             <div class="ld_lt">亮度</div>
             <div id="box" ng-mousemove="calculateWidth($event)">
                 <div id="bg">
@@ -124,12 +124,17 @@
                 <div id="bt" ng-mousedown="dragBtn($event)" ng-mouseup="releaseBtn($event)"></div>
             </div>
             <div class="ld_rt">{{brightness}}%</div>
-            <div class="ld_text"><span class="bf_01">0%</span><span class="bf_02">25%</span><span
-                    class="bf_03">50%</span><span class="bf_04">75%</span><span class="bf_05">100%</span></div>
+            <div class="ld_text">
+                <span class="bf_01">0%</span>
+                <span class="bf_02">25%</span>
+                <span class="bf_03">50%</span>
+                <span class="bf_04">75%</span>
+                <span class="bf_05">100%</span>
+            </div>
             <div id="text" style="display:none"></div>
         </div>
         <div class="clearfix two_bt">
-            <a href="" class="ld_submit" ng-show="currentLevel!=0" ng-click="postPtn()" ng-show="!isFullPlan">确认</a>
+            <a href="" class="ld_submit" ng-click="postPtn()" ng-show="currentLevel!=0 && !isFullPlan">确认</a>
             <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组路灯</a>
         </div>
     </div>

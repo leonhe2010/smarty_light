@@ -59,6 +59,39 @@
     <div id="page" class="bgh page cut-page">
         <!--单灯右侧 查询-->
         <div class="dd_search">
+            <div class="ldtz">
+                <div class="ld_lt">亮度</div>
+                <div id="box" ng-mousemove="calculateWidth($event)">
+                    <div id="bg">
+                        <div id="bgcolor"></div>
+                    </div>
+                    <div id="bt" ng-mousedown="dragBtn($event)" ng-mouseup="releaseBtn($event)"></div>
+                </div>
+                <div class="ld_rt">{{brightness}}%</div>
+                <div class="ld_text">
+                    <span class="bf_01">0%</span>
+                    <span class="bf_02">25%</span>
+                    <span class="bf_03">50%</span>
+                    <span class="bf_04">75%</span>
+                    <span class="bf_05">100%</span>
+                </div>
+                <div id="text" style="display:none"></div>
+            </div>
+            <div class="dk_time">
+                <div class="clearfix">
+                    <div class="dk_time_div light_time">
+                        <span>持续时间:</span>
+                        <input type="text" class="dk_time_txt" ng-model="$parent.duration">
+                        分钟
+                    </div>
+                    <input type="sumit" value="确认" class="dd_bt" ng-click="postPtn()">
+                </div>
+            </div>
+            <!-- <div class="clearfix two_bt">
+                <a href="" class="ld_submit" ng-click="postPtn()">确认</a>
+            </div> -->
+        </div>
+        <div class="dd_search">
             <div class="dd_search_div clearfix">
                 <span>类型：</span>
                 <i ng-class="{'active': lightType==1}" type="1" ng-click="switchLightType($event)">电流</i>
@@ -91,7 +124,7 @@
             <div class="echart">
                 <div e-chart style="width: 875px;height: 382px;" options="lightTypeInfo" ng-if="lightTypeInfo"></div>
             </div>
-            <p class="spjk_bt"><a href="" ng-click="getVideo()">视频监控</a></p>
+            <!-- <p class="spjk_bt"><a href="" ng-click="getVideo()">视频监控</a></p> -->
         </div>
         <!--单灯右侧 table/-->
     </div>

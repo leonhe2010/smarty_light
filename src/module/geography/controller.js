@@ -10,6 +10,10 @@ define(function (require) {
     function Controller($scope, $location, $timeout, $http, $modal, $sce, util) {
 
         function initValue() {
+            $scope.isDrag = false;
+            $scope.ox = 0;
+            $scope.left = 0;
+            $scope.brightness = 0;
             // $scope.demo = {};
             // $scope.locationSetted = '全国';
             // $scope.currentLevel = 0;
@@ -20,12 +24,17 @@ define(function (require) {
         }
 
         function bindEvent() {
+            $scope.postPtn = postPtn;
+            $scope.dragBtn = dragBtn;
+            $scope.releaseBtn = releaseBtn;
+            $scope.calculateWidth = calculateWidth;
             // $scope.demo.itemClicked = showLeftTree;
             $scope.$on('initLeftTree', function () {
                 getLightLocation();
                 getLightNum();
             });
             $scope.$on('batchreject', function (event, data) {
+                $scope.currentLightId = data.lightId;
                 getLightDetail(data.lightId);
             });
             $scope.$on('singleLight', function (event, data) {
@@ -50,6 +59,69 @@ define(function (require) {
                     }
                 });
             }, 500);
+        }
+
+        function dragBtn(event) {
+            // $scope.lx = $(event.target).offset().left;
+            $scope.ox = event.pageX - $scope.left;
+            $scope.isDrag = true;
+        }
+
+        function releaseBtn(event) {
+            $scope.isDrag = false;
+        }
+
+        function calculateWidth(event) {
+            if ($scope.isDrag) {
+                $scope.left = event.pageX - $scope.ox;
+                if ($scope.left < 0) {
+                    $scope.left = 0;
+                }
+                if ($scope.left > 700) {
+                    $scope.left = 700;
+                }
+                $('#bt').css('left', $scope.left);
+                $('#bgcolor').width($scope.left);
+                $scope.brightness = parseInt($scope.left / 7);
+                $('#text').html(parseInt($scope.left / 7));
+            }
+        }
+
+        function initBrightness() {
+            $scope.ox = 0;
+            $scope.left = 0;
+            $('#bt').css('left', $scope.left);
+            $('#bgcolor').width($scope.left);
+            $scope.brightness = parseInt($scope.left / 7);
+            $('#text').html(parseInt($scope.left / 7));
+        }
+
+        function postPtn() {
+            var params = {};
+            var url = '/smartcity/api/set_light_manual';
+            var params = {
+                id: $scope.currentLightId,
+                level: 5,
+                brightness: $scope.brightness,
+                duration: +$scope.duration,
+                type: 6
+            };
+
+            $http.post(url, params).success(function (res) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
+                    util.showMessage('设置成功！');
+                    initBrightness();
+                    $scope.duration = null;
+                } 
+                else {
+                    util.showMessage('设置失败！');
+                }
+            }).error(function (res) {
+                util.showMessage('系统异常！');
+            });
         }
 
         function getLightDetail(lightId) {

@@ -610,9 +610,9 @@ body {
 }
 
 .dd_search {
-    margin: 40px 20px 40px 30px;
+    margin: 10px 20px 10px 30px;
     border-bottom: 1px solid #24282f;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
 }
 
 .dd_search_div {
@@ -668,7 +668,7 @@ body {
 }
 
 .dd_table {
-    margin: 40px 20px 40px 30px
+    margin: 10px 20px 10px 30px
 }
 
 .spjk_bt a {
@@ -1435,6 +1435,10 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
 
 .fault_left {
     height: 1012px;
+}
+
+.light_time {
+    margin-top: 0px;
 }
 
 ::-webkit-scrollbar {
