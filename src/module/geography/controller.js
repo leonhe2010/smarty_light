@@ -28,6 +28,14 @@ define(function (require) {
             $scope.$on('batchreject', function (event, data) {
                 getLightDetail(data.lightId);
             });
+            $scope.$on('singleLight', function (event, data) {
+                var dataArr = [];
+                dataArr.push(data);
+                $scope.list = dataArr;
+                setTimeout(function () {
+                    $scope.initMap();
+                }, 1000);
+            });
         }
 
         function main() {
