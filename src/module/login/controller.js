@@ -20,6 +20,7 @@ define(function (require) {
                 password: $scope.password
             }).success(function (res) {
                 if (res.data.result) {
+                    $scope.getChildNode(0, 1);
                     $location.url('/profile');
                 } 
                 else {

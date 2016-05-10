@@ -266,6 +266,16 @@ exports.mocks = [
                             start: 540, //开灯时间
                             end: 830, //关灯时间
                             brightness: 70, //亮度
+                        },
+                        {
+                            start: 830, //开灯时间
+                            end: 930, //关灯时间
+                            brightness: 70, //亮度
+                        },
+                        {
+                            start: 930, //开灯时间
+                            end: 1440, //关灯时间
+                            brightness: 40, //亮度
                         }
                     ],
                     "result": true
