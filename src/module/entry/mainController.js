@@ -125,15 +125,24 @@ define(function (require) {
                     });
                     us.findWhere(us.findWhere(us.findWhere($rootScope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'] = nodes;
                 }
+                else if (pidArr.length === 4) {
+                    us.findWhere(
+                    	us.findWhere(us.findWhere(us.findWhere($rootScope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'], {id: pidArr[3]})['children'] = nodes;
+                }
             }
             console.log($rootScope.demo.tree);
         }
 
         function showLeftTree(item) {
+        	if (item.level > 4) {
+        		$scope.$broadcast('singleLight', item);
+        		return;
+        	}
             $rootScope.locationSetted = item.name;
             var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
             $rootScope.currentLevel = +pidArr.length;
             $rootScope.currentId = +item.id;
+            $rootScope.currentPid = item.pid;
 
             $('.text-field').removeClass('c_green');
             $.each($('.text-field'), function (key, value) {
@@ -149,7 +158,45 @@ define(function (require) {
             if (pidArr.length < 4) {
                 getChildNode(item.id, pidArr.length + 1, item.pid);
             }
+            else if (pidArr.length == 4) {
+            	getLightNode(item.id, pidArr.length + 1, item.pid);
+            }
             $scope.$broadcast('initLeftTree');
+        }
+
+        function getLightNode(id, level, pid) {
+            var params = {
+                id: +id,
+                level: +level - 1
+            };
+
+            var url = '/smartcity/api/get_lat_lng';
+
+            $http.post(url, params).success(function (res) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
+                    setTreeDate(locationDataHandler(res.data.location), id, level, pid);
+                } 
+                else {
+                    util.showMessage(res.error);
+                }
+            }).error(function (res) {
+                util.showMessage('系统异常！');
+            });
+        }
+
+        function locationDataHandler(data) {
+        	var desArr = [];
+        	$.extend(true, desArr, data);
+
+        	$.each(desArr, function (key, value) {
+        		value.name = value.lightName;
+        		value.id = value.lightId;
+        	});
+
+        	return desArr;
         }
 
     	function initValue() {
@@ -157,6 +204,7 @@ define(function (require) {
     		$rootScope.locationSetted = '全国';
             $rootScope.currentLevel = 0;
             $rootScope.currentId = 0;
+            $rootScope.currentPid = null;
     	}
 
     	function bindEvent() {

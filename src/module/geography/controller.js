@@ -35,6 +35,13 @@ define(function (require) {
             bindEvent();
             getLightLocation();
             getLightNum();
+            setTimeout(function () {
+                $.each($('.text-field'), function (key, value) {
+                    if ($(value).attr('pid') == $scope.currentPid) {
+                        $(value).addClass('c_green');
+                    }
+                });
+            }, 500);
         }
 
         function getLightDetail(lightId) {

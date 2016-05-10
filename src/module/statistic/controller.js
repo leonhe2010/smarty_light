@@ -57,6 +57,13 @@ define(function (require) {
             bindEvent();
             getLightNum();
             getStatisticInfo();
+            setTimeout(function () {
+                $.each($('.text-field'), function (key, value) {
+                    if ($(value).attr('pid') == $scope.currentPid) {
+                        $(value).addClass('c_green');
+                    }
+                });
+            }, 500);
         }
 
         function getLightNum() {

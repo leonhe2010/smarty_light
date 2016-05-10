@@ -13,12 +13,13 @@ define(function (require) {
             scope: {
                 treeData: '=',
                 canChecked: '=',
+                // showOper: '=',
                 textField: '@',
                 itemClicked: '&',
                 itemCheckedChanged: '&',
                 addItem: '&',
                 minusItem: '&',
-                itemTemplateUrl: '@',
+                itemTemplateUrl: '@'
             },
             controller: ['$scope', function ($scope) {
                 $scope.itemExpended = function (item, $event) {
@@ -61,7 +62,15 @@ define(function (require) {
                         $event: $event
                     });
                 };
-            }]
+            }],
+            link: function(scope, iElement, iAttrs) {
+                if (iAttrs.showoper === 'true') {
+                    scope.showOper = true;
+                }
+                else {
+                    scope.showOper = false;
+                }
+            } 
         };
     }]);
 

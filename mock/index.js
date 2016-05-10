@@ -503,6 +503,7 @@ exports.mocks = [
                     "lng": 116.3248028932062 + Math.ceil(Math.random() * 10) / 50 + '',
                     "isWorked": i % 3 + 1,
                     "lightId": i + 1,
+                    "lightName": i + '11343443434334334434'
                 });
             }
             reply({

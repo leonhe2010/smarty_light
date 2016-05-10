@@ -57,6 +57,13 @@ define(function (require) {
             // getChildNode(0, 1);
             getLightNum();
             getFaultList();
+            setTimeout(function () {
+                $.each($('.text-field'), function (key, value) {
+                    if ($(value).attr('pid') == $scope.currentPid) {
+                        $(value).addClass('c_green');
+                    }
+                });
+            }, 500);
         }
 
         function changeBrokenType() {

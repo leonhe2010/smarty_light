@@ -96,7 +96,8 @@ body {
 
 .cut-left {
     width: 240px;
-    min-height: 800px;
+    height: 800px;
+    overflow: scroll;
 }
 
 .cut-all #page.cut-page {
@@ -1433,5 +1434,28 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
 }
 
 .fault_left {
-    min-height: 1012px;
+    height: 1012px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    z-index: 100
+}
+::-webkit-scrollbar-track-piece {
+    background-color: #2a313b;
+    -webkit-border-radius: 5px; 
+}
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: #333;
+    -webkit-border-radius: 5px; 
+}
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: #333;
+    -webkit-border-radius: 5px; 
+}
+::-webkit-scrollbar-corner {
+    background-color: #2a313b;
 }

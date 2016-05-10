@@ -35,11 +35,19 @@ define(function (require) {
         }
 
         function main() {
+            // location.reload();
             initValue();
             bindEvent();
             if ($scope.currentLevel != 0) {
                 getEquipmentList();
             }
+            setTimeout(function () {
+                $.each($('.text-field'), function (key, value) {
+                    if ($(value).attr('pid') == $scope.currentPid) {
+                        $(value).addClass('c_green');
+                    }
+                });
+            }, 500);
             // getChildNode(0, 1);
         }
 

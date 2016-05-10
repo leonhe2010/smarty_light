@@ -1,3 +1,14 @@
+<div id="left-panel" class="panel bgh cut-left" ng-class="{fault_left: isFaultPage()}" ng-show="!isLoginPage()">
+    <ul id="tree" class="lightTreeview">
+        <em class="i_edit" ng-show="isSetPage()">
+            <i class="i_add" ng-click="demo.addItem(null, $event)"></i>
+        </em>
+        <edit-tree-view tree-data="demo.tree" text-field="name" value-field='id' showOper="{{isSetPage()}}"
+                        item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)"
+                        add-Item="demo.addItem(item, e)" minus-item="demo.minusItem(item, e)"
+                        can-checked="true"></edit-tree-view>
+    </ul>
+</div>
 <div id="page" class="bgh page cut-page">
     <div class="sssj_con current_light_info">
         <dl>

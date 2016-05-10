@@ -19,12 +19,12 @@
     
 <div class="w1200 bgh nav" ng-show="!isLoginPage()">
     <div class="fl nav_link">
-        <a href="/smartcity/smarty_light/main.html?#/profile" ng-class="{'active': isProfilePage()}">概要</a>
-        <a href="/smartcity/smarty_light/main.html?#/geography" ng-class="{'active': isGeographyPage()}">地理</a>
-        <a href="/smartcity/smarty_light/main.html?#/manipulation" ng-class="{'active': isManipulationPage()}">灯控页面</a>
-        <a href="/smartcity/smarty_light/main.html?#/statistic" ng-class="{'active': isStatisticPage()}">统计</a>
-        <a href="/smartcity/smarty_light/main.html?#/fault" ng-class="{'active': isFaultPage()}">故障列表</a>
-        <a href="/smartcity/smarty_light/main.html?#/set" ng-class="{'active': isSetPage()}">设置</a>
+        <a href="/main.html?#/profile" ng-class="{'active': isProfilePage()}">概要</a>
+        <a href="/main.html?#/geography" ng-class="{'active': isGeographyPage()}">地理</a>
+        <a href="/main.html?#/manipulation" ng-class="{'active': isManipulationPage()}">灯控页面</a>
+        <a href="/main.html?#/statistic" ng-class="{'active': isStatisticPage()}">统计</a>
+        <a href="/main.html?#/fault" ng-class="{'active': isFaultPage()}">故障列表</a>
+        <a href="/main.html?#/set" ng-class="{'active': isSetPage()}">设置</a>
     </div>
     <div class="fr nav_time"><i><img src="src/resource/images/lm_logo.jpg" width="46" height="53"></i>
 
@@ -38,17 +38,17 @@
     </div>
 </div>
 <div class="w1200 content cut-all">
-    <div id="left-panel" class="panel bgh cut-left" ng-class="{fault_left: isFaultPage()}" ng-show="!isLoginPage()">
+    <!-- <div id="left-panel" class="panel bgh cut-left" ng-class="{fault_left: isFaultPage()}" ng-show="!isLoginPage()">
         <ul id="tree" class="lightTreeview">
             <em class="i_edit" ng-show="isSetPage()">
                 <i class="i_add" ng-click="demo.addItem(null, $event)"></i>
             </em>
-            <edit-tree-view tree-data="demo.tree" text-field="name" value-field='id'
+            <edit-tree-view tree-data="demo.tree" text-field="name" value-field='id' showOper="{{isSetPage()}}"
                             item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)"
                             add-Item="demo.addItem(item, e)" minus-item="demo.minusItem(item, e)"
                             can-checked="true"></edit-tree-view>
         </ul>
-    </div>
+    </div> -->
     <!--left/-->
     <div ng-view></div>
 </div>
