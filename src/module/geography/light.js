@@ -8,7 +8,7 @@ define(function (require, exports) {
     function Controller($scope, $location, $timeout, $http, $modal, $sce, util, $modalInstance, data) {
 
         function initValue() {
-            $scope.lightId = data.lightId;
+            $scope.lightId = +data.lightId;
             $scope.isDrag = false;
             $scope.ox = 0;
             $scope.left = 0;
