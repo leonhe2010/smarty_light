@@ -1,22 +1,16 @@
 define(function (require) {
 
     require('common/directive/echartsRe/directive');
-    // require('common/directive/leftTree/directive');
     var config = require('../config');
+    var lightCtrl = require('module/geography/light');
 
     function Controller($scope, $location, $timeout, $http, $modal, util) {
 
         function initValue() {
-            // $scope.demo = {};
             $scope.setPtn = 2;
-            // $scope.locationSetted = '上海';
-            // $scope.currentLevel = 1;
-            // $scope.currentId = 2;
             $scope.isDrag = false;
             $scope.ox = 0;
-            // $scope.lx = 0;
             $scope.left = 0;
-            // $scope.bgleft = 0;
             $scope.brightness = 0;
             $scope.unLightOptions = null;
             $scope.lightIds = [];
@@ -26,7 +20,6 @@ define(function (require) {
         }
 
         function bindEvent() {
-            // $scope.demo.itemClicked = showLeftTree;
             $scope.$on('initLeftTree', function () {
                 getLightNum();
                 if ($scope.setPtn === 2) {
@@ -42,6 +35,24 @@ define(function (require) {
             $scope.addGroup = addGroup;
             $scope.setLightIds = setLightIds;
             $scope.changeLightCtrl = changeLightCtrl;
+            $scope.$on('singleLight', function (event, data) {
+                openLightModal(data);
+            });
+        }
+
+        function openLightModal(item) {
+            var dialog = $modal.open({
+                templateUrl: 'src/module/geography/light.html',
+                controller: lightCtrl,
+                size: 'lg',
+                backdrop: 'static',
+                scope: $scope,
+                resolve: {
+                    data: function () {
+                        return item;
+                    }
+                }
+            });
         }
 
         function getLightNum() {
@@ -73,7 +84,6 @@ define(function (require) {
         function main() {
             initValue();
             bindEvent();
-            // getChildNode(0, 1);
             getLightNum();
             if ($scope.currentLevel != 0) {
                 getSettedPlan();
@@ -85,19 +95,7 @@ define(function (require) {
                     }
                 });
             }, 500);
-            // setTimeout(function() {
-            //     $($('.text-field')[0]).addClass('c_green');
-            // }, 1000);
         }
-
-        // function initPlanPtnInput() {
-        //     $scope.startHour = null;
-        //     $scope.startMinute = null;
-        //     $scope.endHour = null;
-        //     $scope.endMinute = null;
-        //     $scope.isLastPlan = false;
-        //     $scope.isFullPlan = false;
-        // }
 
         function changeLightCtrl() {
             $scope.duration = null;
@@ -386,104 +384,6 @@ define(function (require) {
                 getSettedPlan();
             }
         }
-
-        // function showLeftTree(item) {
-        //     $scope.locationSetted = item.name;
-        //     var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
-        //     $scope.currentLevel = +pidArr.length;
-        //     $scope.currentId = +item.id;
-
-        //     $('.text-field').removeClass('c_green');
-        //     $.each($('.text-field'), function (key, value) {
-        //         if ($(value).attr('pid') == item.pid) {
-        //             $(value).addClass('c_green');
-        //         }
-        //     });
-
-        //     switch (pidArr.length) {
-        //         case 1:
-        //             if (!$scope.demo.tree[pidArr[0]]['children']) {
-        //                 getChildNode(item.id, 2, item.pid);
-        //             }
-        //             break;
-        //         case 2:
-        //             if (!$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children']) {
-        //                 getChildNode(item.id, 3, item.pid);
-        //             }
-        //             $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['id'];
-        //             break;
-        //         case 3:
-        //             if (!$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children']) {
-        //                 getChildNode(item.id, 4, item.pid);
-        //             }
-        //             $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['id'];
-        //             // 待确认
-        //             setTimeout(function () {
-        //                 $scope.unLightOptions = $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children'];
-        //             });
-        //             break;
-        //         case 4:
-        //             $scope.currentParentId = +$scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['id'];
-        //             break;
-        //         default:
-        //             ;
-        //     }
-
-        //     getLightNum(pidArr.length, item.id);
-        // }
-
-        // 刷新列表
-        // function setTreeDate(nodes, parentId, parentLevel, parentPid) {
-        //     if (nodes.length === 0) {
-        //         return;
-        //     }
-        //     if (parentLevel === 1) {
-        //         $.each(nodes, function (index, value) {
-        //             nodes[index].pid = index + 'l';
-        //         });
-        //         $scope.demo.tree = nodes;
-        //     }
-        //     else {
-        //         $.each(nodes, function (index, value) {
-        //             nodes[index].pid = parentPid + index + 'l';
-        //         });
-
-        //         var pidArr = parentPid.substr(0, parentPid.length - 1).split('l');
-        //         if (pidArr.length === 1) {
-        //             $scope.demo.tree[pidArr[0]]['children'] = nodes;
-        //         }
-        //         else if (pidArr.length === 2) {
-        //             $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'] = nodes;
-        //         }
-        //         else if (pidArr.length === 3) {
-        //             $scope.demo.tree[pidArr[0]]['children'][pidArr[1]]['children'][pidArr[2]]['children'] = nodes;
-        //         }
-        //     }
-        //     console.log($scope.demo.tree);
-        // }
-
-        // function getChildNode(id, level, pid) {
-        //     var url = '/smartcity/api/get_child_node';
-
-        //     var params = {
-        //         id: +id,
-        //         level: +level
-        //     };
-
-        //     $http.post(url, params).success(function (res) {
-        //         if (res.status == 403) {
-        //             $location.url('/login');
-        //         }
-        //         else if (res.data.result) {
-        //             setTreeDate(res.data.nodes, id, level, pid);
-        //         } 
-        //         else {
-        //             util.showMessage('获取信息失败！');
-        //         }
-        //     }).error(function (res) {
-        //         util.showMessage('系统异常！');
-        //     });
-        // }
 
         main();
     };
