@@ -14,7 +14,7 @@ define(function (require) {
             $scope.brightness = 0;
             $scope.unLightOptions = null;
             $scope.lightIds = [];
-            $scope.currentParentId = 0;
+            // $scope.currentParentId = 0;
             $scope.lightCtrlOptions = config.lightCtrlOptions;
             $scope.lightCtrl = 6;
         }
