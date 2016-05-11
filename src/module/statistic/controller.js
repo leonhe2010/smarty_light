@@ -6,7 +6,7 @@ define(function (require) {
     var us = require('underscore');
     var moment = require('moment');
 
-    function Controller($scope, $location, $timeout, $http, util) {
+    function Controller($scope, $location, $timeout, $http, util, $modal) {
 
         function initTime(endDate, len) {
             var timeArr = [];
@@ -200,7 +200,7 @@ define(function (require) {
         main();
     };
 
-    Controller.$inject = ['$scope', '$location', '$timeout', '$http', 'utilService'];
+    Controller.$inject = ['$scope', '$location', '$timeout', '$http', 'utilService', '$modal'];
 
     return Controller;
 });
