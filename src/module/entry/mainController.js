@@ -88,7 +88,7 @@ define(function (require) {
                 else if (res.data.result) {
                     var showNode = res.data.nodes;
                     if (lightNode) {
-                        showNode = res.data.nodes.concat(lightNode);
+                        showNode = lightNode.concat(res.data.nodes);
                     }
                     setTreeDate(showNode, id, level, pid);
                 } 
