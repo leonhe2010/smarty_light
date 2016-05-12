@@ -1475,6 +1475,18 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
     background-position: -9px -51px;
 }
 
+.light_video th, .light_video tr {
+    text-align: center;
+}
+
+.light_video .video_time {
+    width: 100px;
+}
+
+.light_video .video_link {
+    width: 600px;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;

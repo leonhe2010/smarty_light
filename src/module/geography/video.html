@@ -14,12 +14,12 @@
             </video>
         </div>
         <div class="tv_con_img" ng-show="videoTab==2">
-            <div class="cut_lbms">
+            <div class="cut_lbms light_video">
                 <table border="1" cellspacing="0" cellpadding="0">
                     <tbody>
                         <tr>
-                            <th>视频时间</th>
-                            <th>视频链接</th>
+                            <th class="video_time">视频时间</th>
+                            <th class="video_link">视频链接</th>
                         </tr>
                         <tr ng-repeat="item in historyVideoList">
                             <td ng-bind="item.videoTime"></td>
