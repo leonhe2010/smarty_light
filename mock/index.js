@@ -373,15 +373,18 @@ exports.mocks = [
                     "light": [
                         {
                             lightId: 1,
-                            lightName: "编号1灯"
+                            isWorked: 1,
+                            lightName: "11111"
                         },
                         {
                             lightId: 2,
-                            lightName: "编号2灯"
+                            isWorked: 2,
+                            lightName: "22222"
                         },
                         {
                             lightId: 3,
-                            lightName: "编号3灯"
+                            isWorked: 3,
+                            lightName: "33333"
                         },
                     ],
                     "result": true

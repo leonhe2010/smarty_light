@@ -73,7 +73,7 @@ define(function (require) {
     	};
     	$rootScope.isSetPage = $scope.isSetPage;
 
-    	function getChildNode(id, level, pid) {
+    	function getChildNode(id, level, pid, lightNode) {
             var url = '/smartcity/api/get_child_node';
 
             var params = {
@@ -86,7 +86,11 @@ define(function (require) {
                     $location.url('/login');
                 }
                 else if (res.data.result) {
-                    setTreeDate(res.data.nodes, id, level, pid);
+                    var showNode = res.data.nodes;
+                    if (lightNode) {
+                        showNode = res.data.nodes.concat(lightNode);
+                    }
+                    setTreeDate(showNode, id, level, pid);
                 } 
                 else {
                     util.showMessage('获取信息失败！');
@@ -134,7 +138,7 @@ define(function (require) {
         }
 
         function showLeftTree(item) {
-        	if (item.level > 4) {
+        	if (item.lightId) {
         		$scope.$broadcast('singleLight', item);
         		return;
         	}
@@ -155,13 +159,41 @@ define(function (require) {
                 $scope.currentParentId = +pidArr[pidArr.length - 2];
             }
 
-            if (pidArr.length < 4) {
+            if (pidArr.length < 3) {
                 getChildNode(item.id, pidArr.length + 1, item.pid);
             }
+            else if (pidArr.length == 3) {
+                getUngroupLight(item.id, pidArr.length + 1, item.pid);
+            }
             else if (pidArr.length == 4) {
+                if (item.lightId) {
+                    return;
+                }
             	getLightNode(item.id, pidArr.length + 1, item.pid);
             }
             $scope.$broadcast('initLeftTree');
+        }
+
+        function getUngroupLight(id, level, pid) {
+            var params = {
+                id: +id
+            };
+
+            var url = '/smartcity/api/get_ungrouped_light';
+
+            $http.post(url, params).success(function (res) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
+                    getChildNode(id, level, pid, locationDataHandler(res.data.light, pid));
+                } 
+                else {
+                    util.showMessage(res.error);
+                }
+            }).error(function (res) {
+                util.showMessage('系统异常！');
+            });
         }
 
         function getLightNode(id, level, pid) {
@@ -177,7 +209,7 @@ define(function (require) {
                     $location.url('/login');
                 }
                 else if (res.data.result) {
-                    setTreeDate(locationDataHandler(res.data.location), id, level, pid);
+                    setTreeDate(locationDataHandler(res.data.location, pid), id, level, pid);
                 } 
                 else {
                     util.showMessage(res.error);
@@ -187,13 +219,14 @@ define(function (require) {
             });
         }
 
-        function locationDataHandler(data) {
+        function locationDataHandler(data, pid) {
         	var desArr = [];
         	$.extend(true, desArr, data);
 
         	$.each(desArr, function (key, value) {
         		value.name = value.lightName;
-        		value.id = value.lightId;
+                value.id = 'z' + value.lightId;
+        		value.pid = pid + value.lightId + 'l';
         	});
 
         	return desArr;
