@@ -1,0 +1,38 @@
+<div class="cut-all">
+    <div id="page" class="bgh cut-page">
+        <div class="dd_search">
+            <div class="ldtz">
+                <div class="ld_lt">亮度</div>
+                <div id="box" ng-mousemove="calculateWidth($event)">
+                    <div id="bg">
+                        <div id="bgcolor"></div>
+                    </div>
+                    <div id="bt" ng-mousedown="dragBtn($event)" ng-mouseup="releaseBtn($event)"></div>
+                </div>
+                <div class="ld_rt">{{brightness}}%</div>
+                <div class="ld_text">
+                    <span class="bf_01">0%</span>
+                    <span class="bf_02">25%</span>
+                    <span class="bf_03">50%</span>
+                    <span class="bf_04">75%</span>
+                    <span class="bf_05">100%</span>
+                </div>
+                <div id="text" style="display:none"></div>
+            </div>
+            <div class="dk_time">
+                <div class="clearfix">
+                    <div class="dk_time_div light_time">
+                        <span>持续时间:</span>
+                        <input type="text" class="dk_time_txt" ng-model="duration">
+                        分钟
+                    </div>
+                    <input type="sumit" value="确认" class="dd_bt" ng-click="postPtn()">
+                </div>
+            </div>
+            <!-- <div class="clearfix two_bt">
+                <a href="" class="ld_submit" ng-click="postPtn()">确认</a>
+            </div> -->
+        </div>
+    </div>
+</div>
+<div class="close_bt close-detail" ng-click="closeModal()">x</div>

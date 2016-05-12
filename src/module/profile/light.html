@@ -1,0 +1,58 @@
+<div class="cut-all">
+    <div id="left-panel" class="bgh cut-left profile_light">
+
+        <div class="dd_lt">
+            <img src="src/resource/images/table_02.jpg" width="160" height="240">
+
+            <div class="dd_lt_div">
+                <p class="dph">灯编号<i class="c_green" ng-bind="detail.lightNum"></i></p>
+            </div>
+            <div class="dd_lt_div">
+                <p>经度：<i ng-bind="detail.lng"></i></p>
+
+                <p>纬度：<i ng-bind="detail.lat"></i></p>
+
+                <p>实时电流：<i ng-bind="detail.current"></i>A</p>
+
+                <p>实时电压：<i ng-bind="detail.voltage">220v</i></p>
+
+                <p>实时功耗：<i ng-bind="detail.power"></i>w</p>
+
+                <p ng-show="detail.environment!=-1">温度：<i ng-bind="detail.temperature"></i></p>
+
+                <p ng-show="detail.environment!=-1">湿度：<i ng-bind="detail.humidity"></i>%</p>
+
+                <p ng-show="detail.environment!=-1">PM2.5：<i ng-bind="detail.pm2p5"></i></p>
+            </div>
+            <div class="dd_lt_div">
+                <p ng-if="detail.light==1">路灯情况：<i class="c_green">正常</i></p>
+                <p ng-if="detail.light==2">路灯情况：<i class="c_green">关闭</i></p>
+                <p ng-if="detail.light==0">路灯情况：<i class="c_red">网络故障</i></p>
+                <p ng-if="detail.light==3">路灯情况：<i class="c_red">硬件故障</i></p>
+                <!-- <p ng-if="detail.light==-1">路灯情况：<i class="c_red">--</i></p> -->
+
+                <p ng-if="detail.crowd==1">人群情况：<i class="c_green">正常</i></p>
+                <p ng-if="detail.crowd==0">人群情况：<i class="c_red">网络故障</i></p>
+                <p ng-if="detail.crowd==3">人群情况：<i class="c_red">硬件故障</i></p>
+                <!-- <p ng-if="detail.crowd==-1">人群情况：<i class="c_red">--</i></p> -->
+
+                <p ng-if="detail.environment==1">环境情况：<i class="c_green">正常</i></p>
+                <p ng-if="detail.environment==0">环境情况：<i class="c_red">网络故障</i></p>
+                <p ng-if="detail.environment==3">环境情况：<i class="c_red">硬件故障</i></p>
+                <!-- <p ng-if="detail.environment==-1">环境情况：<i class="c_red">--</i></p> -->
+
+                <p ng-if="detail.vehicle==1">车辆情况：<i class="c_green">正常</i></p>
+                <p ng-if="detail.vehicle==0">车辆情况：<i class="c_red">网络故障</i></p>
+                <p ng-if="detail.vehicle==3">车辆情况：<i class="c_red">硬件故障</i></p>
+                <!-- <p ng-if="detail.vehicle==-1">车辆情况：<i class="c_red">--</i></p> -->
+
+                <p ng-if="detail.voice==1">语音情况：<i class="c_green">正常</i></p>
+                <p ng-if="detail.voice==0">语音情况：<i class="c_red">网络故障</i></p>
+                <p ng-if="detail.voice==3">语音情况：<i class="c_red">硬件故障</i></p>
+                <!-- <p ng-if="detail.voice==-1">语音情况：<i class="c_red">--</i></p> -->
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="close_bt close-detail" ng-click="closeModal()">x</div>

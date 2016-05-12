@@ -3,7 +3,11 @@
     <!-- <input type="checkbox" ng-model="item.$$isChecked" class="check-box" ng-if="canChecked" ng-change="warpCallback('itemCheckedChanged', item, $event)"> -->
     <span class="flex-ico" ng-class="{'flex-close': !item.$$isExpend}" ng-click="warpCallback('itemClicked', item, $event)" ng-show="item.level!=5"></span>
     <span class='text-field'  pid="{{item.pid}}" ng-click="warpCallback('itemClicked', item, $event)" ng-show="item.level!=5">{{item.name}}({{item.all}}/{{item.work}}/{{item.fault}})</span>
-    <span class='text-field'  pid="{{item.pid}}" ng-click="warpCallback('itemClicked', item, $event)" ng-show="item.level==5">{{item.name}}</span>
+    <span class='text-field tree-light-item'  pid="{{item.pid}}" ng-click="warpCallback('itemClicked', item, $event)" ng-show="item.level==5">
+        <span class="light-img open-light-img" ng-show="item.isWorked==1"></span>
+        <span class="light-img close-light-img" ng-show="item.isWorked==2"></span>
+        <span class="light-img fault-light-img" ng-show="item.isWorked!=1 && item.isWorked!=2"></span>
+        {{item.name}}</span>
     <em class="i_edit" ng-show="showOper && item.level<5">
     	<i class="i_add" ng-click="addItemHandler(item.pid, $event)" ng-show="!item.addShow"></i>
     	<i class="i_minus" ng-click="minusItemHandler(item.pid, $event)"></i>

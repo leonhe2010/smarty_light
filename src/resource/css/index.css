@@ -1441,6 +1441,40 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
     margin-top: 0px;
 }
 
+.manipulation_left {
+    height: 840px;
+}
+
+.profile_light {
+    width: 300px;
+}
+
+.tree-light-item {
+    white-space: nowrap;
+}
+
+.light-img {
+    width: 15px;
+    display: inline-block;
+    height: 20px;
+    background-image: url(../images/markers_new.png);
+    background-repeat: no-repeat;
+    margin-bottom: -2px;
+    background-size: 32px 142px;
+}
+
+.open-light-img {
+    background-position: -9px -26px;
+}
+
+.close-light-img {
+    background-position: -9px 0px;
+}
+
+.fault-light-img {
+    background-position: -9px -51px;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
