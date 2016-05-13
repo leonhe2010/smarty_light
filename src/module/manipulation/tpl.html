@@ -115,7 +115,7 @@
                 </div>
             </div>
         </div>
-        <div class="ldtz" ng-show="currentLevel!=0 && !isFullPlan && lightCtrl==6">
+        <div class="ldtz" ng-show="currentLevel!=0 && lightCtrl==6 && (!isFullPlan || (setPtn==1))">
             <div class="ld_lt">亮度</div>
             <div id="box" ng-mousemove="calculateWidth($event)">
                 <div id="bg">
@@ -134,7 +134,7 @@
             <div id="text"  class="text" style="display:none"></div>
         </div>
         <div class="clearfix two_bt">
-            <a href="" class="ld_submit" ng-click="postPtn()" ng-show="currentLevel!=0 && !isFullPlan">确认</a>
+            <a href="" class="ld_submit" ng-click="postPtn()" ng-show="currentLevel!=0 && (!isFullPlan || setPtn==1)">确认</a>
             <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组路灯</a>
         </div>
     </div>
