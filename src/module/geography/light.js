@@ -9,10 +9,10 @@ define(function (require, exports) {
 
         function initValue() {
             $scope.lightId = +data.lightId;
-            $scope.isDrag = false;
-            $scope.ox = 0;
-            $scope.left = 0;
-            $scope.brightness = 0;
+            $scope.isDragLight = false;
+            $scope.oxLight = 0;
+            $scope.leftLight = 0;
+            $scope.brightnessLight = 0;
             $scope.calibrationOptions = config.calibrationOptions;
             var nowMoment = moment(new Date());
             $scope.endDate = nowMoment.format('YYYY-MM-DD');
@@ -21,10 +21,10 @@ define(function (require, exports) {
         }
 
         function bindEvent() {
-            $scope.postPtn = postPtn;
-            $scope.dragBtn = dragBtn;
-            $scope.releaseBtn = releaseBtn;
-            $scope.calculateWidth = calculateWidth;
+            $scope.postPtnLight = postPtnLight;
+            $scope.dragBtnLight = dragBtnLight;
+            $scope.releaseBtnLight = releaseBtnLight;
+            $scope.calculateWidthLight = calculateWidthLight;
             $scope.getVideo = getVideo;
             $scope.getChartData = getChartData;
             $scope.switchLightType = switchLightType;
@@ -37,48 +37,48 @@ define(function (require, exports) {
             getLightDetail($scope.lightId);            
         }
 
-        function dragBtn(event) {
-            $scope.ox = event.pageX - $scope.left;
-            $scope.isDrag = true;
+        function dragBtnLight(event) {
+            $scope.oxLight = event.pageX - $scope.leftLight;
+            $scope.isDragLight = true;
         }
 
-        function releaseBtn(event) {
-            $scope.isDrag = false;
+        function releaseBtnLight(event) {
+            $scope.isDragLight = false;
         }
 
-        function calculateWidth(event) {
-            if ($scope.isDrag) {
-                $scope.left = event.pageX - $scope.ox;
-                if ($scope.left < 0) {
-                    $scope.left = 0;
+        function calculateWidthLight(event) {
+            if ($scope.isDragLight) {
+                $scope.leftLight = event.pageX - $scope.oxLight;
+                if ($scope.leftLight < 0) {
+                    $scope.leftLight = 0;
                 }
-                if ($scope.left > 700) {
-                    $scope.left = 700;
+                if ($scope.leftLight > 700) {
+                    $scope.leftLight = 700;
                 }
-                $('#bt').css('left', $scope.left);
-                $('#bgcolor').width($scope.left);
-                $scope.brightness = parseInt($scope.left / 7);
-                $('#text').html(parseInt($scope.left / 7));
+                $('#btLight').css('left', $scope.leftLight);
+                $('#bgcolorLight').width($scope.leftLight);
+                $scope.brightnessLight = parseInt($scope.leftLight / 7);
+                $('#textLight').html(parseInt($scope.leftLight / 7));
             }
         }
 
-        function initBrightness() {
-            $scope.ox = 0;
-            $scope.left = 0;
-            $('#bt').css('left', $scope.left);
-            $('#bgcolor').width($scope.left);
-            $scope.brightness = parseInt($scope.left / 7);
-            $('#text').html(parseInt($scope.left / 7));
+        function initBrightnessLight() {
+            $scope.oxLight = 0;
+            $scope.leftLight = 0;
+            $('#btLight').css('left', $scope.leftLight);
+            $('#bgcolorLight').width($scope.leftLight);
+            $scope.brightnessLight = parseInt($scope.leftLight / 7);
+            $('#textLight').html(parseInt($scope.leftLight / 7));
         }
 
-        function postPtn() {
+        function postPtnLight() {
             var params = {};
             var url = '/smartcity/api/set_light_manual';
             var params = {
                 id: $scope.lightId,
                 level: 5,
-                brightness: $scope.brightness,
-                duration: +$scope.duration,
+                brightness: $scope.brightnessLight,
+                duration: +$scope.durationLight,
                 type: 6
             };
 
@@ -88,8 +88,8 @@ define(function (require, exports) {
                 }
                 else if (res.data.result) {
                     util.showMessage('设置成功！');
-                    initBrightness();
-                    $scope.duration = null;
+                    initBrightnessLight();
+                    $scope.durationLight = null;
                 } 
                 else {
                     util.showMessage('设置失败！');

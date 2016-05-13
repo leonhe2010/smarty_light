@@ -59,13 +59,13 @@
         <div class="dd_search">
             <div class="ldtz">
                 <div class="ld_lt">亮度</div>
-                <div id="box" ng-mousemove="calculateWidth($event)">
+                <div id="box" ng-mousemove="calculateWidthLight($event)">
                     <div id="bg">
-                        <div id="bgcolor"></div>
+                        <div class="bgcolor" id="bgcolorLight"></div>
                     </div>
-                    <div id="bt" ng-mousedown="dragBtn($event)" ng-mouseup="releaseBtn($event)"></div>
+                    <div class="bt" id="btLight" ng-mousedown="dragBtnLight($event)" ng-mouseup="releaseBtnLight($event)"></div>
                 </div>
-                <div class="ld_rt">{{brightness}}%</div>
+                <div class="ld_rt">{{brightnessLight}}%</div>
                 <div class="ld_text">
                     <span class="bf_01">0%</span>
                     <span class="bf_02">25%</span>
@@ -73,16 +73,16 @@
                     <span class="bf_04">75%</span>
                     <span class="bf_05">100%</span>
                 </div>
-                <div id="text" style="display:none"></div>
+                <div id="textLight" class="text" style="display:none"></div>
             </div>
             <div class="dk_time">
                 <div class="clearfix">
                     <div class="dk_time_div light_time">
                         <span>持续时间:</span>
-                        <input type="text" class="dk_time_txt" ng-model="duration">
+                        <input type="text" class="dk_time_txt" ng-model="durationLight">
                         分钟
                     </div>
-                    <input type="sumit" value="确认" class="dd_bt" ng-click="postPtn()">
+                    <input type="sumit" value="确认" class="dd_bt" ng-click="postPtnLight()">
                 </div>
             </div>
             <!-- <div class="clearfix two_bt">

@@ -152,7 +152,7 @@ exports.mocks = [
                     "msg": "success",
                     "result": true,
                     "lightNum": "11",
-                    "videoSrc": "http://123.125.86.20/vlive.qqvideo.tc.qq.com/i0015iurhdl.mp4?sdtfrom=v1010&vkey=9775221235B5925ABC0236071D9A8A751E0EB074A2BDF2D882D42CF29D3BF357790BDACF4D76F40F12655A66F692FC50B2548B501AFE7D5911876BEFC3AC3D90FAF9F45AE7744ABF07E06B7E43780E18062C010FC68EF366"
+                    "videoSrc": "http://120.55.88.235/video/2016-02-03.avi"
                 },
                 "error": null
             });  

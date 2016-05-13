@@ -762,14 +762,14 @@ body {
     overflow: hidden;
 }
 
-#bgcolor {
+.bgcolor {
     background: url(../images/icon.png) repeat-x;
     background-position: 0 -115px;
     width: 0;
     height: 26px;
 }
 
-#bt {
+.bt {
     width: 16px;
     height: 26px;
     background: url(../images/icon.png) no-repeat;
@@ -782,7 +782,7 @@ body {
     cursor: pointer;
 }
 
-#text {
+.text {
     width: 700px;
     margin: 0 auto;
     font-size: 16px;

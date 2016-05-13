@@ -119,9 +119,9 @@
             <div class="ld_lt">亮度</div>
             <div id="box" ng-mousemove="calculateWidth($event)">
                 <div id="bg">
-                    <div id="bgcolor"></div>
+                    <div class="bgcolor" id="bgcolor"></div>
                 </div>
-                <div id="bt" ng-mousedown="dragBtn($event)" ng-mouseup="releaseBtn($event)"></div>
+                <div class="bt" id="bt" ng-mousedown="dragBtn($event)" ng-mouseup="releaseBtn($event)"></div>
             </div>
             <div class="ld_rt">{{brightness}}%</div>
             <div class="ld_text">
@@ -131,7 +131,7 @@
                 <span class="bf_04">75%</span>
                 <span class="bf_05">100%</span>
             </div>
-            <div id="text" style="display:none"></div>
+            <div id="text"  class="text" style="display:none"></div>
         </div>
         <div class="clearfix two_bt">
             <a href="" class="ld_submit" ng-click="postPtn()" ng-show="currentLevel!=0 && !isFullPlan">确认</a>
