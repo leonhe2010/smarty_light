@@ -183,8 +183,11 @@ define(function (require) {
                         map.enableScrollWheelZoom(true);
                         var topLeftNavigation = new BMap.NavigationControl();
                         map.addControl(topLeftNavigation);
+
+                        // map.addEventListener('tilesloaded', function() {
                         points = $scope.list;
                         initMaker();
+                        // });
                         // initMapLine();
                     }
                     function init() {
@@ -203,6 +206,10 @@ define(function (require) {
                         initMapInfo();
                         // bind();
                     };
+
+                    // $scope.$on('loadMarker', function (event, data) {debugger;
+                    //     initMapInfo();
+                    // });
 
                     // $scope.$watch('list', function (value) {
                     //     $scope.initMap();
