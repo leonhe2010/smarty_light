@@ -149,6 +149,10 @@ define(function (require) {
                                         $scope.selectedId = v.id;
                                     });
                                     marker.setIcon(getActiveIcon(i, v.isWorked));
+                                    var groupInfo = v.groupName || '未分组';
+                                    var sContent = v.lightName + '  ' + groupInfo;
+                                    var infoWindow = new BMap.InfoWindow(sContent);
+                                    map.openInfoWindow(infoWindow, pt);
                                 });
                                 marker.addEventListener('mouseout', function () {
                                     $scope.$apply(function () {
