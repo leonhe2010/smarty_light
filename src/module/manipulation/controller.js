@@ -182,31 +182,72 @@ define(function (require) {
             };
         }
 
-        function deletePlan(planId) {
-            var url = '/smartcity/api/set_light_plan';
-            var params = {
-                id: $scope.currentId,
-                level: $scope.currentLevel,
-                plans: [],
-                type: $scope.lightCtrl
-            };
-            $.extend(true, params.plans, $scope.settedPlan);
-            params.plans.pop();
-
-            $http.post(url, params).success(function (res) {
-                if (res.status == 403) {
-                    $location.url('/login');
+        // ???
+        function deletePlan(index) {
+            if ($($('.edit-btn')[index]).html() == '编辑') {
+                $('.edit-btn').attr('disabled', 'disabled');
+                $($('.edit-btn')[index]).attr('disabled', false);
+                $($('.edit-btn')[index]).removeClass('btn-primary');
+                $($('.edit-btn')[index]).addClass('btn-success');
+                $($('.edit-btn')[index]).html('保存');
+                $scope.isEditPlan = true;
+            }
+            else {
+                // addPlan(index);
+                if (!$.isNumeric($scope.endHour) || !$.isNumeric($scope.endMinute)) {
+                    util.showMessage('请输入正确的时间！');
+                    return;
                 }
-                else if (res.data.result) {
-                    util.showMessage('删除成功！');
-                    getSettedPlan();
-                } 
+                var endDate = +$scope.endHour * 60 + (+$scope.endMinute);
+                if (endDate < $scope.settedPlan[index]['start']) {
+                    util.showMessage('结束时间不能小于开始时间！');
+                    return;
+                }
+                $scope.settedPlan[index]['end'] = endDate;
+                if ($scope.lightCtrl === 6) {
+                    $scope.settedPlan[index]['brightness'] = +$scope.brightness;
+                }
                 else {
-                    util.showMessage('获取已设置计划模式失败！');
+                    $scope.settedPlan[index]['brightness'] = +$scope.onOff;
                 }
-            }).error(function (res) {
-                util.showMessage('系统异常！');
-            });
+                
+                if (index < 4) {
+                    $scope.settedPlan[index + 1]['start'] = endDate;
+                }
+                $scope.tableLevel = $scope.currentLevel;
+                initBrightness();
+                $scope.onOff = null;
+                $('.edit-btn').attr('disabled', false);
+                $($('.edit-btn')[index]).removeClass('btn-success');
+                $($('.edit-btn')[index]).addClass('btn-primary');
+                $($('.edit-btn')[index]).html('编辑');
+                $scope.isEditPlan = false;
+            }
+
+            // var url = '/smartcity/api/set_light_plan';
+            // var params = {
+            //     id: $scope.currentId,
+            //     level: $scope.currentLevel,
+            //     plans: [],
+            //     type: $scope.lightCtrl
+            // };
+            // $.extend(true, params.plans, $scope.settedPlan);
+            // params.plans.pop();
+
+            // $http.post(url, params).success(function (res) {
+            //     if (res.status == 403) {
+            //         $location.url('/login');
+            //     }
+            //     else if (res.data.result) {
+            //         util.showMessage('删除成功！');
+            //         getSettedPlan();
+            //     } 
+            //     else {
+            //         util.showMessage('获取已设置计划模式失败！');
+            //     }
+            // }).error(function (res) {
+            //     util.showMessage('系统异常！');
+            // });
         }
 
         function dragBtn(event) {
@@ -257,13 +298,14 @@ define(function (require) {
                     $location.url('/login');
                 }
                 else if (res.data.result) {
-                    $scope.settedPlan = res.data.plans;
-                    $scope.planData = [];
-                    $.extend(true, $scope.planData, $scope.settedPlan);
+                    initTableData(res.data.plans);
+                    // $scope.settedPlan = res.data.plans;
+                    // $scope.planData = [];
+                    // $.extend(true, $scope.planData, $scope.settedPlan);
                     $scope.tableLevel = res.data.level;
-                    if ($scope.planData.length > 0) {
-                        $scope.planData[$scope.planData.length - 1].isLastItem = true;
-                    }
+                    // if ($scope.planData.length > 0) {
+                    //     $scope.planData[$scope.planData.length - 1].isLastItem = true;
+                    // }
                     initInputValue();
                 } 
                 else {
@@ -274,43 +316,129 @@ define(function (require) {
             });
         }
 
-        function initInputValue() {
-            if ($scope.settedPlan.length === 0) {
-                $scope.startHour = 0;
-                $scope.startMinute = 0;
-                $scope.endHour = null;
-                $scope.endMinute = null;
-                $scope.isLastPlan = false;
-                $scope.isFullPlan = false;
+        function initTableData(data) {
+            var len = data.length;
+            var i = 0;
+            var j = 4 - len;
+            $scope.settedPlan = data;
+
+            switch (len) {
+                case 0:
+                    $scope.settedPlan.push({
+                        start: 0, 
+                        end: 1440, 
+                        brightness: 0
+                    });
+                    for (i = 0; i < j; i++) {
+                        $scope.settedPlan.push({
+                            start: 1440, 
+                            end: 1440, 
+                            brightness: 0
+                        });
+                    }
+                    break;
+                case 1:
+                    $scope.settedPlan.push({
+                        start: data[len - 1]['end'], 
+                        end: 1440, 
+                        brightness: 0
+                    });
+                    for (i = 0; i < j; i++) {
+                        $scope.settedPlan.push({
+                            start: 1440, 
+                            end: 1440, 
+                            brightness: 0
+                        });
+                    }
+                    break;
+                case 2:
+                    $scope.settedPlan.push({
+                        start: data[len - 1]['end'], 
+                        end: 1440, 
+                        brightness: 0
+                    });
+                    for (i = 0; i < j; i++) {
+                        $scope.settedPlan.push({
+                            start: 1440, 
+                            end: 1440, 
+                            brightness: 0
+                        });
+                    }
+                    break;
+                case 3:
+                    $scope.settedPlan.push({
+                        start: data[len - 1]['end'], 
+                        end: 1440, 
+                        brightness: 0
+                    });
+                    for (i = 0; i < j; i++) {
+                        $scope.settedPlan.push({
+                            start: 1440, 
+                            end: 1440, 
+                            brightness: 0
+                        });
+                    }
+                    break;
+                case 4:
+                    $scope.settedPlan.push({
+                        start: data[len - 1]['end'], 
+                        end: 1440, 
+                        brightness: 0
+                    });
+                    break;
+                case 5:
+                    break;
+                default:
+                    util.showMessage('系统异常！');
             }
-            else if ($scope.settedPlan.length === 4) {
-                var timeVal = $scope.settedPlan[$scope.settedPlan.length - 1].end;
-                $scope.startHour = Math.floor(timeVal / 60);
-                $scope.startMinute = Math.floor(timeVal % 60);
-                $scope.endHour = 24;
-                $scope.endMinute = 0;
-                $scope.isLastPlan = true;
-                $scope.isFullPlan = false;
-            }
-            else if ($scope.settedPlan.length === 5) {
-                $scope.startHour = null;
-                $scope.startMinute = null;
-                $scope.endHour = null;
-                $scope.endMinute = null;
-                $scope.isLastPlan = false;
-                $scope.isFullPlan = true;
-            }
-            else {
-                var timeVal = $scope.settedPlan[$scope.settedPlan.length - 1].end;
-                $scope.startHour = Math.floor(timeVal / 60);
-                $scope.startMinute = Math.floor(timeVal % 60);
-                $scope.endHour = null;
-                $scope.endMinute = null;
-                $scope.isLastPlan = false;
-                $scope.isFullPlan = false;
+
+            $scope.timeStap = [];
+            var k = 0;
+            for (k = 0; k < 5; k++) {
+                $scope.timeStap.push($scope.settedPlan[k]['end']);
             }
         }
 
+        function initInputValue() {
+            $scope.endHour = null;
+            $scope.endMinute = null;
+            // if ($scope.settedPlan.length === 0) {
+            //     $scope.startHour = 0;
+            //     $scope.startMinute = 0;
+            //     $scope.endHour = null;
+            //     $scope.endMinute = null;
+            //     $scope.isLastPlan = false;
+            //     // $scope.isFullPlan = false;
+            // }
+            // else if ($scope.settedPlan.length === 4) {
+            //     var timeVal = $scope.settedPlan[$scope.settedPlan.length - 1].end;
+            //     $scope.startHour = Math.floor(timeVal / 60);
+            //     $scope.startMinute = Math.floor(timeVal % 60);
+            //     $scope.endHour = 24;
+            //     $scope.endMinute = 0;
+            //     $scope.isLastPlan = true;
+            //     // $scope.isFullPlan = false;
+            // }
+            // else if ($scope.settedPlan.length === 5) {
+            //     $scope.startHour = null;
+            //     $scope.startMinute = null;
+            //     $scope.endHour = null;
+            //     $scope.endMinute = null;
+            //     $scope.isLastPlan = false;
+            //     // $scope.isFullPlan = true;
+            // }
+            // else {
+            //     var timeVal = $scope.settedPlan[$scope.settedPlan.length - 1].end;
+            //     $scope.startHour = Math.floor(timeVal / 60);
+            //     $scope.startMinute = Math.floor(timeVal % 60);
+            //     $scope.endHour = null;
+            //     $scope.endMinute = null;
+            //     $scope.isLastPlan = false;
+            //     // $scope.isFullPlan = false;
+            // }
+        }
+
+        // ???
         function postPtn() {
             var url = '';
             var params = {};
@@ -329,6 +457,17 @@ define(function (require) {
                 }
             }
             else if ($scope.setPtn === 2) {
+                if (
+                    $scope.settedPlan[0]['start'] > $scope.settedPlan[0]['end']
+                    || $scope.settedPlan[1]['start'] > $scope.settedPlan[1]['end']
+                    || $scope.settedPlan[2]['start'] > $scope.settedPlan[2]['end']
+                    || $scope.settedPlan[3]['start'] > $scope.settedPlan[3]['end']
+                    || $scope.settedPlan[4]['start'] > $scope.settedPlan[4]['end']
+                    || $scope.settedPlan[4]['end'] !== 1440
+                    ) {
+                    util.showMessage('请设置正确的计划模式！');
+                    return;
+                }
                 url = '/smartcity/api/set_light_plan';
                 params = {
                     id: $scope.currentId,
@@ -338,17 +477,17 @@ define(function (require) {
                 };
                 $.extend(true, params.plans, $scope.settedPlan);
 
-                var planObj = {
-                    start: ((+$scope.startHour) * 60 + (+$scope.startMinute)),
-                    end: ((+$scope.endHour) * 60 + (+$scope.endMinute)),
-                    brightness: $scope.brightness
-                };
+                // var planObj = {
+                //     start: ((+$scope.startHour) * 60 + (+$scope.startMinute)),
+                //     end: ((+$scope.endHour) * 60 + (+$scope.endMinute)),
+                //     brightness: $scope.brightness
+                // };
 
-                if ($scope.lightCtrl !== 6) {
-                    planObj.brightness = +$scope.onOff;
-                }
+                // if ($scope.lightCtrl !== 6) {
+                //     planObj.brightness = +$scope.onOff;
+                // }
 
-                params.plans.push(planObj);
+                // params.plans.push(planObj);
             }
 
 

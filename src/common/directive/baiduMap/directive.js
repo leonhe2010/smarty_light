@@ -150,7 +150,7 @@ define(function (require) {
                                     });
                                     marker.setIcon(getActiveIcon(i, v.isWorked));
                                     var groupInfo = v.groupName || '未分组';
-                                    var sContent = v.lightName + '  ' + groupInfo;
+                                    var sContent = '<div>路灯名称：' + v.lightName + '</div><div>分组信息：' + groupInfo + '</div>';
                                     var infoWindow = new BMap.InfoWindow(sContent);
                                     map.openInfoWindow(infoWindow, pt);
                                 });

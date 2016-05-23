@@ -74,30 +74,28 @@
                     <th>设置层级</th>
                     <th>操作</th>
                 </tr>
-                <tr ng-repeat="item in planData">
+                <tr ng-repeat="item in settedPlan">
                     <td ng-bind="lightCtrl | lightCtrlShow"></td>
                     <td>{{item.start | minuteTimeShow}}-{{item.end | minuteTimeShow}}</td>
                     <td ng-if="lightCtrl==6">{{item.brightness}}%</td>
                     <td ng-if="lightCtrl!=6" ng-bind="item.brightness | onOffShow"></td>
                     <td ng-bind="tableLevel | levelShow"></td>
                     <td>
-                        <button class="btn btn-primary" ng-click="deletePlan(item.planId)"
-                                ng-disabled="!item.isLastItem">删除
-                        </button>
+                        <button class="btn btn-primary edit-btn" ng-click="deletePlan($index)">编辑</button>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div class="dk_time" ng-show="currentLevel!=0 && setPtn==2">
-            <div class="clearfix" ng-show="!isFullPlan">
-                <div class="dk_time_div">
+        <div class="dk_time" ng-show="currentLevel!=0 && setPtn==2 && isEditPlan">
+            <div class="clearfix">
+                <!-- <div class="dk_time_div">
                     <span>开灯时间:</span>
                     <input type="text" class="dk_time_txt" ng-model="startHour" readonly>
                     时
                     <input type="text" class="dk_time_txt" ng-model="startMinute" readonly>
                     分
-                </div>
+                </div> -->
                 <div class="dk_time_div">
                     <span>关灯时间:</span>
                     <input type="text" class="dk_time_txt" ng-model="endHour" ng-readonly="isLastPlan">
@@ -107,7 +105,7 @@
                 </div>
             </div>
         </div>
-        <div class="dk_time" ng-show="currentLevel!=0 && lightCtrl!=6">
+        <div class="dk_time" ng-show="currentLevel!=0 && lightCtrl!=6 && isEditPlan">
             <div class="clearfix">
                 <div class="dk_time_div">
                     <span>开关:</span>
@@ -115,7 +113,7 @@
                 </div>
             </div>
         </div>
-        <div class="ldtz" ng-show="currentLevel!=0 && lightCtrl==6 && (!isFullPlan || (setPtn==1))">
+        <div class="ldtz" ng-show="currentLevel!=0 && lightCtrl==6 && (isEditPlan || setPtn==1)">
             <div class="ld_lt">亮度</div>
             <div id="box" ng-mousemove="calculateWidth($event)">
                 <div id="bg">
@@ -134,7 +132,7 @@
             <div id="text"  class="text" style="display:none"></div>
         </div>
         <div class="clearfix two_bt">
-            <a href="" class="ld_submit" ng-click="postPtn()" ng-show="currentLevel!=0 && (!isFullPlan || setPtn==1)">确认</a>
+            <a href="" class="ld_submit" ng-click="postPtn()" ng-show="currentLevel!=0">确认</a>
             <a href="" class="ld_add" ng-show="currentLevel==4" ng-click="addGroup()">添加分组路灯</a>
         </div>
     </div>
