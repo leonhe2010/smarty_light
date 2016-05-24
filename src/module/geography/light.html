@@ -14,9 +14,12 @@
 
                 <p>实时电流：<i ng-bind="detail.current"></i>A</p>
 
-                <p>实时电压：<i ng-bind="detail.voltage">220v</i></p>
+                <p>实时电压：<i ng-bind="detail.voltage"></i>v</p>
 
                 <p>实时功耗：<i ng-bind="detail.power"></i>w</p>
+                <p>led电流：<i ng-bind="+detail.ledCurrent"></i>A</p>
+                <p>剩余时间：<i ng-bind="detail.pwm1Time"></i>min</p>
+                <p>噪声：<i ng-bind="detail.noise"></i>dB</p>
 
                 <p ng-show="detail.environment!=-1">温度：<i ng-bind="detail.temperature"></i></p>
 
