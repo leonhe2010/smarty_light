@@ -507,6 +507,13 @@ define(function (require) {
                     else if ($scope.setPtn === 2) {
                         getSettedPlan();
                     }
+
+                    $scope.demo.itemClicked({
+                        name: $scope.locationSetted,
+                        id: $scope.currentId,
+                        level: $scope.currentLevel,
+                        pid: $scope.currentPid
+                    });
                 } 
                 else {
                     util.showMessage('设置失败！');

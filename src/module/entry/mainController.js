@@ -130,23 +130,48 @@ define(function (require) {
                     us.findWhere(us.findWhere(us.findWhere($rootScope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'] = nodes;
                 }
                 else if (pidArr.length === 4) {
-                    us.findWhere(
-                    	us.findWhere(us.findWhere(us.findWhere($rootScope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'], {id: pidArr[3]})['children'] = nodes;
+                    us.findWhere(us.findWhere(us.findWhere(us.findWhere($rootScope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'], {id: pidArr[3]})['children'] = nodes;
                 }
             }
             console.log($rootScope.demo.tree);
         }
 
         function showLeftTree(item) {
-        	if (item.lightId) {
-        		$scope.$broadcast('singleLight', item);
-        		return;
-        	}
+            var pidStr = item.pid.substr(0, item.pid.length - 1);
+        	var pidArr = pidStr.split('l');
+
+            if (item.lightId) {
+                $rootScope.currentLevel = +pidArr.length - 1;
+                $rootScope.currentId = +pidArr[pidArr.length - 2];
+                $rootScope.currentPid = pidStr.substr(0, (pidStr.lastIndexOf('l') + 1));
+                $rootScope.currentParentId = +pidArr[pidArr.length - 3];
+
+                if ($rootScope.currentLevel === 3) {
+                    $rootScope.locationSetted = us.findWhere(us.findWhere(us.findWhere($rootScope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['name'];
+                }
+                else if ($rootScope.currentLevel === 4) {
+                    $rootScope.locationSetted = us.findWhere(us.findWhere(us.findWhere(us.findWhere($rootScope.demo.tree, {id: pidArr[0]})['children'], {id: pidArr[1]})['children'], {id: pidArr[2]})['children'], {id: pidArr[3]})['name'];
+                }
+
+                $('.text-field').removeClass('c_green');
+                $.each($('.text-field'), function (key, value) {
+                    if ($(value).attr('pid') == $rootScope.currentPid) {
+                        $(value).addClass('c_green');
+                    }
+                });
+
+                $scope.$broadcast('initLeftTree');
+                $scope.$broadcast('singleLight', item);
+                return;
+            }
+
             $rootScope.locationSetted = item.name;
-            var pidArr = item.pid.substr(0, item.pid.length - 1).split('l');
             $rootScope.currentLevel = +pidArr.length;
             $rootScope.currentId = +item.id;
             $rootScope.currentPid = item.pid;
+            if (pidArr.length > 1) {
+                $rootScope.currentParentId = +pidArr[pidArr.length - 2];
+            }
 
             $('.text-field').removeClass('c_green');
             $.each($('.text-field'), function (key, value) {
@@ -154,11 +179,7 @@ define(function (require) {
                     $(value).addClass('c_green');
                 }
             });
-
-            if (pidArr.length > 1) {
-                $scope.currentParentId = +pidArr[pidArr.length - 2];
-            }
-
+            
             if (pidArr.length < 3) {
                 getChildNode(item.id, pidArr.length + 1, item.pid);
             }
