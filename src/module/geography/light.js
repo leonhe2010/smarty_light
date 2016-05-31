@@ -14,10 +14,13 @@ define(function (require, exports) {
             $scope.leftLight = 0;
             $scope.brightnessLight = 0;
             $scope.calibrationOptions = config.calibrationOptions;
+            $scope.detailSearch = {};
+            $scope.detailSearch.calibration = 1;
             var nowMoment = moment(new Date());
             $scope.endDate = nowMoment.format('YYYY-MM-DD');
             $scope.lightType = 1;
             $scope.lightTypeShow = '电流';
+            $scope.isLightChanged = false;
         }
 
         function bindEvent() {
@@ -29,12 +32,14 @@ define(function (require, exports) {
             $scope.getChartData = getChartData;
             $scope.switchLightType = switchLightType;
             $scope.closeModal = closeModal;
+            $scope.refreshId = setInterval(getLightDetail, 2 * 1000);
         }
 
         function main() {
             initValue();
             bindEvent();
-            getLightDetail($scope.lightId);            
+            getLightDetail($scope.lightId);
+            getChartData();           
         }
 
         function dragBtnLight(event) {
@@ -87,6 +92,7 @@ define(function (require, exports) {
                     $location.url('/login');
                 }
                 else if (res.data.result) {
+                    $scope.isLightChanged = true;
                     util.showMessage('设置成功！');
                     initBrightnessLight();
                     $scope.durationLight = null;
@@ -111,8 +117,6 @@ define(function (require, exports) {
                 }
                 else if (res.data.result) {
                     $scope.detail = res.data;
-                    $scope.detail.calibration = 1;
-                    getChartData();
                 }
                 else {
                     util.showMessage(res.error);
@@ -123,7 +127,12 @@ define(function (require, exports) {
         }
 
         function closeModal() {
-            $modalInstance.dismiss();
+            if ($scope.refreshId) {
+                clearInterval($scope.refreshId);
+            }
+            $modalInstance.dismiss({
+                type: $scope.isLightChanged
+            });
         }
 
         function switchLightType(event) {
@@ -141,7 +150,7 @@ define(function (require, exports) {
             var params = {
                 "id": $scope.lightId,
                 "level": 5,
-                "calibration": +$scope.detail.calibration,
+                "calibration": +$scope.detailSearch.calibration,
                 "endDate": $scope.endDate,
                 "type": +$scope.lightType
             };
@@ -265,7 +274,7 @@ define(function (require, exports) {
             var itemTime = [];
             var i;
 
-            switch (+$scope.detail.calibration) {
+            switch (+$scope.detailSearch.calibration) {
                 case 1:
                     for (i = 0; i < 24; i++) {
                         itemTime.push('' + i + '时');

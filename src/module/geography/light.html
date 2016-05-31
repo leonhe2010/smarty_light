@@ -105,7 +105,7 @@
             <div class="dd_search_div clearfix">
                 <span>查询时间段</span>
                 <span class="" ng-repeat="item in calibrationOptions">
-                    <input type="radio" name="calibration" ng-model="detail.calibration" value="{{item.value}}">
+                    <input type="radio" name="calibration" ng-model="detailSearch.calibration" value="{{item.value}}">
                     <label>{{item.text}}</label>
                 </span>
                 <input type="sumit" value="查询" class="dd_bt" ng-click="getChartData()">

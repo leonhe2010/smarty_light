@@ -70,6 +70,20 @@ define(function (require) {
                     }
                 }
             });
+
+            dialog.result.then(
+                function () {},
+                function (data) {
+                    if (data && data.type) {
+                        $scope.demo.itemClicked({
+                            name: $scope.locationSetted,
+                            id: $scope.currentId,
+                            level: $scope.currentLevel,
+                            pid: $scope.currentPid
+                        });
+                    }
+                }
+            );
         }
 
         // function dragBtn(event) {
