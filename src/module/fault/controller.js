@@ -124,8 +124,8 @@ define(function (require) {
 
         function switchPattern(type) {
             $scope.patternType = +type;
-            $scope.startDate = null;
-            $scope.endDate = null;
+            // $scope.startDate = null;
+            // $scope.endDate = null;
             $scope.brokenTable = [];
             $scope.brokenTableCount = null;
             $scope.currentPage = 1;
