@@ -130,6 +130,7 @@ define(function (require) {
             $scope.brokenTableCount = null;
             $scope.currentPage = 1;
             $scope.brokenChart = null;
+            getFaultList();
         }
 
         function getFaultList() {

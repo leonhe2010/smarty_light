@@ -39,7 +39,7 @@ define(function (require) {
                 $scope.list = dataArr;
                 setTimeout(function () {
                     $scope.initMap();
-                }, 2000);
+                }, 1000);
             });
         }
 
@@ -424,7 +424,7 @@ define(function (require) {
                     $scope.list = res.data.location;
                     setTimeout(function () {
                         $scope.initMap();
-                    }, 2000);
+                    }, 1000);
                     // initEchart(res.data.device);
                 } 
                 else {
