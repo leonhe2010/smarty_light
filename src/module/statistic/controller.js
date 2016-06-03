@@ -33,11 +33,12 @@ define(function (require) {
         function initValue() {
             $scope.calibrationOptions = config.calibrationOptions;
             $scope.statisticTypeOptions = config.statisticTypeOptions;
-            $scope.statistic = {calibrationOption: 4};
+            $scope.statistic = {calibrationOption: 1};
             $scope.statisticType = 1;
             var now = new Date();
             var nowMoment = moment(now);
-            $scope.endDate = nowMoment.format('YYYY-MM-DD');
+            var timeItem = +(nowMoment.date(nowMoment.date() - 1).toDate());
+            $scope.endDate = moment(timeItem).format('YYYY-MM-DD');
         }
 
         function bindEvent() {

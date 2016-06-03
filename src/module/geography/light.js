@@ -17,7 +17,8 @@ define(function (require, exports) {
             $scope.detailSearch = {};
             $scope.detailSearch.calibration = 1;
             var nowMoment = moment(new Date());
-            $scope.endDate = nowMoment.format('YYYY-MM-DD');
+            var timeItem = +(nowMoment.date(nowMoment.date() - 1).toDate());
+            $scope.endDate = moment(timeItem).format('YYYY-MM-DD');
             $scope.lightType = 1;
             $scope.lightTypeShow = '电流';
             $scope.isLightChanged = false;
