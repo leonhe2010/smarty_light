@@ -501,7 +501,7 @@ exports.mocks = [
         handler: function (request, reply) {
             var location = [];
             var i;
-            for (i = 0; i < 20; i++) {
+            for (i = 0; i < 2; i++) {
                 location.push({
                     "lat": 40.04111723476737 + Math.ceil(Math.random() * 10) / 50 + '',
                     "lng": 116.3248028932062 + Math.ceil(Math.random() * 10) / 50 + '',

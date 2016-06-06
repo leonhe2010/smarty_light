@@ -1,7 +1,7 @@
 define(function (require) {
 	var us = require('underscore');
 	require('common/directive/editLeftTree/directive');
-
+    
     function mainController($scope, $location, $interval, $window, $timeout, $rootScope, $http) {
     	$scope.isLoginPage = function () {
     		if ($location.$$path == '/login') {
@@ -160,7 +160,7 @@ define(function (require) {
                     }
                 });
 
-                $scope.$broadcast('initLeftTree');
+                $scope.$broadcast('initLeftTree', 'isGeo');
                 $scope.$broadcast('singleLight', item);
                 return;
             }

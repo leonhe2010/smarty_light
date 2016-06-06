@@ -24,8 +24,10 @@ define(function (require) {
             // $scope.dragBtn = dragBtn;
             // $scope.releaseBtn = releaseBtn;
             // $scope.calculateWidth = calculateWidth;
-            $scope.$on('initLeftTree', function () {
-                getLightLocation();
+            $scope.$on('initLeftTree', function (event, data) {
+                if (data !== 'isGeo') {
+                    getLightLocation();
+                }
                 getLightNum();
             });
             $scope.$on('batchreject', function (event, data) {
