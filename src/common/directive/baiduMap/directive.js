@@ -123,7 +123,7 @@ define(function (require) {
                     function initMaker() {
                         if (points && points.length) {
                             // 设置地图中心
-                            map.centerAndZoom(new BMap.Point(points[0].lng, points[0].lat), 11);
+                            map.centerAndZoom(new BMap.Point(points[0].lng, points[0].lat), 15);
                             map.panTo(new BMap.Point(points[0].lng, points[0].lat));
                             // map.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
                             mapPoints = [];
@@ -163,6 +163,7 @@ define(function (require) {
                                 markers.push(marker);
                                 map.addOverlay(marker);
                             });
+                            map.setViewport(points);
                         }
                     }
 
