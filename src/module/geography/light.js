@@ -33,7 +33,7 @@ define(function (require, exports) {
             $scope.getChartData = getChartData;
             $scope.switchLightType = switchLightType;
             $scope.closeModal = closeModal;
-            $scope.refreshId = setInterval(getLightDetail, 2 * 1000);
+            $scope.refreshId = setInterval(getLightDetail, 5 * 60 * 1000);
         }
 
         function main() {
