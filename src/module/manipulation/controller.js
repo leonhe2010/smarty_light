@@ -28,6 +28,7 @@ define(function (require) {
             });
             $scope.switchPtn = switchPtn;
             $scope.postPtn = postPtn;
+            $scope.delPtn = delPtn;
             $scope.dragBtn = dragBtn;
             $scope.releaseBtn = releaseBtn;
             $scope.calculateWidth = calculateWidth;
@@ -531,6 +532,40 @@ define(function (require) {
                 } 
                 else {
                     util.showMessage('设置失败！');
+                }
+            }).error(function (res) {
+                util.showMessage('系统异常！');
+            });
+        }
+
+        function delPtn() {
+            var url = '/smartcity/api/del_light_plan';
+            var params = {
+                id: $scope.currentId,
+                level: $scope.currentLevel,
+                type: $scope.lightCtrl
+            };
+
+            $http.post(url, params).success(function (res) {
+                if (res.status == 403) {
+                    $location.url('/login');
+                }
+                else if (res.data.result) {
+                    util.showMessage('删除成功！');
+                    initBrightness();
+
+                    $scope.onOff = null;
+                    getSettedPlan();
+
+                    // $scope.demo.itemClicked({
+                    //     name: $scope.locationSetted,
+                    //     id: $scope.currentId,
+                    //     level: $scope.currentLevel,
+                    //     pid: $scope.currentPid
+                    // });
+                } 
+                else {
+                    util.showMessage('删除失败！');
                 }
             }).error(function (res) {
                 util.showMessage('系统异常！');

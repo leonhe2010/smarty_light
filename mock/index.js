@@ -229,6 +229,21 @@ exports.mocks = [
     },
 
     {
+        path: '/smartcity/api/del_light_plan',
+        method: 'POST',
+        handler: function (request, reply) {
+            reply({
+                "status": 200,
+                "data": {
+                    "msg": "success",
+                    "result": true
+                },
+                "error": null
+            });  
+        }
+    },
+
+    {
         path: '/smartcity/api/set_light_plan',
         method: 'POST',
         handler: function (request, reply) {
