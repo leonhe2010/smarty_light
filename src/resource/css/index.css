@@ -1487,6 +1487,10 @@ input[type=checkbox].radiocheck:checked + label:after, input[type=radio].radioch
     width: 600px;
 }
 
+.del_ptn_btn {
+    margin-top: 0;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
