@@ -116,6 +116,8 @@ define(function (require) {
             $scope.duration = null;
             initBrightness();
 
+            $scope.isEditPlan = false;
+
             if ($scope.setPtn == 2) {
                 getSettedPlan();
             }
@@ -573,6 +575,7 @@ define(function (require) {
         }
 
         function switchPtn(event) {
+            $scope.isEditPlan = false;
             $scope.setPtn = +$(event.target).attr('ptn');
             $scope.lightCtrl = 6;
             if ($scope.setPtn === 2) {
